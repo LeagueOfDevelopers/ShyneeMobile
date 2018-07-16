@@ -3,14 +3,13 @@ import {Platform, StyleSheet, Text, View} from 'react-native';
 
 import {Provider} from 'react-redux';
 
-import {createStore} from '../lib/store';
-// import AppWithNavigationState from './AppNavigator';
-import App from './App'
+import {createStore} from '../utils/store';
+import AppNavigator from './AppNavigator';
 
 const store = createStore();
 
 export default () => (
   <Provider store={store}>
-    <App/>
+    <AppNavigator/>
   </Provider>
-)
+);
