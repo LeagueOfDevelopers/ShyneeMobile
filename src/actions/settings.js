@@ -15,9 +15,9 @@ export const getSettings = () => (dispatch) => {
       payload: settings
     }))
     .catch(error => {
-      dispatch({
+      setTimeout(() => dispatch({
         type: SETTINGS_UPDATE_FAILURE,
         payload: error
-      });
+      }), 1500);
     });
 };

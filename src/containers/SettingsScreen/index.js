@@ -13,7 +13,8 @@ class SettingsScreen extends PureComponent {
   render() {
     const {
       navigation,
-      getSettings
+      getSettings,
+      settings
     } = this.props;
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -26,6 +27,7 @@ class SettingsScreen extends PureComponent {
           title="Get some settings"
           onPress={()=> getSettings()}
         />
+        <Text>Status: {settings.status}</Text>
       </View>
     );
   }
@@ -37,11 +39,16 @@ SettingsScreen.navigationOptions = {
 
 SettingsScreen.propTypes = {
   navigation: PropTypes.object,
-  getSettings: PropTypes.func
+  getSettings: PropTypes.func,
+  settings: PropTypes.object
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapStateToProps = state => ({
+  settings: state.settings
+});
+
+const mapDispatchToProps = dispatch => ({
   getSettings: () => dispatch(getSettings())
 });
 
-export default connect(null, mapDispatchToProps)(SettingsScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(SettingsScreen);

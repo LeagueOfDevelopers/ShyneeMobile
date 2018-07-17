@@ -3,5 +3,5 @@ import request from '../index';
 export const getSettingsRequest = () => 
   request('kek')
     .then(()=>{
-      return {kek:1};
+      return new Promise(resolve => setTimeout(() => resolve(), 3000));
     });
