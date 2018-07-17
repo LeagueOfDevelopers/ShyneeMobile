@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import {View} from 'react-native';
 
 import Home from '../../components/Home';
@@ -16,6 +17,10 @@ class HomeScreen extends PureComponent {
 
 HomeScreen.navigationOptions = {
   title: 'Home Screen',
+};
+
+HomeScreen.propTypes = {
+  navigation: PropTypes.object
 };
 
 export default HomeScreen;

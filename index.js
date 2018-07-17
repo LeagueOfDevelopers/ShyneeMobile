@@ -1,7 +1,7 @@
 import {AppRegistry, NativeModules} from 'react-native';
 import App from './src/containers';
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production') {  // eslint-disable-line
   NativeModules.DevSettings.setIsDebuggingRemotely(true);
 }
 

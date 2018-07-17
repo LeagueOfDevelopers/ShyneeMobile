@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import {
   View,
   Button,
@@ -19,5 +20,9 @@ class Home extends PureComponent {
     );
   }
 }
+
+Home.propTypes = {
+  navigation: PropTypes.object
+};
 
 export default Home;

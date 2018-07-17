@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {View, Text, Button } from 'react-native';
 
 import HomeScreen from '../HomeScreen';
@@ -22,6 +23,10 @@ class DetailsScreen extends React.Component {
     );
   }
 }
+
+DetailsScreen.propTypes = {
+  navigation: PropTypes.object
+};
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,

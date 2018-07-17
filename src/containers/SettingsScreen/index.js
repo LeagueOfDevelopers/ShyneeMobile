@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import {
   View,
   Button,
@@ -14,6 +15,9 @@ class SettingsScreen extends PureComponent {
           title="Go to Details"
           onPress={() => this.props.navigation.navigate('Details')}
         />
+        <Button
+          title="Get some settings"
+        />
       </View>
     );
   }
@@ -21,6 +25,10 @@ class SettingsScreen extends PureComponent {
 
 SettingsScreen.navigationOptions = {
   title: 'Home Screen',
+};
+
+SettingsScreen.propTypes = {
+  navigation: PropTypes.object
 };
 
 export default SettingsScreen;
