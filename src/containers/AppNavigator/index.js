@@ -1,47 +1,58 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {View, Text, Button } from 'react-native';
-
-import HomeScreen from '../HomeScreen';
-import SettingsScreen from '../SettingsScreen';
-
 import {
   createBottomTabNavigator,
   createStackNavigator,
 } from 'react-navigation';
 
-class DetailsScreen extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Details!</Text>
-        <Button
-          title="Go to Settings"
-          onPress={() => this.props.navigation.navigate('Settings')}
-        />
-      </View>
-    );
-  }
-}
+import {
+  SHYNEES_AROUND,
+  SHYNEES_WORLDWIDE,
+  VIEW_PROFILE,
+  PROFILE_EDITING,
+  SETTINGS,
+  CHATS,
+  CHAT,
+  BUY_THIS_APP,
+} from '../../constants/screens';
 
-DetailsScreen.propTypes = {
-  navigation: PropTypes.object
-};
+import ShyneesAroundScreen from '../ShyneesAroundScreen';
+import ShyneesWorldwideScreen from '../ShyneesWorldwideScreen';
+import ChatsScreen from '../ChatsScreen';
+import ProfileEditingScreen from '../ProfileEditingScreen';
+import ViewProfileScreen from '../ViewProfileScreen';
+import SettingsScreen from '../SettingsScreen';
+import BuyThisAppScreen from '../BuyThisAppScreen';
+import ChatScreen from '../ChatScreen';
 
-const HomeStack = createStackNavigator({
-  Home: HomeScreen,
-  Details: DetailsScreen,
+const ShyneesAroundStack = createStackNavigator({
+  [SHYNEES_AROUND]: ShyneesAroundScreen,
+  [VIEW_PROFILE]: ViewProfileScreen,
+  [CHAT]: ChatScreen,
+  [SETTINGS]: SettingsScreen,
 });
 
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
-  Details: DetailsScreen,
+const ShyneesWorldwideStack = createStackNavigator({
+  [SHYNEES_WORLDWIDE]: ShyneesWorldwideScreen,
+  [BUY_THIS_APP]: BuyThisAppScreen,
+});
+
+const ChatsStack = createStackNavigator({
+  [CHATS]: ChatsScreen,
+  [CHAT]: ChatScreen,
+});
+
+const ProfileEditingStack = createStackNavigator({
+  [PROFILE_EDITING]: ProfileEditingScreen,
+  [VIEW_PROFILE]: ViewProfileScreen,
+  [CHAT]: ChatScreen,
+  [SETTINGS]: SettingsScreen,
 });
 
 export default createBottomTabNavigator(
   {
-    Home: HomeStack,
-    Settings: SettingsStack,
+    ShyneesAround: ShyneesAroundStack,
+    ShyneesWorldwide: ShyneesWorldwideStack,
+    Chats: ChatsStack,
+    ProfileEditing: ProfileEditingStack,
   },
   {
     /* Other configuration remains unchanged */
