@@ -1,18 +1,18 @@
 import React from 'react';
 import {View, Text } from 'react-native';
 
-class SettingsSreen extends React.Component {
+class BuyThisAppScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Settings!</Text>
+        <Text>Buy This App!</Text>
       </View>
     );
   }
 }
 
-SettingsSreen.navigationOptions = {
-  title: 'Settings',
+BuyThisAppScreen.navigationOptions = {
+  title: 'Buy This App',
 };
 
-export default SettingsSreen;
+export default BuyThisAppScreen;
