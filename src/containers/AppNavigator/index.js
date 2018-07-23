@@ -23,29 +23,33 @@ import SettingsScreen from '../SettingsScreen';
 import BuyThisAppScreen from '../BuyThisAppScreen';
 import ChatScreen from '../ChatScreen';
 
+const commonStackOptions = {
+  cardStyle: { backgroundColor: 'white' }
+};
+
 const ShyneesAroundStack = createStackNavigator({
   [SHYNEES_AROUND]: ShyneesAroundScreen,
   [VIEW_PROFILE]: ViewProfileScreen,
   [CHAT]: ChatScreen,
   [SETTINGS]: SettingsScreen,
-});
+}, commonStackOptions);
 
 const ShyneesWorldwideStack = createStackNavigator({
   [SHYNEES_WORLDWIDE]: ShyneesWorldwideScreen,
   [BUY_THIS_APP]: BuyThisAppScreen,
-});
+}, commonStackOptions);
 
 const ChatsStack = createStackNavigator({
   [CHATS]: ChatsScreen,
   [CHAT]: ChatScreen,
-});
+}, commonStackOptions);
 
 const ProfileEditingStack = createStackNavigator({
   [PROFILE_EDITING]: ProfileEditingScreen,
   [VIEW_PROFILE]: ViewProfileScreen,
   [CHAT]: ChatScreen,
   [SETTINGS]: SettingsScreen,
-});
+}, commonStackOptions);
 
 export default createBottomTabNavigator(
   {
