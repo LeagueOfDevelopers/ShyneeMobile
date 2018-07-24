@@ -13,6 +13,7 @@ import {
   CHAT,
   BUY_THIS_APP,
 } from '../../constants/screens';
+import {white, black, fw_medium} from '../../constants/styles';
 
 import ShyneesAroundScreen from '../ShyneesAroundScreen';
 import ShyneesWorldwideScreen from '../ShyneesWorldwideScreen';
@@ -24,7 +25,16 @@ import BuyThisAppScreen from '../BuyThisAppScreen';
 import ChatScreen from '../ChatScreen';
 
 const commonStackOptions = {
-  cardStyle: { backgroundColor: 'white' }
+  cardStyle: { backgroundColor: 'white' },
+  navigationOptions: {
+    headerStyle: {
+      backgroundColor: white,
+    },
+    headerTintColor: black,
+    headerTitleStyle: {
+      fontWeight: fw_medium,
+    },
+  }
 };
 
 const ShyneesAroundStack = createStackNavigator({
