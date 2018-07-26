@@ -4,7 +4,7 @@ import {f_medium, white} from '../../../constants/styles';
 
 export default StyleSheet.create({
   sheneeСell: {
-    padding: 4,
+    padding: 6,
   },
   avatarContainer: {
     height: '100%',
