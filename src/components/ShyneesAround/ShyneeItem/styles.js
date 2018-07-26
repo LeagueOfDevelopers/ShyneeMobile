@@ -4,11 +4,11 @@ import {f_medium, white} from '../../../constants/styles';
 
 export default StyleSheet.create({
   sheneeСell: {
-    flexBasis: '33%'
+    padding: 4,
   },
   avatarContainer: {
-    margin: 4,
-    height: 135,
+    height: '100%',
+    width: '100%',
     borderRadius: 5,
     overflow: 'hidden',
     position: 'relative',
