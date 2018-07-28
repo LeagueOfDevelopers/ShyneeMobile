@@ -16,8 +16,18 @@ class ShyneesAroundScreen extends React.Component {
   }
 }
 
-ShyneesAroundScreen.navigationOptions = {
-  title: 'Shynees Around',
+ShyneesAroundScreen.navigationOptions = ({navigation}) => {
+  const { params = {} } = navigation.state;
+  return {
+    title: 'Shynees Around',
+    headerStyle: {
+      backgroundColor: params.headerBackgoundColor,
+      height: params.headerHeight,
+    },
+    headerTitleStyle: {
+      color: params.headerColor
+    }
+  };
 };
 
 ShyneesAroundScreen.propTypes = {
