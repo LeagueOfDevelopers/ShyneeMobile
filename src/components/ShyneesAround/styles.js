@@ -11,7 +11,7 @@ export default StyleSheet.create({
   },
   description: {
     ...f_small,
-    maxWidth: 230,
+    maxWidth: 235,
     textAlign: 'center'
   },
   shyneesAroundContainer: {

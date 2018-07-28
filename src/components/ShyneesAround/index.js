@@ -38,7 +38,7 @@ class ShyneesAroundScreen extends PureComponent {
     return (
       <ScrollView>
         <View style={styles.descriptionContainer}>
-          <Text style={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</Text>
+          <Text style={styles.description}>There are lots of shy people out there. Why not be shy together?</Text>
         </View>
         <Button
           title="I am ready"
