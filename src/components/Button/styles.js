@@ -1,13 +1,13 @@
 import {StyleSheet } from 'react-native';
 
-import {f_large, primaryColor, white} from '../../constants/styles';
+import {f_large, primaryColor, white, black} from '../../constants/styles';
 
 export default StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: '#000000',
+    shadowColor: black,
     shadowOffset: {
       width: 0,
       height: 4

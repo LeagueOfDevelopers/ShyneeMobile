@@ -1,10 +1,8 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {
-  View,
-  Button,
-  Text,
-} from 'react-native';
+import {View, Button} from 'react-native';
+
+import Text from '../Text';
 
 class Home extends PureComponent {
   render() {

@@ -1,6 +1,6 @@
 import {StyleSheet } from 'react-native';
 
-import {f_medium, white} from '../../../constants/styles';
+import {f_medium, white, black} from '../../../constants/styles';
 
 export default StyleSheet.create({
   sheneeСell: {
@@ -15,7 +15,7 @@ export default StyleSheet.create({
   },
   blackout: {
     position: 'absolute',
-    backgroundColor: '#000',
+    backgroundColor: black,
     height: '100%',
     width: '100%',
     opacity: 0.3,

@@ -1,7 +1,9 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import Platform from 'Platform';
-import {View, Text, TouchableNativeFeedback, TouchableOpacity} from 'react-native';
+import {View, TouchableNativeFeedback, TouchableOpacity} from 'react-native';
+
+import Text from '../Text';
 
 import styles from './styles';
 
