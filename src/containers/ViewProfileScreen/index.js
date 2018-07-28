@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {View, Text, Button } from 'react-native';
+import {View, Button } from 'react-native';
 
+import Text from '../../components/Text';
 import {CHAT} from '../../constants/screens';
 
 class ViewProfileScreen extends React.Component {

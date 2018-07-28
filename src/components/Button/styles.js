@@ -1,6 +1,6 @@
 import {StyleSheet } from 'react-native';
 
-import {f_large, primaryColor, white, black} from '../../constants/styles';
+import {fs_large, fw_small, primaryColor, white, black} from '../../constants/styles';
 
 export default StyleSheet.create({
   container: {
@@ -20,7 +20,8 @@ export default StyleSheet.create({
     borderRadius: 200,
   },
   text: {
-    ...f_large,
+    fontSize: fs_large,
+    fontWeight: fw_small,
     textAlign: 'center',
     paddingTop: 10,
     paddingBottom: 10,

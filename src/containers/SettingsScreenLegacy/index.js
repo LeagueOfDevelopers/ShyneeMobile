@@ -1,12 +1,9 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {
-  View,
-  Button,
-  Text,
-} from 'react-native';
+import {View, Button} from 'react-native';
 
+import Text from '../../components/Text';
 import {getSettings} from '../../actions/settings';
 
 class SettingsScreen extends PureComponent {
