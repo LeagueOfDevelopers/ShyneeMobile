@@ -14,7 +14,7 @@ const ShyneeItem = ({shynee, size, navigation}) =>
           <Text style={styles.nickname}>{shynee.nickname}</Text>
         </View>
         <View style={styles.blackout}/>
-        <Image style={styles.avatar} source={require('./avatar.jpg')}/>
+        <Image style={styles.avatar} source={{uri: shynee.avatarUri}}/>
       </View>
     </TouchableOpacity>
   </View>;
