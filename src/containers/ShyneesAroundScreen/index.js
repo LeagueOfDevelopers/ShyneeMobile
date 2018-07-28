@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {View} from 'react-native';
 import { connect } from 'react-redux';
 
+import {f_large} from '../../constants/styles';
 import {getShyneesAround} from '../../actions/shynees';
 import ShyneesAround from '../../components/ShyneesAround';
+import Button from '../../components/Button';
+import Text from '../../components/Text';
 
 class ShyneesAroundScreen extends React.Component {
   componentDidMount() {
@@ -23,10 +27,19 @@ ShyneesAroundScreen.navigationOptions = ({navigation}) => {
     headerStyle: {
       backgroundColor: params.headerBackgoundColor,
       height: params.headerHeight,
+      top: -10
     },
-    headerTitleStyle: {
-      color: params.headerColor
-    }
+    headerTitleAllowFontScaling: false,
+    headerTitle: <View>
+      <Text style={{
+        ...f_large,
+        color: params.headerColor,
+      }}>Shynees Around</Text>
+      <Button
+        title="I am ready"
+        style={{position: 'absolute', top: params.keki, width: '100%'}}
+      />
+    </View>
   };
 };
 

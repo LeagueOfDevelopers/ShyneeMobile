@@ -3,9 +3,6 @@ import {StyleSheet } from 'react-native';
 import {f_small} from '../../constants/styles';
 
 export default StyleSheet.create({
-  buttonContainer: {
-    marginTop: 16
-  },
   descriptionContainer: {
     alignItems: 'center'
   },
@@ -20,6 +17,6 @@ export default StyleSheet.create({
     justifyContent: 'center',
     marginLeft: 15,
     marginRight: 15,
-    marginTop: 24
+    marginTop: 80
   },
 });

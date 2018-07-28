@@ -36,6 +36,11 @@ class ShyneesAroundScreen extends PureComponent {
         inputRange: [0, 15],
         outputRange: [black, white],
         extrapolate: 'clamp',
+      }),
+      keki: this.state.scrollY.interpolate({
+        inputRange: [0, 60],
+        outputRange: [80, 25],
+        extrapolate: 'clamp',
       })
     });
   }
@@ -63,15 +68,10 @@ class ShyneesAroundScreen extends PureComponent {
     const {shyneeSize} = this.state;
     const {navigation, shynees} = this.props;
     return (
-      <ScrollView onScroll={this._onScroll} scrollEventThrottle={1}>
+      <ScrollView onScroll={this._onScroll} scrollEventThrottle={12}>
         <View style={styles.descriptionContainer}>
           <Text style={styles.description}>There are lots of shy people out there. Why not be shy together?</Text>
         </View>
-        <Button
-          title="I am ready"
-          onPress={() => navigation.navigate(SETTINGS)}
-          style={styles.buttonContainer}
-        />
         <View style={styles.shyneesAroundContainer} onLayout={this._onRenderShyneesAround}>
           {shynees.map((shynee, index) => <ShyneeItem 
             key={index || shynee.id}

@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import Platform from 'Platform';
-import {View, TouchableNativeFeedback, TouchableOpacity} from 'react-native';
+import {View, TouchableNativeFeedback, TouchableOpacity, Animated} from 'react-native';
 
 import Text from '../Text';
 
@@ -23,7 +23,7 @@ class Button extends PureComponent {
     const formattedTitle = title.toUpperCase();
     const Touchable = Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
     return (
-      <View style={{...styles.container, ...customStyles}}>
+      <Animated.View style={{...styles.container, ...customStyles}}>
         <Touchable
           disabled={disabled}
           onPress={onPress}>
@@ -33,7 +33,7 @@ class Button extends PureComponent {
             </Text>
           </View>
         </Touchable>
-      </View>
+      </Animated.View>
     );
   }
 }

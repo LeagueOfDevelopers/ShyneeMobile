@@ -28,6 +28,7 @@ export default StyleSheet.create({
     paddingLeft: 30,
     paddingRight: 30,
     color: white,
-    flexBasis: 0
+    flexBasis: 0,
+    width: '100%'
   }
 });
