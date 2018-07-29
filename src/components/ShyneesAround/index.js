@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import {View, ScrollView, Animated} from 'react-native';
 
 import Text from '../Text';
-import Button from '../Button';
 import ShyneeItem from './ShyneeItem';
-import {SETTINGS} from '../../constants/screens';
 import {black, white, primaryColor} from '../../constants/styles';
 import {convertHex} from '../../utils/helpers';
 
@@ -29,7 +27,7 @@ class ShyneesAroundScreen extends PureComponent {
       }),
       headerBackgoundColor: this.state.scrollY.interpolate({
         inputRange: [0, 60],
-        outputRange: [white, convertHex(primaryColor, 0.46)],
+        outputRange: [white, convertHex(primaryColor, 0.3)],
         extrapolate: 'clamp',
       }),
       headerColor: this.state.scrollY.interpolate({
@@ -37,8 +35,8 @@ class ShyneesAroundScreen extends PureComponent {
         outputRange: [black, white],
         extrapolate: 'clamp',
       }),
-      keki: this.state.scrollY.interpolate({
-        inputRange: [0, 60],
+      headerIndent: this.state.scrollY.interpolate({
+        inputRange: [0, 72],
         outputRange: [80, 25],
         extrapolate: 'clamp',
       })
@@ -68,13 +66,13 @@ class ShyneesAroundScreen extends PureComponent {
     const {shyneeSize} = this.state;
     const {navigation, shynees} = this.props;
     return (
-      <ScrollView onScroll={this._onScroll} scrollEventThrottle={12}>
+      <ScrollView onScroll={this._onScroll} scrollEventThrottle={16}>
         <View style={styles.descriptionContainer}>
           <Text style={styles.description}>There are lots of shy people out there. Why not be shy together?</Text>
         </View>
         <View style={styles.shyneesAroundContainer} onLayout={this._onRenderShyneesAround}>
-          {shynees.map((shynee, index) => <ShyneeItem 
-            key={index || shynee.id}
+          {shynees.map(shynee => <ShyneeItem 
+            key={shynee.id}
             shynee={shynee}
             navigation={navigation}
             size={shyneeSize}

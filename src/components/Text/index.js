@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {Text as NativeText} from 'react-native';
+import {Animated} from 'react-native';
 import {f_medium, black} from '../../constants/styles';
 
 class Text extends PureComponent {
@@ -15,9 +15,9 @@ class Text extends PureComponent {
     };
     
     return (
-      <NativeText style={textStyle} disabled={disabled}>
+      <Animated.Text style={textStyle} disabled={disabled}>
         {children}
-      </NativeText>
+      </Animated.Text>
     );
   }
 }

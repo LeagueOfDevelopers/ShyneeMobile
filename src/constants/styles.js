@@ -12,7 +12,7 @@ export const fs_large = 17;
 
 export const fw_small = '300';
 export const fw_medium = '400';
-export const fw_large = '400';
+export const fw_large = '500';
 
 export const f_small = {
   fontSize: fs_small,

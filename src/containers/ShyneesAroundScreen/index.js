@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {View} from 'react-native';
+import {Animated} from 'react-native';
 import { connect } from 'react-redux';
 
 import {f_large} from '../../constants/styles';
@@ -26,20 +26,18 @@ ShyneesAroundScreen.navigationOptions = ({navigation}) => {
     title: 'Shynees Around',
     headerStyle: {
       backgroundColor: params.headerBackgoundColor,
-      height: params.headerHeight,
-      top: -10
     },
     headerTitleAllowFontScaling: false,
-    headerTitle: <View>
+    headerTitle: <Animated.View style={{marginTop: 40, height: params.headerHeight,}}>
       <Text style={{
         ...f_large,
         color: params.headerColor,
       }}>Shynees Around</Text>
       <Button
         title="I am ready"
-        style={{position: 'absolute', top: params.keki, width: '100%'}}
+        style={{position: 'absolute', top: params.headerIndent, width: '100%'}}
       />
-    </View>
+    </Animated.View>
   };
 };
 
