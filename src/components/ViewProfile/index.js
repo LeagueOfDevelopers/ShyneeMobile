@@ -10,21 +10,27 @@ import {CHAT} from '../../constants/screens';
 import styles from './styles';
 
 class ViewProfile extends PureComponent {
+  constructor(props) {
+    super(props);
+    
+    const {name, dob, gender, interests, personalInfo} =    props.shynee;
+    this.infoExist = name || dob || gender || interests || personalInfo ? true : false;
+  }
+
   getTabs() {
-    return [
-      {
-        title: 'Reveal info',
-        onPress: () => {}
-      },
-      {
-        title: 'Chat',
-        onPress: () => {}
-      }
-    ];
+    const tabs = [{
+      title: 'Chat',
+      onPress: () => {}
+    }];
+    if (this.infoExist) tabs.unshift({
+      title: 'Reveal info',
+      onPress: () => {}
+    });
+    return tabs;
   }
 
   render() {
-    const {shynee, navigation } = this.props;
+    const {shynee, navigation} = this.props;
     return (
       <View>
         <View style={styles.topContainer}>
