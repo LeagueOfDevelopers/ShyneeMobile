@@ -1,5 +1,8 @@
-import {getShyneesAroundRequest} from '../request/shynees';
-import {getShyneeProfileRequest} from '../request/shynees';
+import {
+  getShyneesAroundRequest,
+  getShyneeProfileRequest,
+  getShyneeSettingsRequest
+} from '../request/shynees';
 
 export const SHYNEES_AROUND_REQUEST = 'SHYNEES_AROUND_REQUEST';
 export const SHYNEES_AROUND_SUCCESS = 'SHYNEES_AROUND_SUCCESS';
@@ -50,7 +53,7 @@ export const getShyneeSettings = (shyneeId) => (dispatch) => {
     type: SHYNEE_SETTINGS_REQUEST
   });
 
-  return getShyneeProfileRequest(shyneeId)
+  return getShyneeSettingsRequest(shyneeId)
     .then((shynees) => dispatch({
       type: SHYNEE_SETTINGS_SUCCESS,
       payload: shynees

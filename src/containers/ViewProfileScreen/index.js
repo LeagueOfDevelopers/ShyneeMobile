@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import ViewProfile from '../../components/ViewProfile';
-import {getShyneeProfile} from '../../actions/shynee';
+import {getShyneeProfile} from '../../actions/shynees';
 
 class ViewProfileScreen extends React.PureComponent {
   componentDidMount() {

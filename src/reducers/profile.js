@@ -7,7 +7,7 @@ import {
   SHYNEE_SETTINGS_REQUEST,
   SHYNEE_SETTINGS_SUCCESS,
   SHYNEE_SETTINGS_FAILURE
-} from '../actions/shynee';
+} from '../actions/shynees';
 
 const initialState = {
   fetching: false,

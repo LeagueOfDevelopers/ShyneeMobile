@@ -5,7 +5,7 @@ export const getShyneesAroundRequest = () =>
     .then(data => data.json());
 
 export const getShyneeProfileRequest = (id) => {
-  return request(`/shynees/${id}/profile`)
+  return request(`/shynees/${id}`)
     .then(data => data.json());
 };
 
