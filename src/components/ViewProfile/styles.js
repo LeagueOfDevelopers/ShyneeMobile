@@ -15,7 +15,7 @@ export default StyleSheet.create({
   content: {
     margin: 3,
     paddingBottom: 17,
-    backgroundColor: white
+    backgroundColor: white,
   },
   info: {
     marginTop: 17,
@@ -48,5 +48,21 @@ export default StyleSheet.create({
     paddingBottom: 3,
     paddingLeft: 21,
     paddingRight: 21
+  },
+  noInfoContainer: {
+    marginTop: 100,
+    marginBottom: 100,
+    alignItems: 'center',
+  },
+  noInfo: {
+    flexDirection: 'column',
+    width: 295,
+  },
+  noInfoPity: {
+    textAlign: 'center',
+    fontFamily: ff_light,
+  },
+  noInfoSuggestion: {
+    textAlign: 'center',
   }
 });
