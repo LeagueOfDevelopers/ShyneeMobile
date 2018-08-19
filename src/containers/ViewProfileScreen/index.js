@@ -1,20 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {View, Button } from 'react-native';
 
-import Text from '../../components/Text';
-import {CHAT} from '../../constants/screens';
+import ViewProfile from '../../components/ViewProfile';
 
-class ViewProfileScreen extends React.Component {
+class ViewProfileScreen extends React.PureComponent {
   render() {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>View Profile!</Text>
-        <Button
-          title="Go to Chat"
-          onPress={() => this.props.navigation.navigate(CHAT)}
-        />
-      </View>
+      <ViewProfile {...this.props}/>
     );
   }
 }
