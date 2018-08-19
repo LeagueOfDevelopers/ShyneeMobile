@@ -51,7 +51,7 @@ class ShyneesAroundScreen extends PureComponent {
     const COLUMNS = 3;
     const { width } = event.nativeEvent.layout;
 
-    const shyneeWidth = width/COLUMNS;
+    const shyneeWidth = width/COLUMNS - 1;
     const shyneeHeight = shyneeWidth * 4/3;
 
     this.setState({
