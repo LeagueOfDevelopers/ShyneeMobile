@@ -1,8 +1,11 @@
 import {StyleSheet } from 'react-native';
 
-import {f_small} from '../../constants/styles';
+import {f_small, white} from '../../constants/styles';
 
 export default StyleSheet.create({
+  background: {
+    backgroundColor: white
+  },
   descriptionContainer: {
     alignItems: 'center'
   },

@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {View, Button} from 'react-native';
+import {ScrollView, View, Button} from 'react-native';
 
 import Text from '../Text';
 import ProfileCard from '../ProfileCard';
@@ -24,27 +24,50 @@ class ViewProfile extends PureComponent {
     }];
     if (this.infoExist) tabs.unshift({
       title: 'Reveal info',
-      onPress: () => {}
+      onPress: () => this.props.navigation.navigate(CHAT)
     });
     return tabs;
   }
 
   render() {
-    const {shynee, navigation} = this.props;
+    const {shynee} = this.props;
     return (
-      <View>
-        <View style={styles.topContainer}>
+      <ScrollView>
+        <View style={styles.topContent}>
           <ProfileCard style={{marginTop: 8}} shynee={shynee} />
-          <TabMenu tabs={this.getTabs()} style={styles.tabMenu}/>
+          <TabMenu tabs={this.getTabs.call(this)} style={styles.tabMenu}/>
         </View>
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <Text>View Profile!</Text>
-          <Button
-            title="Go to Chat"
-            onPress={() => navigation.navigate(CHAT)}
-          />
+        <View style={styles.content}>
+          <View style={styles.info}>
+            {shynee.name ? <View style={styles.infoItem}>
+              <Text style={styles.itemName}>NAME</Text>
+              <Text style={styles.itemValue}>{shynee.name}</Text>
+            </View> : null}
+            {shynee.dob ? <View style={styles.infoItem}>
+              <Text style={styles.itemName}>DATE OF BIRTH</Text>
+              <Text style={styles.itemValue}>{shynee.dob}</Text>
+            </View> : null}
+            {shynee.gender ? <View style={styles.infoItem}>
+              <Text style={styles.itemName}>SEX</Text>
+              <Text style={styles.itemValue}>{shynee.gender}</Text>
+            </View> : null}
+            {shynee.interests ? <View style={styles.infoItem}>
+              <Text style={styles.itemName}>INTERESTS</Text>
+              <View style={styles.interests}>{
+                ['ablab', 'lalab'].map((interest, index) => 
+                  <View key={index} style={styles.interestContainer}>
+                    <Text style={styles.interest}>{interest}</Text>
+                  </View>
+                )}
+              </View>
+            </View> : null}
+            {shynee.personalInfo ? <View style={styles.infoItem}>
+              <Text style={styles.itemName}>ABOUT ME</Text>
+              <Text style={styles.itemValue}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium optio, fugiat eos rem suscipit magnam adipisci illum, quod a omnis possimus distinctio explicabo in earum minus sit atque reprehenderit similique!</Text>
+            </View> : null}
+          </View>
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }

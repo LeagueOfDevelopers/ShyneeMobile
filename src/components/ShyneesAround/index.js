@@ -66,7 +66,7 @@ class ShyneesAroundScreen extends PureComponent {
     const {shyneeSize} = this.state;
     const {navigation, shynees} = this.props;
     return (
-      <ScrollView onScroll={this._onScroll} scrollEventThrottle={16}>
+      <ScrollView style={styles.background} onScroll={this._onScroll} scrollEventThrottle={16}>
         <View style={styles.descriptionContainer}>
           <Text style={styles.description}>There are lots of shy people out there. Why not be shy together?</Text>
         </View>
