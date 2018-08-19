@@ -13,8 +13,8 @@ class ProfileCard extends PureComponent {
       <View style={{...styles.card, ...customStyles}}>
         <Image style={styles.avatar} source={{uri: shynee.avatarUri}}/>
         <View style={styles.nicknameContainer}>
-          <Text style={styles.nickname}>Nickname</Text>
-          <Text style={styles.name}>{shynee.name || 'Nothing'}</Text>
+          <Text style={styles.nicknameTitle}>Nickname</Text>
+          <Text style={styles.nickname}>{shynee.nickname}</Text>
         </View>
       </View>
     );

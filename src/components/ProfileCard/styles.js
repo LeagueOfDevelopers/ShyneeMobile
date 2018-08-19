@@ -19,12 +19,12 @@ export default StyleSheet.create({
     flexDirection: 'column',
     marginLeft: 20
   },
-  nickname: {
+  nicknameTitle: {
     color: grey,
     fontFamily: ff_light,
     marginBottom: 5
   },
-  name: {
+  nickname: {
     fontSize: fs_xlarge,
     fontWeight: fw_large
   }
