@@ -1,6 +1,6 @@
 import {StyleSheet } from 'react-native';
 
-import {white, grey, primaryColor, ff_light, f_small, fs_large, fw_small} from '../../constants/styles';
+import {white, grey, primaryColor, ff_light, f_small, fs_large} from '../../constants/styles';
 
 export default StyleSheet.create({
   tabMenu: {

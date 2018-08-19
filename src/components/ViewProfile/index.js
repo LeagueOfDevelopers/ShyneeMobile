@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {ScrollView, View, Button} from 'react-native';
+import {ScrollView, View} from 'react-native';
 
 import Text from '../Text';
 import ProfileCard from '../ProfileCard';
@@ -17,7 +17,7 @@ class ViewProfile extends PureComponent {
     this.infoExist = name || dob || gender || interests || personalInfo ? true : false;
   }
 
-  getTabs() {
+  getTabs = () => {
     const tabs = [{
       title: 'Chat',
       onPress: () => {}
@@ -35,7 +35,7 @@ class ViewProfile extends PureComponent {
       <ScrollView>
         <View style={styles.topContent}>
           <ProfileCard style={{marginTop: 8}} shynee={shynee} />
-          <TabMenu tabs={this.getTabs.call(this)} style={styles.tabMenu}/>
+          <TabMenu tabs={this.getTabs()} style={styles.tabMenu}/>
         </View>
         <View style={styles.content}>
           <View style={styles.info}>
