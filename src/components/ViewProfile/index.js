@@ -56,11 +56,11 @@ class ViewProfile extends PureComponent {
   getTabs = () => {
     const tabs = [{
       title: 'Chat',
-      onPress: () => {}
+      onPress: () => this.props.navigation.navigate(CHAT)
     }];
     if (this.infoExist) tabs.unshift({
       title: 'Reveal info',
-      onPress: () => this.props.navigation.navigate(CHAT)
+      onPress: () => {}
     });
     return tabs;
   }
