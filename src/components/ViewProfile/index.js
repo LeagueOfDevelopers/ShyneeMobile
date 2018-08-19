@@ -49,14 +49,15 @@ class ViewProfile extends PureComponent {
   constructor(props) {
     super(props);
     
-    const {name, dob, gender, interests, personalInfo} =    props.shynee;
+    const {name, dob, gender, interests, personalInfo} = props.shynee;
     this.infoExist = name || dob || gender || interests || personalInfo ? true : false;
   }
 
   getTabs = () => {
+    const { navigation } = this.props;
     const tabs = [{
       title: 'Chat',
-      onPress: () => this.props.navigation.navigate(CHAT)
+      onPress: () => navigation.navigate(CHAT)
     }];
     if (this.infoExist) tabs.unshift({
       title: 'Reveal info',
