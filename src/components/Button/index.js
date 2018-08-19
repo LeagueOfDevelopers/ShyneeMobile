@@ -5,7 +5,7 @@ import {View, TouchableNativeFeedback, TouchableOpacity, Animated} from 'react-n
 
 import Text from '../Text';
 
-import styles from './styles';
+import buttonStyles from './styles';
 
 class Button extends PureComponent {
   render() {
@@ -14,13 +14,14 @@ class Button extends PureComponent {
       title,
       disabled,
       style: customStyles,
+      type = 'normal'
     } = this.props;
     // const accessibilityTraits = ['button'];
     // if (disabled) {
     //   // Change button styles
     //   accessibilityTraits.push('disabled');
     // }
-    const formattedTitle = title.toUpperCase();
+    const styles = buttonStyles[type];
     const Touchable = Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
     return (
       <Animated.View style={{...styles.container, ...customStyles}}>
@@ -29,7 +30,7 @@ class Button extends PureComponent {
           onPress={onPress}>
           <View style={styles.button}>
             <Text style={styles.text} disabled={disabled}>
-              {formattedTitle}
+              {title}
             </Text>
           </View>
         </Touchable>
@@ -42,7 +43,8 @@ Button.propTypes = {
   title: PropTypes.string,
   onPress: PropTypes.func,
   disabled: PropTypes.func,
-  style: PropTypes.object
+  style: PropTypes.object,
+  type: PropTypes.oneOf(['colorful', 'normal'])
 };
 
 export default Button;

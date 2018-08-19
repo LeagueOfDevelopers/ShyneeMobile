@@ -4,6 +4,7 @@ import {View, Image, TouchableOpacity} from 'react-native';
 
 import Text from '../../Text';
 import {VIEW_PROFILE} from '../../../constants/screens';
+
 import styles from './styles';
 
 const ShyneeItem = ({shynee, size, navigation}) => 
