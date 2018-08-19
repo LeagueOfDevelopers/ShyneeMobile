@@ -1,19 +1,12 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {View, Button} from 'react-native';
-import { connect } from 'react-redux';
 
 import Text from '../Text';
 import ProfileCard from '../ProfileCard';
 import {CHAT} from '../../constants/screens';
-import {getShyneeProfile} from '../../actions/profile';
 
 class ViewProfile extends PureComponent {
-  componentDidMount() {
-    const {dispatch, navigation} = this.props;
-    dispatch(getShyneeProfile(navigation.getParam('shyneeId')));
-  }
-
   render() {
     const {shynee, navigation } = this.props;
     return (
@@ -35,8 +28,4 @@ ViewProfile.propTypes = {
   shynee: PropTypes.object,
 };
 
-const mapStateToProps = state => ({
-  shynee: state.shyneeProfile.shynee
-});
-
-export default connect(mapStateToProps)(ViewProfile);
+export default ViewProfile;
