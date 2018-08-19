@@ -4,14 +4,18 @@ import {View, Image} from 'react-native';
 
 import Text from '../Text';
 
+import styles from './styles';
+
 class ProfileCard extends PureComponent {
   render() {
-    const {shynee} = this.props;
+    const {shynee, style: customStyles} = this.props;
     return (
-      <View>
-        <Image source={{uri: shynee.avatarUri}}/>
-        <Text>Nickname</Text>
-        <Text>{shynee.name}</Text>
+      <View style={{...styles.card, ...customStyles}}>
+        <Image style={styles.avatar} source={{uri: shynee.avatarUri}}/>
+        <View style={styles.nicknameContainer}>
+          <Text style={styles.nickname}>Nickname</Text>
+          <Text style={styles.name}>{shynee.name || 'Nothing'}</Text>
+        </View>
       </View>
     );
   }
@@ -19,6 +23,7 @@ class ProfileCard extends PureComponent {
 
 ProfileCard.propTypes = {
   shynee: PropTypes.object,
+  style: PropTypes.object
 };
 
 export default ProfileCard;

@@ -10,13 +10,15 @@ class ViewProfile extends PureComponent {
   render() {
     const {shynee, navigation } = this.props;
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ProfileCard shynee={shynee}/>
-        <Text>View Profile!</Text>
-        <Button
-          title="Go to Chat"
-          onPress={() => navigation.navigate(CHAT)}
-        />
+      <View>
+        <ProfileCard style={{marginTop: 8}} shynee={shynee}/>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Text>View Profile!</Text>
+          <Button
+            title="Go to Chat"
+            onPress={() => navigation.navigate(CHAT)}
+          />
+        </View>
       </View>
     );
   }
