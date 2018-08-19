@@ -29,6 +29,8 @@ const commonStackOptions = {
   navigationOptions: {
     headerStyle: {
       backgroundColor: white,
+      elevation: 0,
+      shadowOpacity: 0,
     },
     headerTintColor: black,
     headerTitleStyle: {

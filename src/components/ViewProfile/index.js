@@ -27,7 +27,7 @@ class ViewProfile extends PureComponent {
     const {shynee, navigation } = this.props;
     return (
       <View>
-        <View>
+        <View style={styles.topContainer}>
           <ProfileCard style={{marginTop: 8}} shynee={shynee} />
           <TabMenu tabs={this.getTabs()} style={styles.tabMenu}/>
         </View>

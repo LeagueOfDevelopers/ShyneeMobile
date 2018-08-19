@@ -11,7 +11,7 @@ class ShyneesAroundScreen extends PureComponent {
     const {tabs, type = 'normal', style: customStyles,} = this.props;
     const styles = tabMenuStyles[type];
     return (
-      <View style={{...styles.tabsContainer, ...customStyles}}>
+      <View style={[styles.tabsContainer, customStyles]}>
         {tabs.map((tab, index)=> 
           <Button key={index} style={styles.tab} title={tab.title} onPress={tab.onPress} />
         )}

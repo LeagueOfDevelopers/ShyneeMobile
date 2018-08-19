@@ -26,6 +26,8 @@ ShyneesAroundScreen.navigationOptions = ({navigation}) => {
     title: 'Shynees Around',
     headerStyle: {
       backgroundColor: params.headerBackgoundColor,
+      elevation: 0,
+      shadowOpacity: 0,
     },
     headerTitleAllowFontScaling: false,
     headerTitle: <Animated.View style={{marginTop: 40, height: params.headerHeight,}}>
