@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import ViewProfile from '../../components/ViewProfile';
 
@@ -13,10 +12,6 @@ class ViewProfileScreen extends React.PureComponent {
 
 ViewProfileScreen.navigationOptions = {
   title: 'View Profile',
-};
-
-ViewProfileScreen.propTypes = {
-  navigation: PropTypes.object,
 };
 
 export default ViewProfileScreen;

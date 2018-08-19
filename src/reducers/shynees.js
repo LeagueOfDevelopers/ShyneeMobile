@@ -6,7 +6,7 @@ const initialState = {
   data: []
 };
 
-export function shyneesAroundReducer(state = initialState, {type, payload}) {
+export default function (state = initialState, {type, payload}) {
   switch (type) {
   case SHYNEES_AROUND_REQUEST:
     return {

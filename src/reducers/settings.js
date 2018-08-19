@@ -3,7 +3,7 @@ const initialState = {
   status: 'Ну тыкай, чего ждешь...'
 };
 
-export default function dataReducer(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
   case SETTINGS_UPDATE_REQUEST:
     return {
