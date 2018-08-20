@@ -49,16 +49,16 @@ class ShyneesAroundScreen extends PureComponent {
   ])
 
   _onRenderShyneesAround = (event) => {
-    const COLUMNS = 3;
+    let COLUMNS = 2;
     const { width } = event.nativeEvent.layout;
 
-    const shyneeWidth = width/COLUMNS - 1;
-    const shyneeHeight = shyneeWidth * 4/3;
+    if (this.props.shynees.data.length == 1) COLUMNS = 1;
+    const side = width/COLUMNS - 1;
 
     this.setState({
       shyneeSize: {
-        width: shyneeWidth,
-        height: shyneeHeight
+        width: side,
+        height: side
       }
     });
   }
@@ -78,6 +78,7 @@ class ShyneesAroundScreen extends PureComponent {
               shynee={shynee}
               navigation={navigation}
               size={shyneeSize}
+              nicknameStyle={shynees.data.length == 1 ? {fontSize: 36} : {}}
             />)}
           </View>
         </ScrollView>

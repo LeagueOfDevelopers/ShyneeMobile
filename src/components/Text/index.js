@@ -10,12 +10,10 @@ class Text extends PureComponent {
     const textStyle = {
       color: black,
       ...f_medium,
-
-      ...customStyle
     };
     
     return (
-      <Animated.Text style={textStyle} disabled={disabled}>
+      <Animated.Text style={[textStyle, customStyle]} disabled={disabled}>
         {children}
       </Animated.Text>
     );
@@ -23,7 +21,10 @@ class Text extends PureComponent {
 }
 
 Text.propTypes = {
-  style: PropTypes.object,
+  style: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array
+  ]),
   disabled: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.string,

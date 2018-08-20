@@ -1,15 +1,14 @@
 import {StyleSheet } from 'react-native';
 
-import {f_medium, white, black} from '../../../constants/styles';
+import {fs_xlarge, white, black} from '../../../constants/styles';
 
 export default StyleSheet.create({
   sheneeСell: {
-    padding: 6,
+    padding: 1,
   },
   avatarContainer: {
     height: '100%',
     width: '100%',
-    borderRadius: 5,
     overflow: 'hidden',
     position: 'relative',
   },
@@ -36,7 +35,7 @@ export default StyleSheet.create({
     zIndex: 2,
   },
   nickname: {
-    ...f_medium,
+    fontSize: fs_xlarge,
     color: white,
     textAlign: 'center',
   }
