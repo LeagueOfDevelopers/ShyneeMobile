@@ -12,7 +12,7 @@ import {
 const initialState = {
   fetching: false,
   error: false,
-  data: {}
+  data: null
 };
 
 function shynee (state = initialState, {type, payload}) {

@@ -47,11 +47,11 @@ ShyneesAroundScreen.navigationOptions = ({navigation}) => {
 ShyneesAroundScreen.propTypes = {
   navigation: PropTypes.object,
   dispatch: PropTypes.func,
-  shyneesAround: PropTypes.array
+  shyneesAround: PropTypes.object
 };
 
 const mapStateToProps = state => ({
-  shyneesAround: state.shyneesAround.data
+  shyneesAround: state.shyneesAround
 });
 
 export default connect(mapStateToProps)(ShyneesAroundScreen);

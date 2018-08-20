@@ -29,7 +29,7 @@ ViewProfileScreen.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  shynee: state.shyneeProfile.shynee.data,
+  shynee: state.shyneeProfile.shynee,
 });
 
 export default connect(mapStateToProps)(ViewProfileScreen);
