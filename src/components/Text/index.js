@@ -25,7 +25,10 @@ class Text extends PureComponent {
 Text.propTypes = {
   style: PropTypes.object,
   disabled: PropTypes.bool,
-  children: PropTypes.string
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ])
 };
 
 export default Text;
