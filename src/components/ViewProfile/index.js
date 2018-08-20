@@ -11,13 +11,13 @@ import {CHAT} from '../../constants/screens';
 import styles from './styles';
 
 class ViewProfile extends PureComponent {
-  getTabs = () => {
+  getTabs = (infoExist) => {
     const { navigation } = this.props;
     const tabs = [{
       title: 'Chat',
       onPress: () => navigation.navigate(CHAT)
     }];
-    if (this.infoExist) tabs.unshift({
+    if (infoExist) tabs.unshift({
       title: 'Reveal info',
       onPress: () => {}
     });
@@ -34,7 +34,7 @@ class ViewProfile extends PureComponent {
         <ScrollView>
           <View style={styles.topContent}>
             <ProfileCard style={{marginTop: 8}} shynee={shynee.data} />
-            <TabMenu tabs={this.getTabs()} style={styles.tabMenu}/>
+            <TabMenu tabs={this.getTabs(infoExist)} style={styles.tabMenu}/>
           </View>
           <View style={styles.content}>
             {infoExist ?  <Info shynee={shynee.data} /> : <NoInfo />}
