@@ -1,20 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {View, Button } from 'react-native';
+import { connect } from 'react-redux';
 
-import Text from '../../components/Text';
-import {CHAT} from '../../constants/screens';
+import ViewProfile from '../../components/ViewProfile';
+import {getShyneeProfile} from '../../actions/shynees';
 
-class ViewProfileScreen extends React.Component {
+class ViewProfileScreen extends React.PureComponent {
+  componentDidMount() {
+    const {dispatch, navigation} = this.props;
+    dispatch(getShyneeProfile(navigation.getParam('shyneeId')));
+  }
+  
   render() {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>View Profile!</Text>
-        <Button
-          title="Go to Chat"
-          onPress={() => this.props.navigation.navigate(CHAT)}
-        />
-      </View>
+      <ViewProfile {...this.props}/>
     );
   }
 }
@@ -25,6 +24,12 @@ ViewProfileScreen.navigationOptions = {
 
 ViewProfileScreen.propTypes = {
   navigation: PropTypes.object,
+  dispatch: PropTypes.func,
+  shynee: PropTypes.object,
 };
 
-export default ViewProfileScreen;
+const mapStateToProps = state => ({
+  shynee: state.shyneeProfile.shynee,
+});
+
+export default connect(mapStateToProps)(ViewProfileScreen);

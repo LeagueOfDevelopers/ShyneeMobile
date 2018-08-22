@@ -26,6 +26,8 @@ ShyneesAroundScreen.navigationOptions = ({navigation}) => {
     title: 'Shynees Around',
     headerStyle: {
       backgroundColor: params.headerBackgoundColor,
+      elevation: 0,
+      shadowOpacity: 0,
     },
     headerTitleAllowFontScaling: false,
     headerTitle: <Animated.View style={{marginTop: 40, height: params.headerHeight,}}>
@@ -36,6 +38,7 @@ ShyneesAroundScreen.navigationOptions = ({navigation}) => {
       <Button
         title="I am ready"
         style={{position: 'absolute', top: params.headerIndent, width: '100%'}}
+        type='colorful'
       />
     </Animated.View>
   };
@@ -44,11 +47,11 @@ ShyneesAroundScreen.navigationOptions = ({navigation}) => {
 ShyneesAroundScreen.propTypes = {
   navigation: PropTypes.object,
   dispatch: PropTypes.func,
-  shyneesAround: PropTypes.array
+  shyneesAround: PropTypes.object
 };
 
 const mapStateToProps = state => ({
-  shyneesAround: state.shyneesAround.data
+  shyneesAround: state.shyneesAround
 });
 
 export default connect(mapStateToProps)(ShyneesAroundScreen);

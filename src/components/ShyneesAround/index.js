@@ -4,6 +4,7 @@ import {View, ScrollView, Animated} from 'react-native';
 
 import Text from '../Text';
 import ShyneeItem from './ShyneeItem';
+import Loader from '../Loader';
 import {black, white, primaryColor} from '../../constants/styles';
 import {convertHex} from '../../utils/helpers';
 
@@ -51,7 +52,7 @@ class ShyneesAroundScreen extends PureComponent {
     const COLUMNS = 3;
     const { width } = event.nativeEvent.layout;
 
-    const shyneeWidth = width/COLUMNS;
+    const shyneeWidth = width/COLUMNS - 1;
     const shyneeHeight = shyneeWidth * 4/3;
 
     this.setState({
@@ -63,29 +64,36 @@ class ShyneesAroundScreen extends PureComponent {
   }
 
   render() {
-    const {shyneeSize} = this.state;
     const {navigation, shynees} = this.props;
-    return (
-      <ScrollView onScroll={this._onScroll} scrollEventThrottle={16}>
-        <View style={styles.descriptionContainer}>
-          <Text style={styles.description}>There are lots of shy people out there. Why not be shy together?</Text>
-        </View>
-        <View style={styles.shyneesAroundContainer} onLayout={this._onRenderShyneesAround}>
-          {shynees.map(shynee => <ShyneeItem 
-            key={shynee.id}
-            shynee={shynee}
-            navigation={navigation}
-            size={shyneeSize}
-          />)}
-        </View>
-      </ScrollView>
-    );
+    if (shynees.data) {
+      const {shyneeSize} = this.state;
+      return (
+        <ScrollView style={styles.background} onScroll={this._onScroll} scrollEventThrottle={16}>
+          <View style={styles.descriptionContainer}>
+            <Text style={styles.description}>There are lots of shy people out there. Why not be shy together?</Text>
+          </View>
+          <View style={styles.shyneesAroundContainer} onLayout={this._onRenderShyneesAround}>
+            {shynees.data && shynees.data.map(shynee => <ShyneeItem 
+              key={shynee.id}
+              shynee={shynee}
+              navigation={navigation}
+              size={shyneeSize}
+            />)}
+          </View>
+        </ScrollView>
+      );
+    }
+
+    if (shynees.error) {
+      return null;
+    }
+    return (<Loader />);
   }
 }
 
 ShyneesAroundScreen.propTypes = {
   navigation: PropTypes.object,
-  shynees: PropTypes.array
+  shynees: PropTypes.object
 };
 
 export default ShyneesAroundScreen;

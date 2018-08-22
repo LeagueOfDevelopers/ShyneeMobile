@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
 import settings from './settings';
-import {shyneesAroundReducer} from './shynees';
+import shyneesAround from './shynees';
+import profile from './profile';
 
 const rootReducer = combineReducers({
   settings,
-  shyneesAround: shyneesAroundReducer
+  shyneesAround,
+  shyneeProfile: profile,
 });
 
 export default rootReducer;

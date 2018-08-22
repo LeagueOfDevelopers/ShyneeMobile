@@ -4,11 +4,12 @@ import {View, Image, TouchableOpacity} from 'react-native';
 
 import Text from '../../Text';
 import {VIEW_PROFILE} from '../../../constants/screens';
+
 import styles from './styles';
 
 const ShyneeItem = ({shynee, size, navigation}) => 
   <View style={{...size, ...styles.sheneeСell}}>
-    <TouchableOpacity onPress={() => navigation.navigate(VIEW_PROFILE)}>
+    <TouchableOpacity onPress={() => navigation.navigate(VIEW_PROFILE, {shyneeId: shynee.id})}>
       <View style={styles.avatarContainer}>
         <View style={styles.nicknameContainer}>
           <Text style={styles.nickname}>{shynee.nickname}</Text>

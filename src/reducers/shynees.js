@@ -3,10 +3,10 @@ import { SHYNEES_AROUND_REQUEST, SHYNEES_AROUND_SUCCESS, SHYNEES_AROUND_FAILURE 
 const initialState = {
   fetching: false,
   error: false,
-  data: []
+  data: null
 };
 
-export function shyneesAroundReducer(state = initialState, {type, payload}) {
+export default function (state = initialState, {type, payload}) {
   switch (type) {
   case SHYNEES_AROUND_REQUEST:
     return {
