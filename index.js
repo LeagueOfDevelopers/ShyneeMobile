@@ -1,8 +1,4 @@
-import {AppRegistry, NativeModules} from 'react-native';
+import {AppRegistry} from 'react-native';
 import App from './src/containers';
-
-// if (process.env.NODE_ENV !== 'production') {  // eslint-disable-line
-//   NativeModules.DevSettings.setIsDebuggingRemotely(true);
-// }
 
 AppRegistry.registerComponent('Shynee', () => App);
