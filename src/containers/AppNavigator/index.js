@@ -13,7 +13,7 @@ import {
   CHAT,
   BUY_THIS_APP,
 } from '../../constants/screens';
-import {white, black, fw_medium} from '../../constants/styles';
+import {fonts, colors} from '../../constants/styles';
 
 import ShyneesAroundScreen from '../ShyneesAroundScreen';
 import ShyneesWorldwideScreen from '../ShyneesWorldwideScreen';
@@ -25,17 +25,15 @@ import BuyThisAppScreen from '../BuyThisAppScreen';
 import ChatScreen from '../ChatScreen';
 
 const commonStackOptions = {
-  cardStyle: { backgroundColor: 'f2f2f2' },
+  cardStyle: { backgroundColor: '#f2f2f2' },
   navigationOptions: {
     headerStyle: {
-      backgroundColor: white,
+      backgroundColor: colors.white,
       elevation: 0,
       shadowOpacity: 0,
     },
-    headerTintColor: black,
-    headerTitleStyle: {
-      fontWeight: fw_medium,
-    },
+    headerTintColor: colors.black,
+    headerTitleStyle: fonts.weight.regular,
   }
 };
 

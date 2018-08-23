@@ -1,21 +1,20 @@
 import {StyleSheet } from 'react-native';
 
-import {f_medium, white, black} from '../../../constants/styles';
+import {fonts, colors} from '../../../constants/styles';
 
 export default StyleSheet.create({
-  sheneeСell: {
-    padding: 6,
+  shyneeСell: {
+    padding: 1,
   },
   avatarContainer: {
     height: '100%',
     width: '100%',
-    borderRadius: 5,
     overflow: 'hidden',
     position: 'relative',
   },
   blackout: {
     position: 'absolute',
-    backgroundColor: black,
+    backgroundColor: colors.black,
     height: '100%',
     width: '100%',
     opacity: 0.3,
@@ -36,8 +35,9 @@ export default StyleSheet.create({
     zIndex: 2,
   },
   nickname: {
-    ...f_medium,
-    color: white,
+    ...fonts.weight.medium,
+    fontSize: fonts.size.large,
+    color: colors.white,
     textAlign: 'center',
   }
 });

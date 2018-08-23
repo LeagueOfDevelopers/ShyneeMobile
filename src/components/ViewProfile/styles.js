@@ -1,6 +1,6 @@
 import {StyleSheet } from 'react-native';
 
-import {white, grey, primaryColor, ff_light, f_small, fs_large} from '../../constants/styles';
+import {fonts, colors} from '../../constants/styles';
 
 export default StyleSheet.create({
   tabMenu: {
@@ -10,12 +10,12 @@ export default StyleSheet.create({
     paddingBottom: 8,
   },
   topContent: {
-    backgroundColor: white
+    backgroundColor: colors.white
   },
   content: {
     margin: 3,
     paddingBottom: 17,
-    backgroundColor: white,
+    backgroundColor: colors.white,
   },
   info: {
     marginTop: 17,
@@ -25,12 +25,12 @@ export default StyleSheet.create({
     marginBottom: 8
   },
   itemName: {
-    color: grey,
-    fontFamily: ff_light,
-    ...f_small
+    ...fonts.weight.light,
+    color: colors.grey,
+    fontSize: fonts.size.xsmall,
   },
   itemValue: {
-    fontSize: fs_large,
+    fontSize: fonts.size.medium,
   },
   interests: {
     flexDirection: 'row',
@@ -38,12 +38,12 @@ export default StyleSheet.create({
     marginTop: 8
   },
   interestContainer: {
-    backgroundColor: primaryColor,
+    backgroundColor: colors.primary,
     borderRadius: 100,
     marginRight: 8
   },
   interest: {
-    color: white,
+    color: colors.white,
     paddingTop: 3,
     paddingBottom: 3,
     paddingLeft: 21,
@@ -59,8 +59,8 @@ export default StyleSheet.create({
     width: 295,
   },
   noInfoPity: {
+    ...fonts.weight.light,
     textAlign: 'center',
-    fontFamily: ff_light,
   },
   noInfoSuggestion: {
     textAlign: 'center',

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Animated} from 'react-native';
 import { connect } from 'react-redux';
 
-import {f_large} from '../../constants/styles';
+import {fonts} from '../../constants/styles';
 import {getShyneesAround} from '../../actions/shynees';
 import ShyneesAround from '../../components/ShyneesAround';
 import Button from '../../components/Button';
@@ -32,7 +32,8 @@ ShyneesAroundScreen.navigationOptions = ({navigation}) => {
     headerTitleAllowFontScaling: false,
     headerTitle: <Animated.View style={{marginTop: 40, height: params.headerHeight,}}>
       <Text style={{
-        ...f_large,
+        ...fonts.weight.medium,
+        fontSize: fonts.size.medium,
         color: params.headerColor,
       }}>Shynees Around</Text>
       <Button

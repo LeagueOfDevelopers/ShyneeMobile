@@ -1,16 +1,17 @@
 import {StyleSheet } from 'react-native';
 
-import {f_small, white} from '../../constants/styles';
+import {fonts, colors} from '../../constants/styles';
 
 export default StyleSheet.create({
   background: {
-    backgroundColor: white
+    backgroundColor: colors.white
   },
   descriptionContainer: {
     alignItems: 'center'
   },
   description: {
-    ...f_small,
+    ...fonts.weight.light,
+    fontSize: fonts.size.xsmall,
     maxWidth: 235,
     textAlign: 'center'
   },
@@ -22,4 +23,7 @@ export default StyleSheet.create({
     marginRight: 15,
     marginTop: 80
   },
+  shyneeNickname: {
+    fontSize: 36
+  }
 });

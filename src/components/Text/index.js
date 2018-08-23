@@ -1,21 +1,20 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {Animated} from 'react-native';
-import {f_medium, black} from '../../constants/styles';
+import {fonts, colors} from '../../constants/styles';
 
 class Text extends PureComponent {
   render() {
     const {children, style: customStyle, disabled} = this.props;
 
     const textStyle = {
-      color: black,
-      ...f_medium,
-
-      ...customStyle
+      color: colors.black,
+      fontSize: fonts.size.small,
+      ...fonts.weight.regular,
     };
     
     return (
-      <Animated.Text style={textStyle} disabled={disabled}>
+      <Animated.Text style={[textStyle, customStyle]} disabled={disabled}>
         {children}
       </Animated.Text>
     );
@@ -23,7 +22,10 @@ class Text extends PureComponent {
 }
 
 Text.propTypes = {
-  style: PropTypes.object,
+  style: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array
+  ]),
   disabled: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.string,

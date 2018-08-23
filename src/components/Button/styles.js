@@ -1,6 +1,6 @@
 import {StyleSheet } from 'react-native';
 
-import {fs_large, fw_small, primaryColor, white, black, ff_light, f_small} from '../../constants/styles';
+import {fonts, colors} from '../../constants/styles';
 
 export default {
   colorful: StyleSheet.create({
@@ -8,7 +8,7 @@ export default {
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
-      shadowColor: black,
+      shadowColor: colors.black,
       shadowOffset: {
         width: 0,
         height: 4
@@ -17,18 +17,18 @@ export default {
       shadowOpacity: 0.16
     },
     button: {
-      backgroundColor: primaryColor,
+      backgroundColor: colors.primary,
       borderRadius: 200,
     },
     text: {
-      fontSize: fs_large,
-      fontWeight: fw_small,
+      ...fonts.weight.light,
+      fontSize: fonts.size.medium,
       textAlign: 'center',
       paddingTop: 10,
       paddingBottom: 10,
       paddingLeft: 30,
       paddingRight: 30,
-      color: white,
+      color: colors.white,
       flexBasis: 0,
       width: '100%'
     }
@@ -37,7 +37,7 @@ export default {
     container: {
       borderStyle: 'solid',
       borderWidth: 1,
-      borderColor: primaryColor,
+      borderColor: colors.primary,
       borderRadius: 100,
       overflow: 'hidden'
     },
@@ -46,13 +46,13 @@ export default {
       alignItems: 'center',
     },
     text: {
+      ...fonts.weight.light,
       marginTop: 5,
       marginBottom: 5,
       marginLeft: 32,
       marginRight: 32,
-      fontFamily: ff_light,
-      ...f_small,
-      color: primaryColor
+      fontSize: fonts.size.xsmall,
+      color: colors.primary
     }
   })
 };
