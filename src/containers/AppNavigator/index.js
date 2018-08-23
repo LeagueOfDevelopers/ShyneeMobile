@@ -25,7 +25,7 @@ import BuyThisAppScreen from '../BuyThisAppScreen';
 import ChatScreen from '../ChatScreen';
 
 const commonStackOptions = {
-  cardStyle: { backgroundColor: 'f2f2f2' },
+  cardStyle: { backgroundColor: '#f2f2f2' },
   navigationOptions: {
     headerStyle: {
       backgroundColor: colors.white,
@@ -33,9 +33,7 @@ const commonStackOptions = {
       shadowOpacity: 0,
     },
     headerTintColor: colors.black,
-    headerTitleStyle: {
-      fontWeight: fonts.weight.medium,
-    },
+    headerTitleStyle: fonts.weight.regular,
   }
 };
 

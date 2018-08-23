@@ -25,10 +25,9 @@ export default StyleSheet.create({
     marginBottom: 8
   },
   itemName: {
+    ...fonts.weight.light,
     color: colors.grey,
-    fontFamily: fonts.family.light,
     fontSize: fonts.size.small,
-    fontWeight: fonts.weight.small,
   },
   itemValue: {
     fontSize: fonts.size.large,
@@ -60,8 +59,8 @@ export default StyleSheet.create({
     width: 295,
   },
   noInfoPity: {
+    ...fonts.weight.light,
     textAlign: 'center',
-    fontFamily: fonts.family.light,
   },
   noInfoSuggestion: {
     textAlign: 'center',

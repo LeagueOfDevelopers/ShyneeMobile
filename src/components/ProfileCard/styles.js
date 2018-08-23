@@ -20,12 +20,12 @@ export default StyleSheet.create({
     marginLeft: 20
   },
   nicknameTitle: {
+    ...fonts.weight.light,
     color: colors.grey,
-    fontFamily: fonts.family.light,
     marginBottom: 5
   },
   nickname: {
+    ...fonts.weight.bold,
     fontSize: fonts.size.large,
-    fontWeight: fonts.weight.large
   }
 });

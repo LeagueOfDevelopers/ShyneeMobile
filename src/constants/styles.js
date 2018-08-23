@@ -1,3 +1,5 @@
+import Platform from 'Platform';
+
 export const colors = {
   black: '#000',
   white: '#fff',
@@ -8,9 +10,6 @@ export const colors = {
 };
 
 export const fonts = {
-  family: {
-    light: 'sans-serif-light'
-  },
   size: {
     small: 13,
     medium: 15,
@@ -18,8 +17,9 @@ export const fonts = {
     xlarge: 19,
   },
   weight: {
-    small: '300',
-    medium: '400',
-    large: '500',
+    light: Platform.OS === 'ios' ? {fontWeight: '300'} : {fontFamily: 'sans-serif-light'},
+    regular: {fontWeight: '400'},
+    medium: {fontWeight: '500'},
+    bold: {fontWeight: 'bold'}
   }
 };

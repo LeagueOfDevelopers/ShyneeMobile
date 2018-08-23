@@ -21,8 +21,8 @@ export default {
       borderRadius: 200,
     },
     text: {
+      ...fonts.weight.light,
       fontSize: fonts.size.large,
-      fontWeight: fonts.weight.small,
       textAlign: 'center',
       paddingTop: 10,
       paddingBottom: 10,
@@ -46,13 +46,12 @@ export default {
       alignItems: 'center',
     },
     text: {
+      ...fonts.weight.light,
       marginTop: 5,
       marginBottom: 5,
       marginLeft: 32,
       marginRight: 32,
-      fontFamily: fonts.family.light,
       fontSize: fonts.size.small,
-      fontWeight: fonts.weight.small,
       color: colors.primary
     }
   })

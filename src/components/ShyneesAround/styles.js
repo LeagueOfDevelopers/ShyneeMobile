@@ -10,8 +10,8 @@ export default StyleSheet.create({
     alignItems: 'center'
   },
   description: {
+    ...fonts.weight.light,
     fontSize: fonts.size.small,
-    fontWeight: fonts.weight.small,
     maxWidth: 235,
     textAlign: 'center'
   },

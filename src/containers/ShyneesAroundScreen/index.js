@@ -32,8 +32,8 @@ ShyneesAroundScreen.navigationOptions = ({navigation}) => {
     headerTitleAllowFontScaling: false,
     headerTitle: <Animated.View style={{marginTop: 40, height: params.headerHeight,}}>
       <Text style={{
+        ...fonts.weight.medium,
         fontSize: fonts.size.large,
-        fontWeight: fonts.weight.large,
         color: params.headerColor,
       }}>Shynees Around</Text>
       <Button

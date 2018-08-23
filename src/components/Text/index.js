@@ -10,7 +10,7 @@ class Text extends PureComponent {
     const textStyle = {
       color: colors.black,
       fontSize: fonts.size.medium,
-      fontWeight: fonts.weight.medium,
+      ...fonts.weight.regular,
     };
     
     return (
