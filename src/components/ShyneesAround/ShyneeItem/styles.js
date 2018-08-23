@@ -1,9 +1,9 @@
 import {StyleSheet } from 'react-native';
 
-import {fs_xlarge, white, black} from '../../../constants/styles';
+import {fonts, colors} from '../../../constants/styles';
 
 export default StyleSheet.create({
-  sheneeСell: {
+  shyneeСell: {
     padding: 1,
   },
   avatarContainer: {
@@ -14,7 +14,7 @@ export default StyleSheet.create({
   },
   blackout: {
     position: 'absolute',
-    backgroundColor: black,
+    backgroundColor: colors.black,
     height: '100%',
     width: '100%',
     opacity: 0.3,
@@ -35,8 +35,8 @@ export default StyleSheet.create({
     zIndex: 2,
   },
   nickname: {
-    fontSize: fs_xlarge,
-    color: white,
+    fontSize: fonts.size.large,
+    color: colors.white,
     textAlign: 'center',
   }
 });

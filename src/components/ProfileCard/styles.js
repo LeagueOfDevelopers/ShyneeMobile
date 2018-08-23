@@ -1,6 +1,6 @@
 import {StyleSheet } from 'react-native';
 
-import {grey, ff_light, fs_xlarge, fw_large} from '../../constants/styles';
+import {fonts, colors} from '../../constants/styles';
 
 export default StyleSheet.create({
   card: {
@@ -20,12 +20,12 @@ export default StyleSheet.create({
     marginLeft: 20
   },
   nicknameTitle: {
-    color: grey,
-    fontFamily: ff_light,
+    color: colors.grey,
+    fontFamily: fonts.family.light,
     marginBottom: 5
   },
   nickname: {
-    fontSize: fs_xlarge,
-    fontWeight: fw_large
+    fontSize: fonts.size.large,
+    fontWeight: fonts.weight.large
   }
 });

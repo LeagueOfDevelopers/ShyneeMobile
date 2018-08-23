@@ -1,15 +1,16 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {Animated} from 'react-native';
-import {f_medium, black} from '../../constants/styles';
+import {fonts, colors} from '../../constants/styles';
 
 class Text extends PureComponent {
   render() {
     const {children, style: customStyle, disabled} = this.props;
 
     const textStyle = {
-      color: black,
-      ...f_medium,
+      color: colors.black,
+      fontSize: fonts.size.medium,
+      fontWeight: fonts.weight.medium,
     };
     
     return (

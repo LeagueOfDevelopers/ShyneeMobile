@@ -8,7 +8,7 @@ import {VIEW_PROFILE} from '../../../constants/screens';
 import styles from './styles';
 
 const ShyneeItem = ({shynee, size, navigation, nicknameStyle: customNicknameStyle}) => 
-  <View style={{...size, ...styles.sheneeСell}}>
+  <View style={{...size, ...styles.shyneeСell}}>
     <TouchableOpacity onPress={() => navigation.navigate(VIEW_PROFILE, {shyneeId: shynee.id})}>
       <View style={styles.avatarContainer}>
         <View style={styles.nicknameContainer}>

@@ -1,3 +1,4 @@
+import Platform from 'Platform';
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {View, ActivityIndicator} from 'react-native';
@@ -9,7 +10,7 @@ class ShyneesAroundScreen extends PureComponent {
     const {size = 80} = this.props;
     return (
       <View style={styles.container}>
-        <ActivityIndicator size={size} />
+        <ActivityIndicator size={Platform.OS === 'android' ? size : 0} />
       </View>
     );
   }

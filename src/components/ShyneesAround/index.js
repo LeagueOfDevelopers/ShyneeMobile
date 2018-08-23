@@ -5,7 +5,7 @@ import {View, ScrollView, Animated} from 'react-native';
 import Text from '../Text';
 import ShyneeItem from './ShyneeItem';
 import Loader from '../Loader';
-import {black, white, primaryColor} from '../../constants/styles';
+import {colors} from '../../constants/styles';
 import {convertHex} from '../../utils/helpers';
 
 import styles from './styles';
@@ -28,12 +28,12 @@ class ShyneesAroundScreen extends PureComponent {
       }),
       headerBackgoundColor: this.state.scrollY.interpolate({
         inputRange: [0, 60],
-        outputRange: [white, convertHex(primaryColor, 0.3)],
+        outputRange: [colors.white, convertHex(colors.primary, 0.3)],
         extrapolate: 'clamp',
       }),
       headerColor: this.state.scrollY.interpolate({
         inputRange: [0, 15],
-        outputRange: [black, white],
+        outputRange: [colors.black, colors.white],
         extrapolate: 'clamp',
       }),
       headerIndent: this.state.scrollY.interpolate({
@@ -67,6 +67,7 @@ class ShyneesAroundScreen extends PureComponent {
     const {navigation, shynees} = this.props;
     if (shynees.data) {
       const {shyneeSize} = this.state;
+      const shyneeNicknameStyle = shynees.data.length == 1 ? styles.shyneeNickname : {};
       return (
         <ScrollView style={styles.background} onScroll={this._onScroll} scrollEventThrottle={16}>
           <View style={styles.descriptionContainer}>
@@ -78,7 +79,7 @@ class ShyneesAroundScreen extends PureComponent {
               shynee={shynee}
               navigation={navigation}
               size={shyneeSize}
-              nicknameStyle={shynees.data.length == 1 ? {fontSize: 36} : {}}
+              nicknameStyle={shyneeNicknameStyle}
             />)}
           </View>
         </ScrollView>
