@@ -4,7 +4,7 @@ import {View, ActivityIndicator} from 'react-native';
 
 import styles from './styles';
 
-class ShyneesAroundScreen extends PureComponent {
+class Loader extends PureComponent {
   render() {
     const {size = 80} = this.props;
     return (
@@ -15,8 +15,8 @@ class ShyneesAroundScreen extends PureComponent {
   }
 }
 
-ShyneesAroundScreen.propTypes = {
+Loader.propTypes = {
   size: PropTypes.number,
 };
 
-export default ShyneesAroundScreen;
+export default Loader;
