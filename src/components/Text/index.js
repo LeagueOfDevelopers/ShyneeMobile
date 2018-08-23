@@ -9,7 +9,7 @@ class Text extends PureComponent {
 
     const textStyle = {
       color: colors.black,
-      fontSize: fonts.size.medium,
+      fontSize: fonts.size.small,
       ...fonts.weight.regular,
     };
     

@@ -22,7 +22,7 @@ export default {
     },
     text: {
       ...fonts.weight.light,
-      fontSize: fonts.size.large,
+      fontSize: fonts.size.medium,
       textAlign: 'center',
       paddingTop: 10,
       paddingBottom: 10,
@@ -51,7 +51,7 @@ export default {
       marginBottom: 5,
       marginLeft: 32,
       marginRight: 32,
-      fontSize: fonts.size.small,
+      fontSize: fonts.size.xsmall,
       color: colors.primary
     }
   })

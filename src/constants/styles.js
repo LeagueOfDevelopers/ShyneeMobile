@@ -11,15 +11,15 @@ export const colors = {
 
 export const fonts = {
   size: {
-    small: 13,
-    medium: 15,
-    large: 17,
-    xlarge: 19,
+    xsmall: 13,
+    small: 15,
+    medium: 17,
+    large: 19,
   },
   weight: {
     light: Platform.OS === 'ios' ? {fontWeight: '300'} : {fontFamily: 'sans-serif-light'},
     regular: {fontWeight: '400'},
-    medium: {fontWeight: '500'},
+    medium: Platform.OS === 'ios' ? {fontWeight: '500'} : {fontFamily: 'sans-serif-medium'},
     bold: {fontWeight: 'bold'}
   }
 };

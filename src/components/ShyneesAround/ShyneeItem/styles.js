@@ -35,6 +35,7 @@ export default StyleSheet.create({
     zIndex: 2,
   },
   nickname: {
+    ...fonts.weight.medium,
     fontSize: fonts.size.large,
     color: colors.white,
     textAlign: 'center',

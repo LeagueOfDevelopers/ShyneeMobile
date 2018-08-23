@@ -26,6 +26,6 @@ export default StyleSheet.create({
   },
   nickname: {
     ...fonts.weight.bold,
-    fontSize: fonts.size.large,
+    fontSize: fonts.size.medium,
   }
 });

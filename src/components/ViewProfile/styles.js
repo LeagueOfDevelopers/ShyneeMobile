@@ -27,10 +27,10 @@ export default StyleSheet.create({
   itemName: {
     ...fonts.weight.light,
     color: colors.grey,
-    fontSize: fonts.size.small,
+    fontSize: fonts.size.xsmall,
   },
   itemValue: {
-    fontSize: fonts.size.large,
+    fontSize: fonts.size.medium,
   },
   interests: {
     flexDirection: 'row',

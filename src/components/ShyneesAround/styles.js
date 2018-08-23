@@ -11,7 +11,7 @@ export default StyleSheet.create({
   },
   description: {
     ...fonts.weight.light,
-    fontSize: fonts.size.small,
+    fontSize: fonts.size.xsmall,
     maxWidth: 235,
     textAlign: 'center'
   },
