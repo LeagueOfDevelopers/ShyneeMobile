@@ -14,7 +14,8 @@ export default {
         height: 4
       },
       shadowRadius: 8,
-      shadowOpacity: 0.16
+      shadowOpacity: 0.16,
+      overflow: 'hidden'
     },
     button: {
       backgroundColor: colors.primary,

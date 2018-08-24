@@ -41,7 +41,7 @@ ShyneesAroundScreen.navigationOptions = ({navigation}) => {
         </Animated.View>
       </View>
       {params.iAmReadyVisible && <Button
-        title="I am ready"
+        title="I AM READY"
         style={{position: 'absolute', top: params.headerIndent, width: '100%'}}
         type='colorful'
       />}
