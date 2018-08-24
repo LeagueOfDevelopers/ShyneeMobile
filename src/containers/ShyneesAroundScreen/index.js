@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Platform from 'Platform';
-import {Animated} from 'react-native';
+import {Animated, View} from 'react-native';
 import { connect } from 'react-redux';
 
-import {fonts} from '../../constants/styles';
+import {fonts, colors} from '../../constants/styles';
 import {getShyneesAround} from '../../actions/shynees';
 import ShyneesAround from '../../components/ShyneesAround';
 import Button from '../../components/Button';
@@ -27,18 +27,20 @@ ShyneesAroundScreen.navigationOptions = ({navigation}) => {
     title: 'Shynees Around',
     headerTitleAllowFontScaling: false,
     header: <Animated.View style={{height: params.headerHeight}}>
-      <Animated.View style={{
-        flex: 1,
-        backgroundColor: params.headerBackgoundColor,
-        paddingTop: Platform.OS === 'ios' ? 32 : 12,
-      }}>
-        <Text style={{
-          ...fonts.weight.medium,
-          fontSize: fonts.size.medium,
-          color: params.headerColor,
-          textAlign: 'center'
-        }}>Shynees Around</Text>
-      </Animated.View>
+      <View style={{flex:1, backgroundColor: colors.white}}>
+        <Animated.View style={{
+          flex: 1,
+          backgroundColor: params.headerBackgoundColor,
+          paddingTop: Platform.OS === 'ios' ? 32 : 12,
+        }}>
+          <Text style={{
+            ...fonts.weight.medium,
+            fontSize: fonts.size.medium,
+            color: params.headerColor,
+            textAlign: 'center'
+          }}>Shynees Around</Text>
+        </Animated.View>
+      </View>
       <Button
         title="I am ready"
         style={{position: 'absolute', top: params.headerIndent, width: '100%'}}
