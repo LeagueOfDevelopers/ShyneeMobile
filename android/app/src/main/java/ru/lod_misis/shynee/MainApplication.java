@@ -1,4 +1,4 @@
-package com.shynee;
+package ru.lod_misis.shynee;
 
 import android.app.Application;
 
