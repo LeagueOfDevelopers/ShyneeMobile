@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Platform from 'Platform';
 import {Animated} from 'react-native';
 import { connect } from 'react-redux';
 
@@ -24,18 +25,20 @@ ShyneesAroundScreen.navigationOptions = ({navigation}) => {
   const { params = {} } = navigation.state;
   return {
     title: 'Shynees Around',
-    headerStyle: {
-      backgroundColor: params.headerBackgoundColor,
-      elevation: 0,
-      shadowOpacity: 0,
-    },
     headerTitleAllowFontScaling: false,
-    headerTitle: <Animated.View style={{marginTop: 40, height: params.headerHeight,}}>
-      <Text style={{
-        ...fonts.weight.medium,
-        fontSize: fonts.size.medium,
-        color: params.headerColor,
-      }}>Shynees Around</Text>
+    header: <Animated.View style={{height: params.headerHeight}}>
+      <Animated.View style={{
+        flex: 1,
+        backgroundColor: params.headerBackgoundColor,
+        paddingTop: Platform.OS === 'ios' ? 32 : 12,
+      }}>
+        <Text style={{
+          ...fonts.weight.medium,
+          fontSize: fonts.size.medium,
+          color: params.headerColor,
+          textAlign: 'center'
+        }}>Shynees Around</Text>
+      </Animated.View>
       <Button
         title="I am ready"
         style={{position: 'absolute', top: params.headerIndent, width: '100%'}}

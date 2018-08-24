@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import Platform from 'Platform';
 import {View, ScrollView, Animated} from 'react-native';
 
 import Text from '../Text';
@@ -23,7 +24,10 @@ class ShyneesAroundScreen extends PureComponent {
     this.props.navigation.setParams({
       headerHeight: this.state.scrollY.interpolate({
         inputRange: [0, 60],
-        outputRange: [64, 86],
+        outputRange: [
+          Platform.OS === 'ios' ? 64 : 44, 
+          Platform.OS === 'ios' ? 86 : 66
+        ],
         extrapolate: 'clamp',
       }),
       headerBackgoundColor: this.state.scrollY.interpolate({
@@ -38,7 +42,10 @@ class ShyneesAroundScreen extends PureComponent {
       }),
       headerIndent: this.state.scrollY.interpolate({
         inputRange: [0, 72],
-        outputRange: [80, 25],
+        outputRange: [
+          Platform.OS === 'ios' ? 115: 93,
+          Platform.OS === 'ios' ? 65: 43
+        ],
         extrapolate: 'clamp',
       })
     });
