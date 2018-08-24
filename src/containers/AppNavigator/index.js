@@ -26,6 +26,7 @@ import ChatScreen from '../ChatScreen';
 
 const commonStackOptions = {
   cardStyle: { backgroundColor: '#f2f2f2' },
+  headerLayoutPreset: 'center',
   navigationOptions: {
     headerStyle: {
       backgroundColor: colors.white,
