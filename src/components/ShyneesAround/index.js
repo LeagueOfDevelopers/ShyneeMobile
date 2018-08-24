@@ -13,6 +13,7 @@ import styles from './styles';
 
 class ShyneesAroundScreen extends PureComponent {
   state = {
+    iAmReadyVisible: false,
     scrollY: new Animated.Value(0),
     shyneeSize: {
       width: null,
@@ -73,6 +74,10 @@ class ShyneesAroundScreen extends PureComponent {
   render() {
     const {navigation, shynees} = this.props;
     if (shynees.data) {
+      if (this.state.iAmReadyVisible === false){
+        this.props.navigation.setParams({iAmReadyVisible: true});
+        this.setState({iAmReadyVisible: true});
+      }
       const {shyneeSize} = this.state;
       const shyneeNicknameStyle = shynees.data.length == 1 ? styles.shyneeNickname : {};
       return (

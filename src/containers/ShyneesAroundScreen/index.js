@@ -9,7 +9,6 @@ import {getShyneesAround} from '../../actions/shynees';
 import ShyneesAround from '../../components/ShyneesAround';
 import Button from '../../components/Button';
 import Text from '../../components/Text';
-
 class ShyneesAroundScreen extends React.Component {
   componentDidMount() {
     this.props.dispatch(getShyneesAround());
@@ -41,11 +40,11 @@ ShyneesAroundScreen.navigationOptions = ({navigation}) => {
           }}>Shynees Around</Text>
         </Animated.View>
       </View>
-      <Button
+      {params.iAmReadyVisible && <Button
         title="I am ready"
         style={{position: 'absolute', top: params.headerIndent, width: '100%'}}
         type='colorful'
-      />
+      />}
     </Animated.View>
   };
 };
