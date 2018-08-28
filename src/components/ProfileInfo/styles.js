@@ -20,13 +20,15 @@ export default StyleSheet.create({
   },
   interests: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
     justifyContent: 'flex-start',
-    marginTop: 8
+    marginTop: 1
   },
   interestContainer: {
     backgroundColor: colors.primary,
     borderRadius: 100,
-    marginRight: 8
+    marginRight: 8,
+    marginTop: 7
   },
   interest: {
     color: colors.white,
