@@ -35,25 +35,13 @@ export default {
     }
   }),
   normal: StyleSheet.create({
-    container: {
-      borderStyle: 'solid',
-      borderWidth: 1,
-      borderColor: colors.primary,
-      borderRadius: 100,
-      overflow: 'hidden'
-    },
     button: {
       justifyContent: 'center',
       alignItems: 'center',
     },
     text: {
       ...fonts.weight.light,
-      marginTop: 5,
-      marginBottom: 5,
-      marginLeft: 32,
-      marginRight: 32,
       fontSize: fonts.size.xsmall,
-      color: colors.primary
     }
-  })
+  }),
 };

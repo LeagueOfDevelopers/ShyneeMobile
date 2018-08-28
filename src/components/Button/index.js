@@ -14,6 +14,7 @@ class Button extends PureComponent {
       title,
       disabled,
       style: customStyles,
+      textStyle: customTextStyles,
       type = 'normal'
     } = this.props;
     // const accessibilityTraits = ['button'];
@@ -24,12 +25,12 @@ class Button extends PureComponent {
     const styles = buttonStyles[type];
     const Touchable = Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
     return (
-      <Animated.View style={{...styles.container, ...customStyles}}>
+      <Animated.View style={[styles.container, customStyles]}>
         <Touchable
           disabled={disabled}
           onPress={onPress}>
           <View style={styles.button}>
-            <Text style={styles.text} disabled={disabled}>
+            <Text style={[styles.text, customTextStyles]} disabled={disabled}>
               {title}
             </Text>
           </View>
@@ -44,6 +45,7 @@ Button.propTypes = {
   onPress: PropTypes.func,
   disabled: PropTypes.func,
   style: PropTypes.object,
+  textStyle: PropTypes.object,
   type: PropTypes.oneOf(['colorful', 'normal'])
 };
 

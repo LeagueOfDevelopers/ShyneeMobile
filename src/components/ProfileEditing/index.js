@@ -15,6 +15,7 @@ class ViewProfile extends PureComponent {
     const { navigation } = this.props;
     const tabs = [{
       title: 'For me',
+      active: true,
       onPress: () => navigation.navigate(VIEW_PROFILE)
     },{
       title: 'For shynees',
@@ -33,7 +34,7 @@ class ViewProfile extends PureComponent {
         <ScrollView>
           <View style={styles.topContent}>
             <ProfileCard style={{marginTop: 8}} shynee={shynee.data} />
-            <TabMenu tabs={this.getTabs()} style={styles.tabMenu}/>
+            <TabMenu tabs={this.getTabs()} type='underlined' style={styles.tabMenu}/>
           </View>
           <View style={styles.content}>
             {infoExist ?  <Info shynee={shynee.data} /> : <NoInfo />}
