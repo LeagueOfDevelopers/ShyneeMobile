@@ -24,7 +24,13 @@ class ShyneesAroundScreen extends PureComponent {
   };
 
   render() {
-    const {tabs, type = 'normal', style: customStyles,} = this.props;
+    const {
+      tabs,
+      type = 'normal',
+      style: customStyles,
+      tabStyle: customTabStyles,
+      textStyle: customTextStyles
+    } = this.props;
     const styles = tabMenuStyles[type];
 
     return (
@@ -32,8 +38,8 @@ class ShyneesAroundScreen extends PureComponent {
         {tabs.map((tab, index)=> 
           <Button
             key={index}
-            style={styles.tab}
-            textStyle={styles.text}
+            style={[styles.tab, customTabStyles, tab.active ? styles.activeTab: {}]}
+            textStyle={[styles.text, customTextStyles, tab.active ? styles.activeText: {}]}
             title={tab.title}
             onPress={this.onPress(tab)}
           />
@@ -50,6 +56,8 @@ ShyneesAroundScreen.propTypes = {
   })).isRequired,
   type: PropTypes.string,
   style: PropTypes.object,
+  tabStyle: PropTypes.object,
+  textStyle: PropTypes.object,
 };
 
 export default ShyneesAroundScreen;

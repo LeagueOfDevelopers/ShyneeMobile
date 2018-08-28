@@ -6,20 +6,18 @@ import ProfileCard from '../ProfileCard';
 import TabMenu from '../TabMenu';
 import Loader from '../Loader';
 import {Info, NoInfo} from '../ProfileInfo';
-import {VIEW_PROFILE, SETTINGS} from '../../constants/screens';
 
 import styles from './styles';
 
 class ViewProfile extends PureComponent {
   getTabs = () => {
-    const { navigation } = this.props;
     const tabs = [{
       title: 'For me',
       active: true,
-      onPress: () => navigation.navigate(VIEW_PROFILE)
+      onPress: () => {}
     },{
       title: 'For shynees',
-      onPress: () => navigation.navigate(SETTINGS)
+      onPress: () => {}
     }];
     return tabs;
   }
@@ -34,7 +32,12 @@ class ViewProfile extends PureComponent {
         <ScrollView>
           <View style={styles.topContent}>
             <ProfileCard style={{marginTop: 8}} shynee={shynee.data} />
-            <TabMenu tabs={this.getTabs()} type='underlined' style={styles.tabMenu}/>
+            <TabMenu 
+              tabs={this.getTabs()}
+              type='underlined'
+              tabStyle={styles.tab}
+              textStyle={styles.tabText}
+            />
           </View>
           <View style={styles.content}>
             {infoExist ?  <Info shynee={shynee.data} /> : <NoInfo />}

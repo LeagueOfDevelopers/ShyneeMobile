@@ -29,6 +29,23 @@ export default {
     }
   }),
   underlined: {
-    
+    tabsContainer: {
+      flex: 1,
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      flexWrap: 'nowrap',
+    },
+    tab: {
+      flexGrow: 1,
+    },
+    activeTab: {
+      borderStyle: 'solid',
+      borderBottomWidth: 2,
+      borderBottomColor: colors.primary
+    },
+    activeText: {
+      color: colors.primary,
+    }
   }
 };

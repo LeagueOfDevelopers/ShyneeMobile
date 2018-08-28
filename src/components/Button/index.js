@@ -44,8 +44,14 @@ Button.propTypes = {
   title: PropTypes.string,
   onPress: PropTypes.func,
   disabled: PropTypes.func,
-  style: PropTypes.object,
-  textStyle: PropTypes.object,
+  style: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array
+  ]),
+  textStyle: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array
+  ]),
   type: PropTypes.oneOf(['colorful', 'normal'])
 };
 
