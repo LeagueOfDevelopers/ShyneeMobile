@@ -5,7 +5,7 @@ import {ScrollView, View} from 'react-native';
 import ProfileCard from '../ProfileCard';
 import TabMenu from '../TabMenu';
 import Loader from '../Loader';
-import {Info, NoInfo} from './Info';
+import {Info, NoInfo} from '../ProfileInfo';
 import {CHAT} from '../../constants/screens';
 
 import styles from './styles';
