@@ -1,24 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {View, Button } from 'react-native';
+import { connect } from 'react-redux';
 
-import Text from '../../components/Text';
-import {VIEW_PROFILE, SETTINGS} from '../../constants/screens';
+import ProfileEditing from '../../components/ProfileEditing';
+import {getShyneeProfile} from '../../actions/shynees';
 
-class ProfileEditingScreen extends React.Component {
+class ProfileEditingScreen extends React.PureComponent {
+  componentDidMount() {
+    const {dispatch} = this.props;
+    //TODO: Заменить фэйковый id на id пользователя
+    dispatch(getShyneeProfile(this.props.fakeShynee));
+  }
+  
   render() {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Profile Editing!</Text>
-        <Button
-          title="Go to View Profile"
-          onPress={() => this.props.navigation.navigate(VIEW_PROFILE)}
-        />
-        <Button
-          title="Go to Settings"
-          onPress={() => this.props.navigation.navigate(SETTINGS)}
-        />
-      </View>
+      <ProfileEditing {...this.props}/>
     );
   }
 }
@@ -29,6 +25,14 @@ ProfileEditingScreen.navigationOptions = {
 
 ProfileEditingScreen.propTypes = {
   navigation: PropTypes.object,
+  dispatch: PropTypes.func,
+  shynee: PropTypes.object,
+  fakeShynee: PropTypes.string
 };
 
-export default ProfileEditingScreen;
+const mapStateToProps = state => ({
+  shynee: state.shyneeProfile.shynee,
+  fakeShynee: state.shyneesAround.data[0].id
+});
+
+export default connect(mapStateToProps)(ProfileEditingScreen);
