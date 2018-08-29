@@ -45,3 +45,5 @@ export const NoInfo = () => <View style={styles.noInfoContainer}>
 Info.propTypes = {
   shynee: PropTypes.object,
 };
+
+export default Info;

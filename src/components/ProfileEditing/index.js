@@ -1,22 +1,62 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {View} from 'react-native';
+import {ScrollView, View} from 'react-native';
 
-import Text from '../Text';
+import ProfileCard from '../ProfileCard';
+import TabMenu from '../TabMenu';
+import Loader from '../Loader';
+import {Info, NoInfo} from '../ProfileInfo';
 
-class ShyneesAroundScreen extends PureComponent {
+import styles from './styles';
+
+class ViewProfile extends PureComponent {
+  getTabs = () => {
+    const tabs = [{
+      title: 'For me',
+      active: true,
+      onPress: () => {}
+    },{
+      title: 'For shynees',
+      onPress: () => {}
+    }];
+    return tabs;
+  }
+
   render() {
-    return (
-      <View>
-        <Text>There are lots of shy people out there. Why not be shy together?</Text>
-      </View>
-    );
+    const {shynee} = this.props;
+    if (shynee.data) {
+      const {name, dob, gender, interests, personalInfo} = shynee.data;
+      const infoExist = name || dob || gender || interests || personalInfo ? true : false;
+
+      return (
+        <ScrollView>
+          <View style={styles.topContent}>
+            <ProfileCard style={{marginTop: 8}} shynee={shynee.data} />
+            <TabMenu 
+              tabs={this.getTabs()}
+              type='underlined'
+              tabStyle={styles.tab}
+              textStyle={styles.tabText}
+            />
+          </View>
+          <View style={styles.content}>
+            {infoExist ?  <Info shynee={shynee.data} /> : <NoInfo />}
+          </View>
+        </ScrollView>
+      );
+    }
+
+    if (shynee.error) {
+      return null;
+    }
+    return (<Loader />);
   }
 }
 
-ShyneesAroundScreen.propTypes = {
+ViewProfile.propTypes = {
   navigation: PropTypes.object,
-  shynees: PropTypes.array
+  dispatch: PropTypes.func,
+  shynee: PropTypes.object,
 };
 
-export default ShyneesAroundScreen;
+export default ViewProfile;

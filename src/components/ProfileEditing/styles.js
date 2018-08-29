@@ -3,10 +3,13 @@ import {StyleSheet } from 'react-native';
 import {colors} from '../../constants/styles';
 
 export default StyleSheet.create({
-  tabMenu: {
-    marginLeft: 10, 
-    marginRight:10, 
-    marginTop: 17, 
+  tab: {
+    marginTop: 9
+  },
+  tabText: {
+    paddingLeft: 10, 
+    paddingRight:10, 
+    paddingTop: 8, 
     paddingBottom: 8,
   },
   topContent: {
