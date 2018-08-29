@@ -1,7 +1,9 @@
+import React from 'react';
 import {
   createBottomTabNavigator,
   createStackNavigator,
 } from 'react-navigation';
+import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
 import {
   SHYNEES_AROUND,
@@ -26,6 +28,7 @@ import ChatScreen from '../ChatScreen';
 
 const commonStackOptions = {
   cardStyle: { backgroundColor: '#f2f2f2' },
+  headerLayoutPreset: 'center',
   navigationOptions: {
     headerStyle: {
       backgroundColor: colors.white,
@@ -61,14 +64,34 @@ const ProfileEditingStack = createStackNavigator({
   [SETTINGS]: SettingsScreen,
 }, commonStackOptions);
 
+const getTabNavigationOptions = (title, iconName) => ({
+  title,
+  tabBarIcon: ({tintColor}) => <Icon name={iconName} size={25} color={tintColor} /> //eslint-disable-line 
+});
+
 export default createBottomTabNavigator(
   {
-    ShyneesAround: ShyneesAroundStack,
-    ShyneesWorldwide: ShyneesWorldwideStack,
-    Chats: ChatsStack,
-    ProfileEditing: ProfileEditingStack,
+    ShyneesAround: {
+      screen: ShyneesAroundStack,
+      navigationOptions: getTabNavigationOptions('Around', 'compass')
+    },
+    ShyneesWorldwide: {
+      screen: ShyneesWorldwideStack,
+      navigationOptions: getTabNavigationOptions('World', 'globe')
+    },
+    Chats: {
+      screen: ChatsStack,
+      navigationOptions: getTabNavigationOptions('Chat', 'bubble')
+    },
+    ProfileEditing: {
+      screen: ProfileEditingStack,
+      navigationOptions: getTabNavigationOptions('Profile', 'user')
+    },
   },
   {
-    /* Other configuration remains unchanged */
+    tabBarOptions: {
+      activeTintColor: colors.primary,
+      inactiveTintColor: colors.grey
+    }
   }
 );

@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Animated} from 'react-native';
+import Platform from 'Platform';
+import {Animated, View} from 'react-native';
 import { connect } from 'react-redux';
 
-import {fonts} from '../../constants/styles';
+import {fonts, colors} from '../../constants/styles';
 import {getShyneesAround} from '../../actions/shynees';
 import ShyneesAround from '../../components/ShyneesAround';
 import Button from '../../components/Button';
 import Text from '../../components/Text';
-
 class ShyneesAroundScreen extends React.Component {
   componentDidMount() {
     this.props.dispatch(getShyneesAround());
@@ -24,23 +24,27 @@ ShyneesAroundScreen.navigationOptions = ({navigation}) => {
   const { params = {} } = navigation.state;
   return {
     title: 'Shynees Around',
-    headerStyle: {
-      backgroundColor: params.headerBackgoundColor,
-      elevation: 0,
-      shadowOpacity: 0,
-    },
     headerTitleAllowFontScaling: false,
-    headerTitle: <Animated.View style={{marginTop: 40, height: params.headerHeight,}}>
-      <Text style={{
-        ...fonts.weight.medium,
-        fontSize: fonts.size.medium,
-        color: params.headerColor,
-      }}>Shynees Around</Text>
-      <Button
-        title="I am ready"
+    header: <Animated.View style={{height: params.headerHeight}}>
+      <View style={{flex:1, backgroundColor: colors.white}}>
+        <Animated.View style={{
+          flex: 1,
+          backgroundColor: params.headerBackgoundColor,
+          paddingTop: Platform.OS === 'ios' ? 32 : 12,
+        }}>
+          <Text style={{
+            ...fonts.weight.medium,
+            fontSize: fonts.size.medium,
+            color: params.headerColor,
+            textAlign: 'center'
+          }}>Shynees Around</Text>
+        </Animated.View>
+      </View>
+      {params.iAmReadyVisible && <Button
+        title="I AM READY"
         style={{position: 'absolute', top: params.headerIndent, width: '100%'}}
         type='colorful'
-      />
+      />}
     </Animated.View>
   };
 };

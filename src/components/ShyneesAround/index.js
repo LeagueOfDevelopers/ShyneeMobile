@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import Platform from 'Platform';
 import {View, ScrollView, Animated} from 'react-native';
 
 import Text from '../Text';
@@ -12,6 +13,7 @@ import styles from './styles';
 
 class ShyneesAroundScreen extends PureComponent {
   state = {
+    iAmReadyVisible: false,
     scrollY: new Animated.Value(0),
     shyneeSize: {
       width: null,
@@ -23,7 +25,10 @@ class ShyneesAroundScreen extends PureComponent {
     this.props.navigation.setParams({
       headerHeight: this.state.scrollY.interpolate({
         inputRange: [0, 60],
-        outputRange: [64, 86],
+        outputRange: [
+          Platform.OS === 'ios' ? 64 : 44, 
+          Platform.OS === 'ios' ? 86 : 66
+        ],
         extrapolate: 'clamp',
       }),
       headerBackgoundColor: this.state.scrollY.interpolate({
@@ -38,7 +43,10 @@ class ShyneesAroundScreen extends PureComponent {
       }),
       headerIndent: this.state.scrollY.interpolate({
         inputRange: [0, 72],
-        outputRange: [80, 25],
+        outputRange: [
+          Platform.OS === 'ios' ? 115: 93,
+          Platform.OS === 'ios' ? 65: 43
+        ],
         extrapolate: 'clamp',
       })
     });
@@ -66,6 +74,10 @@ class ShyneesAroundScreen extends PureComponent {
   render() {
     const {navigation, shynees} = this.props;
     if (shynees.data) {
+      if (this.state.iAmReadyVisible === false){
+        this.props.navigation.setParams({iAmReadyVisible: true});
+        this.setState({iAmReadyVisible: true});
+      }
       const {shyneeSize} = this.state;
       const shyneeNicknameStyle = shynees.data.length == 1 ? styles.shyneeNickname : {};
       return (
