@@ -9,6 +9,9 @@ import {getShyneesAround} from '../../actions/shynees';
 import ShyneesAround from '../../components/ShyneesAround';
 import Button from '../../components/Button';
 import Text from '../../components/Text';
+
+import styles from './styles';
+
 class ShyneesAroundScreen extends React.Component {
   componentDidMount() {
     this.props.dispatch(getShyneesAround());
@@ -26,18 +29,9 @@ ShyneesAroundScreen.navigationOptions = ({navigation}) => {
     title: 'Shynees Around',
     headerTitleAllowFontScaling: false,
     header: <Animated.View style={{height: params.headerHeight}}>
-      <View style={{flex:1, backgroundColor: colors.white}}>
-        <Animated.View style={{
-          flex: 1,
-          backgroundColor: params.headerBackgoundColor,
-          paddingTop: Platform.OS === 'ios' ? 32 : 12,
-        }}>
-          <Text style={{
-            ...fonts.weight.medium,
-            fontSize: fonts.size.medium,
-            color: params.headerColor,
-            textAlign: 'center'
-          }}>Shynees Around</Text>
+      <View style={styles.headerContainer}>
+        <Animated.View style={[styles.titleContainer, {backgroundColor: params.headerBackgoundColor}]}>
+          <Text style={[styles.title, {color: params.headerColor}]}>Shynees Around</Text>
         </Animated.View>
       </View>
       {params.iAmReadyVisible && <Button
