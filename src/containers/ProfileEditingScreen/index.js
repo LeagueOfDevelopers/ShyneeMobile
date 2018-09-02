@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import ProfileEditing from '../../components/ProfileEditing';
-import {getShyneeProfile} from '../../actions/shynees';
+import {getShyneeProfile} from '../../actions/shynee';
 
 class ProfileEditingScreen extends React.PureComponent {
   componentDidMount() {
@@ -31,7 +31,7 @@ ProfileEditingScreen.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  shynee: state.shyneeProfile.shynee,
+  shynee: state.shynee.info,
   fakeShynee: state.shyneesAround.data[0].id
 });
 

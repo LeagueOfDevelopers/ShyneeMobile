@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import ViewProfile from '../../components/ViewProfile';
-import {getShyneeProfile} from '../../actions/shynees';
+import {getShyneeProfile} from '../../actions/shynee';
 
 class ViewProfileScreen extends React.PureComponent {
   componentDidMount() {
@@ -29,7 +29,7 @@ ViewProfileScreen.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  shynee: state.shyneeProfile.shynee,
+  shynee: state.shynee.info,
 });
 
 export default connect(mapStateToProps)(ViewProfileScreen);

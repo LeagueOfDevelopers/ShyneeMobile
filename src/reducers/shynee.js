@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux';
 
 import {
-  SHYNEE_PROFILE_REQUEST,
-  SHYNEE_PROFILE_SUCCESS,
-  SHYNEE_PROFILE_FAILURE,
+  SHYNEE_INFO_REQUEST,
+  SHYNEE_INFO_SUCCESS,
+  SHYNEE_INFO_FAILURE,
   SHYNEE_SETTINGS_REQUEST,
   SHYNEE_SETTINGS_SUCCESS,
   SHYNEE_SETTINGS_FAILURE
-} from '../actions/shynees';
+} from '../actions/shynee';
 
 const initialState = {
   fetching: false,
@@ -15,20 +15,20 @@ const initialState = {
   data: null
 };
 
-function shynee (state = initialState, {type, payload}) {
+function info (state = initialState, {type, payload}) {
   switch (type) {
-  case SHYNEE_PROFILE_REQUEST:
+  case SHYNEE_INFO_REQUEST:
     return {
       ...state,
       fetching: true
     }; 
-  case SHYNEE_PROFILE_SUCCESS:
+  case SHYNEE_INFO_SUCCESS:
     return {
       ...state,
       fetching: false,
       data: payload
     };
-  case SHYNEE_PROFILE_FAILURE:
+  case SHYNEE_INFO_FAILURE:
     return {
       ...state,
       fetching: false,
@@ -39,7 +39,7 @@ function shynee (state = initialState, {type, payload}) {
   }
 }
 
-function shyneeSettings (state = initialState, {type, payload}) {
+function settings (state = initialState, {type, payload}) {
   switch (type) {
   case SHYNEE_SETTINGS_REQUEST:
     return {
@@ -64,6 +64,6 @@ function shyneeSettings (state = initialState, {type, payload}) {
 }
 
 export default combineReducers({
-  shynee,
-  shyneeSettings
+  info,
+  settings
 });

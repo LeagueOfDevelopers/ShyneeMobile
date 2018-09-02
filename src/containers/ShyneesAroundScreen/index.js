@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Platform from 'Platform';
 import {Animated, View} from 'react-native';
 import { connect } from 'react-redux';
 
-import {fonts, colors} from '../../constants/styles';
 import {getShyneesAround} from '../../actions/shynees';
 import ShyneesAround from '../../components/ShyneesAround';
 import Button from '../../components/Button';
