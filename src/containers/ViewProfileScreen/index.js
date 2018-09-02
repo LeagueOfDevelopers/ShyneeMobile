@@ -2,19 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import Loader from '../../components/Loader';
 import ViewProfile from '../../components/ViewProfile';
 import {getViewingProfile} from '../../actions/viewingProfile';
 
 class ViewProfileScreen extends React.PureComponent {
-  componentDidMount() {
+  state={
+    loading: true
+  }
+
+  async componentDidMount() {
     const {dispatch, navigation} = this.props;
-    dispatch(getViewingProfile(navigation.getParam('shyneeId')));
+    await dispatch(getViewingProfile(navigation.getParam('shyneeId')));
+    this.setState({loading: false});
   }
   
   render() {
-    return (
-      <ViewProfile {...this.props}/>
-    );
+    if (!this.state.loading) {
+      return <ViewProfile {...this.props} />;
+    }
+    return <Loader />;
   }
 }
 
