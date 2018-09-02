@@ -6,7 +6,8 @@ import {
   SHYNEE_INFO_FAILURE,
   SHYNEE_SETTINGS_REQUEST,
   SHYNEE_SETTINGS_SUCCESS,
-  SHYNEE_SETTINGS_FAILURE
+  SHYNEE_SETTINGS_FAILURE,
+  SHYNEE_IS_READY
 } from '../actions/shynee';
 
 const initialState = {
@@ -57,6 +58,14 @@ function settings (state = initialState, {type, payload}) {
       ...state,
       fetching: false,
       error: true,
+    };
+  case SHYNEE_IS_READY:
+    return {
+      ...state,
+      data: {
+        ...state.data,
+        isReady: payload
+      }
     };
   default: 
     return state;

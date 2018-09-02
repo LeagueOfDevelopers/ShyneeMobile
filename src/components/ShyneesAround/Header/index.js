@@ -9,7 +9,7 @@ import styles from './styles';
 
 class Header extends PureComponent {
   render() {
-    const {animationParams: params} = this.props;
+    const {animationParams: params, onIAmReadyButtonPress} = this.props;
     return (
       <Animated.View style={{height: params.headerHeight}}>
         <View style={styles.headerContainer}>
@@ -22,6 +22,7 @@ class Header extends PureComponent {
             title="I AM READY"
             style={[styles.button, {top: params.headerIndent}]}
             type='colorful'
+            onPress={onIAmReadyButtonPress}
           />
         </View>
       </Animated.View>
@@ -31,6 +32,7 @@ class Header extends PureComponent {
 
 Header.propTypes = {
   animationParams: PropTypes.object,
+  onIAmReadyButtonPress: PropTypes.func
 };
 
 export default Header;

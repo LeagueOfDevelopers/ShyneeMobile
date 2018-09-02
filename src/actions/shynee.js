@@ -6,7 +6,6 @@ import {
 export const SHYNEE_INFO_REQUEST = 'SHYNEE_INFO_REQUEST';
 export const SHYNEE_INFO_SUCCESS = 'SHYNEE_INFO_SUCCESS';
 export const SHYNEE_INFO_FAILURE = 'SHYNEE_INFO_FAILURE';
-
 export const getShyneeInfo = (shyneeId) => (dispatch) => {
   dispatch({
     type: SHYNEE_INFO_REQUEST
@@ -26,7 +25,6 @@ export const getShyneeInfo = (shyneeId) => (dispatch) => {
 export const SHYNEE_SETTINGS_REQUEST = 'SHYNEE_SETTINGS_REQUEST';
 export const SHYNEE_SETTINGS_SUCCESS = 'SHYNEE_SETTINGS_SUCCESS';
 export const SHYNEE_SETTINGS_FAILURE = 'SHYNEE_SETTINGS_FAILURE';
-
 export const getShyneeSettings = (shyneeId) => (dispatch) => {
   dispatch({
     type: SHYNEE_SETTINGS_REQUEST
@@ -41,4 +39,13 @@ export const getShyneeSettings = (shyneeId) => (dispatch) => {
       type: SHYNEE_SETTINGS_FAILURE,
       payload: error
     }));
+};
+
+
+export const SHYNEE_IS_READY = 'SHYNEE_IS_READY';
+export const shyneeIsReady = (isReady) => (dispatch) => {
+  dispatch({
+    type: SHYNEE_IS_READY,
+    payload: isReady
+  });
 };

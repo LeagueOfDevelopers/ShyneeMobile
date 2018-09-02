@@ -11,8 +11,13 @@ class ShyneesAroundScreen extends React.Component {
   }
 
   render() {
-    const {navigation, shyneesAround} = this.props;
-    return <ShyneesAround navigation={navigation} shynees={shyneesAround} />;
+    const {navigation, shyneesAround, shyneeIsReady, dispatch} = this.props;
+    return <ShyneesAround
+      navigation={navigation}
+      shynees={shyneesAround}
+      shyneeIsReady={shyneeIsReady}
+      dispatch={dispatch}
+    />;
   }
 }
 
@@ -25,11 +30,13 @@ ShyneesAroundScreen.navigationOptions = () => {
 ShyneesAroundScreen.propTypes = {
   navigation: PropTypes.object,
   dispatch: PropTypes.func,
-  shyneesAround: PropTypes.object
+  shyneesAround: PropTypes.object,
+  shyneeIsReady: PropTypes.boolean
 };
 
 const mapStateToProps = state => ({
-  shyneesAround: state.shyneesAround
+  shyneesAround: state.shyneesAround,
+  shyneeIsReady: state.shynee.settings.isReady
 });
 
 export default connect(mapStateToProps)(ShyneesAroundScreen);

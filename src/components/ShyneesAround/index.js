@@ -9,6 +9,7 @@ import Header from './Header';
 import Loader from '../Loader';
 import {colors} from '../../constants/styles';
 import {convertHex} from '../../utils/helpers';
+import {shyneeIsReady} from '../../actions/shynee';
 
 import styles from './styles';
 
@@ -69,6 +70,11 @@ class ShyneesAroundScreen extends PureComponent {
     });
   }
 
+  onIAmReadyButtonPress = () => {
+    const {dispatch, shyneeIsReady: isReady} = this.props;
+    dispatch(shyneeIsReady(!isReady));
+  }
+
   render() {
     const {navigation, shynees} = this.props;
     if (shynees.data) {
@@ -76,7 +82,7 @@ class ShyneesAroundScreen extends PureComponent {
       const shyneeNicknameStyle = shynees.data.length == 1 ? styles.shyneeNickname : {};
       return (
         <View>
-          <Header animationParams={this.state} />
+          <Header animationParams={this.state} onIAmReadyButtonPress={this.onIAmReadyButtonPress} />
           <ScrollView style={styles.background} onScroll={this._onScroll} scrollEventThrottle={16}>
             <View style={styles.descriptionContainer}>
               <Text style={styles.description}>There are lots of shy people out there. Why not be shy together?</Text>
@@ -104,7 +110,9 @@ class ShyneesAroundScreen extends PureComponent {
 
 ShyneesAroundScreen.propTypes = {
   navigation: PropTypes.object,
-  shynees: PropTypes.object
+  shynees: PropTypes.object,
+  shyneeIsReady: PropTypes.boolean,
+  dispatch: PropTypes.func,
 };
 
 export default ShyneesAroundScreen;
