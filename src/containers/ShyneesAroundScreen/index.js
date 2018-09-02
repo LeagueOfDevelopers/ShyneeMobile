@@ -26,18 +26,7 @@ ShyneesAroundScreen.navigationOptions = ({navigation}) => {
   return {
     title: 'Shynees Around',
     headerTitleAllowFontScaling: false,
-    header: <Animated.View style={{height: params.headerHeight}}>
-      <View style={styles.headerContainer}>
-        <Animated.View style={[styles.titleContainer, {backgroundColor: params.headerBackgoundColor}]}>
-          <Text style={[styles.title, {color: params.headerColor}]}>Shynees Around</Text>
-        </Animated.View>
-      </View>
-      {params.iAmReadyVisible && <Button
-        title="I AM READY"
-        style={{position: 'absolute', top: params.headerIndent, width: '100%'}}
-        type='colorful'
-      />}
-    </Animated.View>
+    header: null
   };
 };
 

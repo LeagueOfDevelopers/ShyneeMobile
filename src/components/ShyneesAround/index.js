@@ -5,6 +5,7 @@ import {View, ScrollView, Animated} from 'react-native';
 
 import Text from '../Text';
 import ShyneeItem from './ShyneeItem';
+import Header from './Header';
 import Loader from '../Loader';
 import {colors} from '../../constants/styles';
 import {convertHex} from '../../utils/helpers';
@@ -13,16 +14,19 @@ import styles from './styles';
 
 class ShyneesAroundScreen extends PureComponent {
   state = {
-    iAmReadyVisible: false,
     scrollY: new Animated.Value(0),
     shyneeSize: {
       width: null,
       height: null
-    }
+    },
+    headerHeight: null,
+    headerBackgoundColor: null,
+    headerColor: null,
+    headerIndent: null
   };
 
   componentDidMount() {
-    this.props.navigation.setParams({
+    this.setState({
       headerHeight: this.state.scrollY.interpolate({
         inputRange: [0, 60],
         outputRange: Platform.OS === 'ios' ? [64, 86] : [44, 66],
@@ -68,27 +72,26 @@ class ShyneesAroundScreen extends PureComponent {
   render() {
     const {navigation, shynees} = this.props;
     if (shynees.data) {
-      if (this.state.iAmReadyVisible === false){
-        this.props.navigation.setParams({iAmReadyVisible: true});
-        this.setState({iAmReadyVisible: true});
-      }
       const {shyneeSize} = this.state;
       const shyneeNicknameStyle = shynees.data.length == 1 ? styles.shyneeNickname : {};
       return (
-        <ScrollView style={styles.background} onScroll={this._onScroll} scrollEventThrottle={16}>
-          <View style={styles.descriptionContainer}>
-            <Text style={styles.description}>There are lots of shy people out there. Why not be shy together?</Text>
-          </View>
-          <View style={styles.shyneesAroundContainer} onLayout={this._onRenderShyneesAround}>
-            {shynees.data && shynees.data.map(shynee => <ShyneeItem 
-              key={shynee.id}
-              shynee={shynee}
-              navigation={navigation}
-              size={shyneeSize}
-              nicknameStyle={shyneeNicknameStyle}
-            />)}
-          </View>
-        </ScrollView>
+        <View>
+          <Header animationParams={this.state} />
+          <ScrollView style={styles.background} onScroll={this._onScroll} scrollEventThrottle={16}>
+            <View style={styles.descriptionContainer}>
+              <Text style={styles.description}>There are lots of shy people out there. Why not be shy together?</Text>
+            </View>
+            <View style={styles.shyneesAroundContainer} onLayout={this._onRenderShyneesAround}>
+              {shynees.data && shynees.data.map(shynee => <ShyneeItem 
+                key={shynee.id}
+                shynee={shynee}
+                navigation={navigation}
+                size={shyneeSize}
+                nicknameStyle={shyneeNicknameStyle}
+              />)}
+            </View>
+          </ScrollView>
+        </View>
       );
     }
 
