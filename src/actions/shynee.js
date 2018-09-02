@@ -1,5 +1,5 @@
 import {
-  getShyneeProfileRequest,
+  getShyneeInfoRequest,
   getShyneeSettingsRequest
 } from '../request/shynees';
 
@@ -7,12 +7,12 @@ export const SHYNEE_INFO_REQUEST = 'SHYNEE_INFO_REQUEST';
 export const SHYNEE_INFO_SUCCESS = 'SHYNEE_INFO_SUCCESS';
 export const SHYNEE_INFO_FAILURE = 'SHYNEE_INFO_FAILURE';
 
-export const getShyneeProfile = (shyneeId) => (dispatch) => {
+export const getShyneeInfo = (shyneeId) => (dispatch) => {
   dispatch({
     type: SHYNEE_INFO_REQUEST
   });
 
-  return getShyneeProfileRequest(shyneeId)
+  return getShyneeInfoRequest(shyneeId)
     .then((shynees) => dispatch({
       type: SHYNEE_INFO_SUCCESS,
       payload: shynees

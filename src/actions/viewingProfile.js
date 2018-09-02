@@ -1,5 +1,5 @@
 import {
-  getShyneeProfileRequest,
+  getShyneeInfoRequest,
 } from '../request/shynees';
 
 export const VIEWING_PROFILE_REQUEST = 'VIEWING_PROFILE_REQUEST';
@@ -11,7 +11,7 @@ export const getViewingProfile = (shyneeId) => (dispatch) => {
     type: VIEWING_PROFILE_REQUEST
   });
 
-  return getShyneeProfileRequest(shyneeId)
+  return getShyneeInfoRequest(shyneeId)
     .then((shynees) => dispatch({
       type: VIEWING_PROFILE_SUCCESS,
       payload: shynees
