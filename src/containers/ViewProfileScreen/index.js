@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import ViewProfile from '../../components/ViewProfile';
-import {getShyneeProfile} from '../../actions/shynee';
+import {getViewingProfile} from '../../actions/viewingProfile';
 
 class ViewProfileScreen extends React.PureComponent {
   componentDidMount() {
     const {dispatch, navigation} = this.props;
-    dispatch(getShyneeProfile(navigation.getParam('shyneeId')));
+    dispatch(getViewingProfile(navigation.getParam('shyneeId')));
   }
   
   render() {
@@ -29,7 +29,7 @@ ViewProfileScreen.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  shynee: state.shynee.info,
+  shynee: state.viewingProfile,
 });
 
 export default connect(mapStateToProps)(ViewProfileScreen);
