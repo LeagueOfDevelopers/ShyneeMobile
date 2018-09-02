@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import {getShyneeInfo} from '../actions/shynee';
+import {getShyneeInfo, getShyneeSettings} from '../actions/shynee';
 
 import AppNavigator from './AppNavigator';
 
@@ -11,6 +11,7 @@ class App extends React.Component {
     const {dispatch} = this.props;
     //TODO: Заменить на получение данных для текущего пользователя
     dispatch(getShyneeInfo(this.props.fakeShynee));
+    dispatch(getShyneeSettings(this.props.fakeShynee));
   }
   
   render() {
