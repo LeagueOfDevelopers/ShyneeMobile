@@ -9,7 +9,6 @@ import Header from './Header';
 import Loader from '../Loader';
 import {colors} from '../../constants/styles';
 import {convertHex} from '../../utils/helpers';
-import Button from '../Button';
 
 import styles from './styles';
 

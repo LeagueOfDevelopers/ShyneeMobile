@@ -26,7 +26,7 @@ App.propTypes = {
   fakeShynee: PropTypes.string
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = () => ({
   fakeShynee: '2a0fae60-912c-4c05-b438-44835e38a6b7'
 });
 

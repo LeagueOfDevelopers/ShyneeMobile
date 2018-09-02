@@ -1,14 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Animated, View} from 'react-native';
 import { connect } from 'react-redux';
 
 import {getShyneesAround} from '../../actions/shynees';
 import ShyneesAround from '../../components/ShyneesAround';
-import Button from '../../components/Button';
-import Text from '../../components/Text';
-
-import styles from './styles';
 
 class ShyneesAroundScreen extends React.Component {
   componentDidMount() {
@@ -21,11 +16,8 @@ class ShyneesAroundScreen extends React.Component {
   }
 }
 
-ShyneesAroundScreen.navigationOptions = ({navigation}) => {
-  const { params = {} } = navigation.state;
+ShyneesAroundScreen.navigationOptions = () => {
   return {
-    title: 'Shynees Around',
-    headerTitleAllowFontScaling: false,
     header: null
   };
 };
