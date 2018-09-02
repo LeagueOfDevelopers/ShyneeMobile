@@ -17,11 +17,13 @@ class Header extends PureComponent {
             <Text style={[styles.title, {color: params.headerColor}]}>Shynees Around</Text>
           </Animated.View>
         </View>
-        {<Button
-          title="I AM READY"
-          style={[styles.button, {top: params.headerIndent}]}
-          type='colorful'
-        />}
+        <View style={styles.buttonWrapper}>
+          <Button
+            title="I AM READY"
+            style={[styles.button, {top: params.headerIndent}]}
+            type='colorful'
+          />
+        </View>
       </Animated.View>
     );
   }

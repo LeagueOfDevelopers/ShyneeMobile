@@ -6,7 +6,7 @@ import {fonts, colors} from '../../../constants/styles';
 export default StyleSheet.create({
   headerContainer: {
     flex: 1,
-    backgroundColor: colors.white
+    backgroundColor: colors.white,
   },
   titleContainer: {
     flex: 1,
@@ -17,9 +17,12 @@ export default StyleSheet.create({
     fontSize: fonts.size.medium,
     textAlign: 'center'
   },
+  buttonWrapper: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
+  },
   button: {
     position: 'absolute',
-    width: '100%',
-    zIndex: 100
   }
 });

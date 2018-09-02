@@ -9,6 +9,7 @@ import Header from './Header';
 import Loader from '../Loader';
 import {colors} from '../../constants/styles';
 import {convertHex} from '../../utils/helpers';
+import Button from '../Button';
 
 import styles from './styles';
 
@@ -44,7 +45,7 @@ class ShyneesAroundScreen extends PureComponent {
       }),
       headerIndent: this.state.scrollY.interpolate({
         inputRange: [0, 72],
-        outputRange: Platform.OS === 'ios' ? [115, 65] : [93, 43],
+        outputRange: [50, -20],
         extrapolate: 'clamp',
       })
     });
