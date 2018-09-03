@@ -44,14 +44,17 @@ export const getShyneeSettings = (shyneeId) => (dispatch) => {
 
 
 export const SHYNEE_IS_READY = 'SHYNEE_IS_READY';
-export const shyneeIsReady = (id, isReady) => (dispatch) => {
+export const shyneeIsReady = (id, isReady, onCatch) => (dispatch) => {
   dispatch({
     type: SHYNEE_IS_READY,
     payload: isReady
   });
   return setShyneeReady(id, isReady)
-    .catch(() => dispatch({
-      type: SHYNEE_IS_READY,
-      payload: !isReady
-    }));
+    .catch(err => {
+      dispatch({
+        type: SHYNEE_IS_READY,
+        payload: !isReady
+      });
+      onCatch(err);
+    });
 };

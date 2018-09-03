@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import Platform from 'Platform';
 import {View, ScrollView, Animated} from 'react-native';
+import DropdownAlert from 'react-native-dropdownalert';
 
 import Text from '../Text';
 import ShyneeItem from './ShyneeItem';
@@ -73,7 +74,8 @@ class ShyneesAroundScreen extends PureComponent {
   onIAmReadyButtonPress = () => {
     const {dispatch, shyneeIsReady: isReady, shyneeId} = this.props;
     //TODO: Добавить ошибку, есть запрос не прошел
-    dispatch(shyneeIsReady(shyneeId, !isReady));
+    dispatch(shyneeIsReady(shyneeId, !isReady, () => 
+      this.dropdown.alertWithType('error', 'Error', 'Something went wrong')));
   }
 
   render() {
@@ -98,6 +100,7 @@ class ShyneesAroundScreen extends PureComponent {
               />)}
             </View>
           </ScrollView>
+          <DropdownAlert ref={ref => this.dropdown = ref} useNativeDriver={true}/>
         </View>
       );
     }
