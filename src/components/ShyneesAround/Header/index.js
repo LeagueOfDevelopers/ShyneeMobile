@@ -4,12 +4,13 @@ import {View, Animated} from 'react-native';
 
 import Text from '../../Text';
 import Button from '../../Button';
+import {colors} from '../../../constants/styles';
 
 import styles from './styles';
 
 class Header extends PureComponent {
   render() {
-    const {animationParams: params, onIAmReadyButtonPress} = this.props;
+    const {animationParams: params, isReady, onIAmReadyButtonPress} = this.props;
     return (
       <Animated.View style={{height: params.headerHeight}}>
         <View style={styles.headerContainer}>
@@ -19,8 +20,9 @@ class Header extends PureComponent {
         </View>
         <View style={styles.buttonWrapper}>
           <Button
-            title="I AM READY"
+            title={isReady ? 'I AM NOT READY' : 'I AM READY'}
             style={[styles.button, {top: params.headerIndent}]}
+            buttonStyle={isReady ? {backgroundColor: colors.grey} : null}
             type='colorful'
             onPress={onIAmReadyButtonPress}
           />
@@ -32,7 +34,8 @@ class Header extends PureComponent {
 
 Header.propTypes = {
   animationParams: PropTypes.object,
-  onIAmReadyButtonPress: PropTypes.func
+  onIAmReadyButtonPress: PropTypes.func,
+  isReady: PropTypes.bool
 };
 
 export default Header;

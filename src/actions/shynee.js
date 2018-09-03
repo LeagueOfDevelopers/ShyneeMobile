@@ -1,6 +1,7 @@
 import {
   getShyneeInfoRequest,
-  getShyneeSettingsRequest
+  getShyneeSettingsRequest,
+  setShyneeReady
 } from '../request/shynees';
 
 export const SHYNEE_INFO_REQUEST = 'SHYNEE_INFO_REQUEST';
@@ -43,9 +44,14 @@ export const getShyneeSettings = (shyneeId) => (dispatch) => {
 
 
 export const SHYNEE_IS_READY = 'SHYNEE_IS_READY';
-export const shyneeIsReady = (isReady) => (dispatch) => {
+export const shyneeIsReady = (id, isReady) => (dispatch) => {
   dispatch({
     type: SHYNEE_IS_READY,
     payload: isReady
   });
+  return setShyneeReady(id, isReady)
+    .catch(() => dispatch({
+      type: SHYNEE_IS_READY,
+      payload: !isReady
+    }));
 };

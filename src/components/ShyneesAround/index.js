@@ -71,18 +71,19 @@ class ShyneesAroundScreen extends PureComponent {
   }
 
   onIAmReadyButtonPress = () => {
-    const {dispatch, shyneeIsReady: isReady} = this.props;
-    dispatch(shyneeIsReady(!isReady));
+    const {dispatch, shyneeIsReady: isReady, shyneeId} = this.props;
+    //TODO: Добавить ошибку, есть запрос не прошел
+    dispatch(shyneeIsReady(shyneeId, !isReady));
   }
 
   render() {
-    const {navigation, shynees} = this.props;
+    const {navigation, shynees, shyneeIsReady: isReady} = this.props;
     if (shynees.data) {
       const {shyneeSize} = this.state;
       const shyneeNicknameStyle = shynees.data.length == 1 ? styles.shyneeNickname : {};
       return (
         <View>
-          <Header animationParams={this.state} onIAmReadyButtonPress={this.onIAmReadyButtonPress} />
+          <Header animationParams={this.state} isReady={isReady} onIAmReadyButtonPress={this.onIAmReadyButtonPress} />
           <ScrollView style={styles.background} onScroll={this._onScroll} scrollEventThrottle={16}>
             <View style={styles.descriptionContainer}>
               <Text style={styles.description}>There are lots of shy people out there. Why not be shy together?</Text>
@@ -112,6 +113,7 @@ ShyneesAroundScreen.propTypes = {
   navigation: PropTypes.object,
   shynees: PropTypes.object,
   shyneeIsReady: PropTypes.bool,
+  shyneeId: PropTypes.string,
   dispatch: PropTypes.func,
 };
 
