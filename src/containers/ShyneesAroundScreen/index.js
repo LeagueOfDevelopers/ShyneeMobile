@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import {shyneeIsReadySelector} from '../../selectors/shynee';
+import {shyneesAroundSelector} from '../../selectors/shynees';
 import {getShyneesAround} from '../../actions/shynees';
 import ShyneesAround from '../../components/ShyneesAround';
 
@@ -31,12 +33,12 @@ ShyneesAroundScreen.propTypes = {
   navigation: PropTypes.object,
   dispatch: PropTypes.func,
   shyneesAround: PropTypes.object,
-  shyneeIsReady: PropTypes.boolean
+  shyneeIsReady: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
-  shyneesAround: state.shyneesAround,
-  shyneeIsReady: state.shynee.settings.isReady
+  shyneesAround: shyneesAroundSelector(state),
+  shyneeIsReady: shyneeIsReadySelector(state)
 });
 
 export default connect(mapStateToProps)(ShyneesAroundScreen);

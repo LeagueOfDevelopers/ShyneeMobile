@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import {viewingProfileSelector} from '../../selectors/viewingProfile';
 import Loader from '../../components/Loader';
 import ViewProfile from '../../components/ViewProfile';
 import {getViewingProfile} from '../../actions/viewingProfile';
@@ -36,7 +37,7 @@ ViewProfileScreen.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  shynee: state.viewingProfile,
+  shynee: viewingProfileSelector(state)
 });
 
 export default connect(mapStateToProps)(ViewProfileScreen);

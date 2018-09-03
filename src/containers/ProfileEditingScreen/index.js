@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import {shyneeInfoSelector} from '../../selectors/shynee';
 import ProfileEditing from '../../components/ProfileEditing';
 
 class ProfileEditingScreen extends React.PureComponent {
@@ -24,7 +25,7 @@ ProfileEditingScreen.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  shynee: state.shynee.info,
+  shynee: shyneeInfoSelector(state)
 });
 
 export default connect(mapStateToProps)(ProfileEditingScreen);

@@ -27,7 +27,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = () => ({
-  fakeShynee: '9767f9ed-1a02-4f83-b390-38602ec99c4d'
+  fakeShynee: '05bd8e8d-978b-41af-bae9-d29c5ee423ad'
 });
 
 export default connect(mapStateToProps)(App);

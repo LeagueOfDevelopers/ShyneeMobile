@@ -111,7 +111,7 @@ class ShyneesAroundScreen extends PureComponent {
 ShyneesAroundScreen.propTypes = {
   navigation: PropTypes.object,
   shynees: PropTypes.object,
-  shyneeIsReady: PropTypes.boolean,
+  shyneeIsReady: PropTypes.bool,
   dispatch: PropTypes.func,
 };
 
