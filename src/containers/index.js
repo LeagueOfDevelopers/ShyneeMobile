@@ -1,15 +1,34 @@
 import React from 'react';
-import {Provider} from 'react-redux';
+import PropTypes from 'prop-types';
+import { AsyncStorage } from 'react-native';
+import { connect } from 'react-redux';
 
-import {createStore} from '../utils/store';
+import {getShyneeInfo, getShyneeSettings} from '../actions/shynee';
+
 import AppNavigator from './AppNavigator';
 
-const store = createStore();
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    //TODO: Перенести в login
+    AsyncStorage.setItem('shyneeId', 'b541a2fa-80fb-455a-8cba-d56674471378');
+  }
+  async componentDidMount() {
+    const {dispatch} = this.props;
+    const shyneeId = await AsyncStorage.getItem('shyneeId');
+    dispatch(getShyneeInfo(shyneeId));
+    dispatch(getShyneeSettings(shyneeId));
+  }
+  
+  render() {
+    return (
+      <AppNavigator />
+    );
+  }
+}
 
-const App = () => (
-  <Provider store={store}>
-    <AppNavigator/>
-  </Provider>
-);
+App.propTypes = {
+  dispatch: PropTypes.func,
+};
 
-export default App;
+export default connect()(App);

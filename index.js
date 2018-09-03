@@ -1,8 +1,17 @@
-import {AppRegistry, NativeModules} from 'react-native';
+import React from 'react';
+import {AppRegistry} from 'react-native';
+import {Provider} from 'react-redux';
+
+import {createStore} from './src/utils/store';
+
 import App from './src/containers';
 
-// if (process.env.NODE_ENV !== 'production') {  // eslint-disable-line
-//   NativeModules.DevSettings.setIsDebuggingRemotely(true);
-// }
+const store = createStore();
 
-AppRegistry.registerComponent('Shynee', () => App);
+const AppWrapper = () => (
+  <Provider store={store}>
+    <App/>
+  </Provider>
+);
+
+AppRegistry.registerComponent('Shynee', () => AppWrapper);

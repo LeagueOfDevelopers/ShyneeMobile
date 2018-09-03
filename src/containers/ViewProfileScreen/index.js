@@ -2,19 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import {viewingProfileSelector} from '../../selectors/viewingProfile';
+import Loader from '../../components/Loader';
 import ViewProfile from '../../components/ViewProfile';
-import {getShyneeProfile} from '../../actions/shynees';
+import {getViewingProfile} from '../../actions/viewingProfile';
 
 class ViewProfileScreen extends React.PureComponent {
-  componentDidMount() {
+  state={
+    loading: true
+  }
+
+  async componentDidMount() {
     const {dispatch, navigation} = this.props;
-    dispatch(getShyneeProfile(navigation.getParam('shyneeId')));
+    await dispatch(getViewingProfile(navigation.getParam('shyneeId')));
+    this.setState({loading: false});
   }
   
   render() {
-    return (
-      <ViewProfile {...this.props}/>
-    );
+    if (!this.state.loading) {
+      return <ViewProfile {...this.props} />;
+    }
+    return <Loader />;
   }
 }
 
@@ -29,7 +37,7 @@ ViewProfileScreen.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  shynee: state.shyneeProfile.shynee,
+  shynee: viewingProfileSelector(state)
 });
 
 export default connect(mapStateToProps)(ViewProfileScreen);

@@ -14,6 +14,7 @@ class Button extends PureComponent {
       title,
       disabled,
       style: customStyles,
+      buttonStyle: customButtonStyles,
       textStyle: customTextStyles,
       type = 'normal'
     } = this.props;
@@ -29,7 +30,7 @@ class Button extends PureComponent {
         <Touchable
           disabled={disabled}
           onPress={onPress}>
-          <View style={styles.button}>
+          <View style={[styles.button, customButtonStyles]}>
             <Text style={[styles.text, customTextStyles]} disabled={disabled}>
               {title}
             </Text>
@@ -45,6 +46,10 @@ Button.propTypes = {
   onPress: PropTypes.func,
   disabled: PropTypes.func,
   style: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array
+  ]),
+  buttonStyle: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.array
   ]),

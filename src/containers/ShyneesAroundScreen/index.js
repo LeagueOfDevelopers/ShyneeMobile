@@ -1,16 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Platform from 'Platform';
-import {Animated, View} from 'react-native';
 import { connect } from 'react-redux';
 
-import {fonts, colors} from '../../constants/styles';
+import {shyneeIsReadySelector, shyneeIdSelector} from '../../selectors/shynee';
+import {shyneesAroundSelector} from '../../selectors/shynees';
 import {getShyneesAround} from '../../actions/shynees';
 import ShyneesAround from '../../components/ShyneesAround';
-import Button from '../../components/Button';
-import Text from '../../components/Text';
-
-import styles from './styles';
 
 class ShyneesAroundScreen extends React.Component {
   componentDidMount() {
@@ -18,39 +13,35 @@ class ShyneesAroundScreen extends React.Component {
   }
 
   render() {
-    const {navigation, shyneesAround} = this.props;
-    return <ShyneesAround navigation={navigation} shynees={shyneesAround} />;
+    const {navigation, shyneesAround, shyneeIsReady, dispatch, shyneeId} = this.props;
+    return <ShyneesAround
+      navigation={navigation}
+      shynees={shyneesAround}
+      shyneeIsReady={shyneeIsReady}
+      shyneeId={shyneeId}
+      dispatch={dispatch}
+    />;
   }
 }
 
-ShyneesAroundScreen.navigationOptions = ({navigation}) => {
-  const { params = {} } = navigation.state;
+ShyneesAroundScreen.navigationOptions = () => {
   return {
-    title: 'Shynees Around',
-    headerTitleAllowFontScaling: false,
-    header: <Animated.View style={{height: params.headerHeight}}>
-      <View style={styles.headerContainer}>
-        <Animated.View style={[styles.titleContainer, {backgroundColor: params.headerBackgoundColor}]}>
-          <Text style={[styles.title, {color: params.headerColor}]}>Shynees Around</Text>
-        </Animated.View>
-      </View>
-      {params.iAmReadyVisible && <Button
-        title="I AM READY"
-        style={{position: 'absolute', top: params.headerIndent, width: '100%'}}
-        type='colorful'
-      />}
-    </Animated.View>
+    header: null
   };
 };
 
 ShyneesAroundScreen.propTypes = {
   navigation: PropTypes.object,
   dispatch: PropTypes.func,
-  shyneesAround: PropTypes.object
+  shyneesAround: PropTypes.object,
+  shyneeIsReady: PropTypes.bool,
+  shyneeId: PropTypes.string
 };
 
 const mapStateToProps = state => ({
-  shyneesAround: state.shyneesAround
+  shyneesAround: shyneesAroundSelector(state),
+  shyneeIsReady: shyneeIsReadySelector(state),
+  shyneeId: shyneeIdSelector(state)
 });
 
 export default connect(mapStateToProps)(ShyneesAroundScreen);

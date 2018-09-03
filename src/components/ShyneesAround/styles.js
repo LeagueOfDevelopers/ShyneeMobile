@@ -4,7 +4,8 @@ import {fonts, colors} from '../../constants/styles';
 
 export default StyleSheet.create({
   background: {
-    backgroundColor: colors.white
+    backgroundColor: colors.white,
+    zIndex: -1
   },
   descriptionContainer: {
     alignItems: 'center'
