@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {ScrollView, View} from 'react-native';
 
-import Form from './Form';
+import ProfileInfoForm from '../ProfileInfoForm';
 import ProfileCard from '../ProfileCard';
 import TabMenu from '../TabMenu';
 import Loader from '../Loader';
@@ -38,17 +38,26 @@ class ProfileEditing extends PureComponent {
 
   //TODO: Добавить отправку данных
   onPressDoneButton = () => {
-    this.form.props.handleSubmit(value => {
-      console.log(value);
-      this.onPressEditButton();
-    });
   }
 
   //TODO: Добавить очистку формы
   onPressCancelButton = () => this.onPressEditButton()
 
   getTabs = () => {
-    const tabs = [{
+    const {isEditing} = this.state;
+
+    if (isEditing) {
+      return [{
+        title: 'Profile Info',
+        active: true,
+        onPress: () => {}
+      },{
+        title: 'Privacy settings',
+        onPress: () => {}
+      }];
+    }
+
+    return [{
       title: 'For me',
       active: true,
       onPress: () => {}
@@ -56,13 +65,26 @@ class ProfileEditing extends PureComponent {
       title: 'For shynees',
       onPress: () => {}
     }];
-    return tabs;
   }
 
   render() {
     const {shynee} = this.props;
     if (shynee.data) {
-      if (this.state.isEditing) return <Form onRef={ref => (this.form = ref)}/>;
+      if (this.state.isEditing) {
+        return (
+          <ScrollView>
+            <View style={styles.content}>
+              <TabMenu
+                tabs={this.getTabs()}
+                type='underlined'
+                tabStyle={styles.tab}
+                textStyle={styles.tabText}
+              />
+              <ProfileInfoForm shynee={shynee.data}/>
+            </View>
+          </ScrollView>
+        );
+      }
 
       const {name, dob, gender, interests, personalInfo} = shynee.data;
       const infoExist = name || dob || gender || interests || personalInfo ? true : false;
