@@ -1,7 +1,5 @@
 import {StyleSheet } from 'react-native';
 
-import {fonts} from '../../constants/styles';
-
 export default StyleSheet.create({
   card: {
     flexDirection: 'row',
@@ -9,7 +7,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     flexWrap: 'nowrap',
     marginLeft: 20,
-    marginTop: 8
+    marginTop: 16
   },
   avatar: {
     width: 80,
@@ -17,8 +15,7 @@ export default StyleSheet.create({
     borderRadius: 100
   },
   nickname: {
-    ...fonts.weight.bold,
-    fontSize: fonts.size.medium,
+    flexGrow: 1
   },
   textField: {
     marginTop: 20

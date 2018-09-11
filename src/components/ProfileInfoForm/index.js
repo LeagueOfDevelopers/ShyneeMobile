@@ -14,7 +14,7 @@ class ProfileForm extends PureComponent {
       <View>
         <View style={{...styles.card}}>
           <Image style={styles.avatar} source={{uri: shynee.avatarUri}}/>
-          <Field title='Nickname*' name='nickname' placeholder='Nickname*' component={TextField} />
+          <Field title='Nickname*' name='nickname' placeholder='Nickname*' component={TextField} containerStyle={styles.nickname} />
         </View>
         <Field
           title='Name'
