@@ -24,14 +24,23 @@ class ProfileEditing extends PureComponent {
     this.props.navigation.setParams({
       profileHeaderRight: <HeaderButton 
         title={isEditing ? 'Done' : 'Edit'}
-        //TODO: Заменить на отправку данных
-        onPress={isEditing ? this.onPressEditButton : this.onPressEditButton}
-      />
+        onPress={isEditing ? this.onPressDoneButton : this.onPressEditButton}
+      />,
+      profileHeaderLeft: isEditing ? <HeaderButton 
+        title='Cancel'
+        onPress={this.onPressCancelButton}
+      /> : undefined
     });
   }
 
-  onPressEditButton = () => 
+  onPressEditButton = () =>
     this.setState({isEditing: !this.state.isEditing}, this.updateEditButton)
+
+  //TODO: Добавить отправку данных
+  onPressDoneButton = () => {}
+
+  //TODO: Добавить очистку формы
+  onPressCancelButton = () => this.onPressEditButton()
 
   getTabs = () => {
     const tabs = [{

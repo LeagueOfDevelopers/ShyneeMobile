@@ -17,7 +17,8 @@ class ProfileEditingScreen extends React.PureComponent {
 ProfileEditingScreen.navigationOptions = ({navigation}) => {
   return({
     title: 'Profile Editing',
-    headerRight: navigation.getParam('profileHeaderRight')
+    headerRight: navigation.getParam('profileHeaderRight'),
+    headerLeft: navigation.getParam('profileHeaderLeft')
   });
 };
 
