@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {ScrollView, View} from 'react-native';
 
+import Form from './Form';
 import ProfileCard from '../ProfileCard';
 import TabMenu from '../TabMenu';
 import Loader from '../Loader';
@@ -9,7 +10,17 @@ import {Info, NoInfo} from '../ProfileInfo';
 
 import styles from './styles';
 
-class ViewProfile extends PureComponent {
+class ProfileEditing extends PureComponent {
+  state = {
+    isEditing: false
+  }
+
+  componentDidMount = () => {
+    this.props.navigation.setParams({onPressProfileEditButton: this.onPressEditButton});
+  }
+
+  onPressEditButton = () => this.setState({isEditing: !this.state.isEditing})
+
   getTabs = () => {
     const tabs = [{
       title: 'For me',
@@ -25,6 +36,8 @@ class ViewProfile extends PureComponent {
   render() {
     const {shynee} = this.props;
     if (shynee.data) {
+      if (this.state.isEditing) return <Form/>;
+
       const {name, dob, gender, interests, personalInfo} = shynee.data;
       const infoExist = name || dob || gender || interests || personalInfo ? true : false;
 
@@ -53,10 +66,10 @@ class ViewProfile extends PureComponent {
   }
 }
 
-ViewProfile.propTypes = {
+ProfileEditing.propTypes = {
   navigation: PropTypes.object,
   dispatch: PropTypes.func,
   shynee: PropTypes.object,
 };
 
-export default ViewProfile;
+export default ProfileEditing;

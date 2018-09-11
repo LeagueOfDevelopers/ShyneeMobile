@@ -15,9 +15,11 @@ class ProfileEditingScreen extends React.PureComponent {
   }
 }
 
-ProfileEditingScreen.navigationOptions = {
-  title: 'Profile Editing',
-  headerRight: <HeaderButton title='Edit'/>
+ProfileEditingScreen.navigationOptions = ({navigation}) => {
+  return({
+    title: 'Profile Editing',
+    headerRight: <HeaderButton title='Edit' onPress={navigation.getParam('onPressProfileEditButton')}/>
+  });
 };
 
 ProfileEditingScreen.propTypes = {
