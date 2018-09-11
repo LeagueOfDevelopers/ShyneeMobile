@@ -1,18 +1,29 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {ScrollView, View} from 'react-native';
+import { reduxForm, Field } from 'redux-form';
 
 import TabMenu from '../../TabMenu';
+import TextField from '../../Form/TextField';
 
+import styles from './styles';
 
 class ProfileForm extends PureComponent {
+  //TODO: Подумать, как можно сделать иначе
+  componentDidMount() {
+    this.props.onRef(this);
+  }
+  componentWillUnmount() {
+    this.props.onRef(undefined);
+  }
+
   getTabs = () => {
     const tabs = [{
-      title: 'For me',
+      title: 'Profile Info',
       active: true,
       onPress: () => {}
     },{
-      title: 'For shynees',
+      title: 'Privacy settings',
       onPress: () => {}
     }];
     return tabs;
@@ -21,19 +32,25 @@ class ProfileForm extends PureComponent {
   render() {
     return (
       <ScrollView>
-        <TabMenu 
-          tabs={this.getTabs()}
-          type='underlined'
-        />
+        <View style={styles.content}>
+          <TabMenu 
+            tabs={this.getTabs()}
+            type='underlined'
+            tabStyle={styles.tab}
+            textStyle={styles.tabText}
+          />
+          <Field
+            name={'name'}
+            component={TextField}
+          />
+        </View>
       </ScrollView>
     );
   }
 }
 
 ProfileForm.propTypes = {
-  navigation: PropTypes.object,
-  dispatch: PropTypes.func,
-  shynee: PropTypes.object,
+  onRef: PropTypes.func,
 };
 
-export default ProfileForm;
+export default reduxForm({ form: 'profileEdit' })(ProfileForm);

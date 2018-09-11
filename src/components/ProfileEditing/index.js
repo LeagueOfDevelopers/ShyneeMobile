@@ -37,7 +37,12 @@ class ProfileEditing extends PureComponent {
     this.setState({isEditing: !this.state.isEditing}, this.updateEditButton)
 
   //TODO: Добавить отправку данных
-  onPressDoneButton = () => {}
+  onPressDoneButton = () => {
+    this.form.props.handleSubmit(value => {
+      console.log(value);
+      this.onPressEditButton();
+    });
+  }
 
   //TODO: Добавить очистку формы
   onPressCancelButton = () => this.onPressEditButton()
@@ -57,7 +62,7 @@ class ProfileEditing extends PureComponent {
   render() {
     const {shynee} = this.props;
     if (shynee.data) {
-      if (this.state.isEditing) return <Form/>;
+      if (this.state.isEditing) return <Form onRef={ref => (this.form = ref)}/>;
 
       const {name, dob, gender, interests, personalInfo} = shynee.data;
       const infoExist = name || dob || gender || interests || personalInfo ? true : false;
