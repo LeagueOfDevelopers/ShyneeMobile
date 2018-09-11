@@ -11,7 +11,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     //TODO: Перенести в login
-    AsyncStorage.setItem('shyneeId', '74601602-7856-4261-bca9-5f89bef7c863');
+    AsyncStorage.setItem('shyneeId', 'f3f4df32-9955-4092-bbff-bee34a670276');
   }
   async componentDidMount() {
     const {dispatch} = this.props;
