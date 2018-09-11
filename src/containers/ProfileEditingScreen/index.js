@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 import {shyneeInfoSelector} from '../../selectors/shynee';
 import ProfileEditing from '../../components/ProfileEditing';
-import HeaderButton from '../../components/HeaderButton/Text';
 
 class ProfileEditingScreen extends React.PureComponent {
 
@@ -18,7 +17,7 @@ class ProfileEditingScreen extends React.PureComponent {
 ProfileEditingScreen.navigationOptions = ({navigation}) => {
   return({
     title: 'Profile Editing',
-    headerRight: <HeaderButton title='Edit' onPress={navigation.getParam('onPressProfileEditButton')}/>
+    headerRight: navigation.getParam('profileHeaderRight')
   });
 };
 

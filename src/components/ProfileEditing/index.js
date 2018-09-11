@@ -7,6 +7,7 @@ import ProfileCard from '../ProfileCard';
 import TabMenu from '../TabMenu';
 import Loader from '../Loader';
 import {Info, NoInfo} from '../ProfileInfo';
+import HeaderButton from '../HeaderButton/Text';
 
 import styles from './styles';
 
@@ -15,11 +16,22 @@ class ProfileEditing extends PureComponent {
     isEditing: false
   }
 
-  componentDidMount = () => {
-    this.props.navigation.setParams({onPressProfileEditButton: this.onPressEditButton});
+  componentDidMount = () => 
+    this.updateEditButton();
+
+  updateEditButton = () => {
+    const {isEditing} = this.state;
+    this.props.navigation.setParams({
+      profileHeaderRight: <HeaderButton 
+        title={isEditing ? 'Done' : 'Edit'}
+        //TODO: Заменить на отправку данных
+        onPress={isEditing ? this.onPressEditButton : this.onPressEditButton}
+      />
+    });
   }
 
-  onPressEditButton = () => this.setState({isEditing: !this.state.isEditing})
+  onPressEditButton = () => 
+    this.setState({isEditing: !this.state.isEditing}, this.updateEditButton)
 
   getTabs = () => {
     const tabs = [{
