@@ -2,16 +2,62 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {ScrollView, View} from 'react-native';
 
+import ProfileInfoForm from '../ProfileInfoForm';
 import ProfileCard from '../ProfileCard';
 import TabMenu from '../TabMenu';
 import Loader from '../Loader';
 import {Info, NoInfo} from '../ProfileInfo';
+import HeaderButton from '../HeaderButton/Text';
 
 import styles from './styles';
 
-class ViewProfile extends PureComponent {
+class ProfileEditing extends PureComponent {
+  state = {
+    isEditing: false
+  }
+
+  componentDidMount = () => 
+    this.updateEditButton();
+
+  updateEditButton = () => {
+    const {isEditing} = this.state;
+    this.props.navigation.setParams({
+      profileHeaderRight: <HeaderButton 
+        title={isEditing ? 'Done' : 'Edit'}
+        onPress={isEditing ? this.onPressDoneButton : this.onPressEditButton}
+      />,
+      profileHeaderLeft: isEditing ? <HeaderButton 
+        title='Cancel'
+        onPress={this.onPressCancelButton}
+      /> : undefined
+    });
+  }
+
+  onPressEditButton = () =>
+    this.setState({isEditing: !this.state.isEditing}, this.updateEditButton)
+
+  //TODO: Добавить отправку данных
+  onPressDoneButton = () => {
+  }
+
+  //TODO: Добавить очистку формы
+  onPressCancelButton = () => this.onPressEditButton()
+
   getTabs = () => {
-    const tabs = [{
+    const {isEditing} = this.state;
+
+    if (isEditing) {
+      return [{
+        title: 'Profile Info',
+        active: true,
+        onPress: () => {}
+      },{
+        title: 'Privacy settings',
+        onPress: () => {}
+      }];
+    }
+
+    return [{
       title: 'For me',
       active: true,
       onPress: () => {}
@@ -19,12 +65,27 @@ class ViewProfile extends PureComponent {
       title: 'For shynees',
       onPress: () => {}
     }];
-    return tabs;
   }
 
   render() {
     const {shynee} = this.props;
     if (shynee.data) {
+      if (this.state.isEditing) {
+        return (
+          <ScrollView>
+            <View style={styles.content}>
+              <TabMenu
+                tabs={this.getTabs()}
+                type='underlined'
+                tabStyle={styles.tab}
+                textStyle={styles.tabText}
+              />
+              <ProfileInfoForm shynee={shynee.data}/>
+            </View>
+          </ScrollView>
+        );
+      }
+
       const {name, dob, gender, interests, personalInfo} = shynee.data;
       const infoExist = name || dob || gender || interests || personalInfo ? true : false;
 
@@ -53,10 +114,10 @@ class ViewProfile extends PureComponent {
   }
 }
 
-ViewProfile.propTypes = {
+ProfileEditing.propTypes = {
   navigation: PropTypes.object,
   dispatch: PropTypes.func,
   shynee: PropTypes.object,
 };
 
-export default ViewProfile;
+export default ProfileEditing;

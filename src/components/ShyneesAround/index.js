@@ -73,7 +73,6 @@ class ShyneesAroundScreen extends PureComponent {
 
   onIAmReadyButtonPress = () => {
     const {dispatch, shyneeIsReady: isReady, shyneeId} = this.props;
-    //TODO: Добавить ошибку, есть запрос не прошел
     dispatch(shyneeIsReady(shyneeId, !isReady, () => 
       this.dropdown.alertWithType('error', 'Error', 'Something went wrong')));
   }
