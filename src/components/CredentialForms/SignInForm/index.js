@@ -6,17 +6,35 @@ import Button from '../../Button';
 import Divider from '../Divider';
 import Header from '../Header';
 import Socials from '../Socials';
+import TextField from '../../ProfileInfoForm/TextField';
 
 class SignInForm extends PureComponent {
   render() {
     return (
-      <View>
-        <Header />        
+      <View style={styles.container}>
+        <Header />
         <View style={styles.form}>
-          <Field />
-          <Field />
+          <Field
+            title='Email'
+            placeholder='Email'
+            name='email'
+            component={TextField}
+            containerStyle={styles.textField}
+          />
+          <Field
+            title='Password'
+            placeholder='Password'
+            name='password'
+            component={TextField}
+            containerStyle={styles.textField}
+          />
         </View>
-        <Button style={styles.submit}></Button>
+        <Button
+          title='Login'
+          type='colorful'
+          style={styles.submit}
+          buttonStyle={styles.disabledSubmit}
+          textStyle={[styles.submitText, styles.disabledSubmitText]} />
         <Divider />
         <Socials />
       </View>

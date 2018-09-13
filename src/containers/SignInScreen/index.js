@@ -16,4 +16,10 @@ SignInScreen.propTypes = {
   dispatch: PropTypes.func
 };
 
+SignInScreen.navigationOptions = () => {
+  return {
+    header: null
+  };
+};
+
 export default SignInScreen;

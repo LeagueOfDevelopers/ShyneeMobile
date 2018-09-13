@@ -14,6 +14,8 @@ import {
   CHATS,
   CHAT,
   BUY_THIS_APP,
+  SIGN_IN,
+  SIGN_UP
 } from '../../constants/screens';
 import {fonts, colors} from '../../constants/styles';
 
@@ -25,6 +27,8 @@ import ViewProfileScreen from '../ViewProfileScreen';
 import SettingsScreen from '../SettingsScreen';
 import BuyThisAppScreen from '../BuyThisAppScreen';
 import ChatScreen from '../ChatScreen';
+import SignInScreen from '../SignInScreen';
+import SignUpScreen from '../SignUpScreen';
 
 const commonStackOptions = {
   cardStyle: { backgroundColor: '#f2f2f2' },
@@ -58,6 +62,8 @@ const ChatsStack = createStackNavigator({
 }, commonStackOptions);
 
 const ProfileEditingStack = createStackNavigator({
+  [SIGN_IN]: SignInScreen,
+  [SIGN_UP]: SignUpScreen,
   [PROFILE_EDITING]: ProfileEditingScreen,
   [VIEW_PROFILE]: ViewProfileScreen,
   [CHAT]: ChatScreen,
