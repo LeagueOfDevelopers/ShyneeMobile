@@ -1,6 +1,11 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {View} from 'react-native';
 import SegmentedControlTab from 'react-native-segmented-control-tab';
+
+import Text from '../../Text';
+
+import styles from './styles';
 
 class SegmentedControlField extends PureComponent {
   state = {
@@ -21,18 +26,46 @@ class SegmentedControlField extends PureComponent {
   }
 
   render() {
-    return <SegmentedControlTab
-      values={this.props.titles}
-      selectedIndex={this.state.selectedIndex}
-      onTabPress={this.handleIndexChange}
-    />;
+    const {
+      title,
+      labels,
+      borderRadius = 100,
+      containerStyle,
+      tabsContainerStyle,
+      tabStyle,
+      tabTextStyle,
+      activeTabStyle,
+      activeTabTextStyle
+    } = this.props;
+    return <View style={[styles.container, containerStyle]}>
+      <Text style={styles.title}>{title}</Text>
+      <SegmentedControlTab
+        values={labels}
+        selectedIndex={this.state.selectedIndex}
+        onTabPress={this.handleIndexChange}
+        borderRadius={borderRadius}
+        tabsContainerStyle={[styles.tabsContainerStyle, tabsContainerStyle]}
+        tabStyle={[styles.tabStyle, tabStyle]}
+        tabTextStyle={[styles.tabTextStyle, tabTextStyle]}
+        activeTabStyle={[styles.activeTabStyle, activeTabStyle]}
+        activeTabTextStyle={[styles.activeTabTextStyle, activeTabTextStyle]}
+      />
+    </View>;
   }
 }
 
 SegmentedControlField.propTypes = {
   input: PropTypes.object,
+  title: PropTypes.string,
   values: PropTypes.array,
-  titles: PropTypes.array,
+  labels: PropTypes.array,
+  borderRadius: PropTypes.number,
+  containerStyle: PropTypes.object,
+  tabsContainerStyle: PropTypes.object,
+  tabStyle: PropTypes.object,
+  tabTextStyle: PropTypes.object,
+  activeTabStyle: PropTypes.object,
+  activeTabTextStyle: PropTypes.object,
 };
 
 export default SegmentedControlField;

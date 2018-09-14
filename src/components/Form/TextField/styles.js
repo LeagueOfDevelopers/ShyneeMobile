@@ -5,8 +5,6 @@ import {fonts, colors} from '../../../constants/styles';
 export default StyleSheet.create({
   container: {
     flexDirection: 'column',
-    marginLeft: 20,
-    marginRight: 20,
     height: 50,
     borderStyle: 'solid',
     borderBottomWidth: 1,

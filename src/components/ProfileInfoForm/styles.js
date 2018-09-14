@@ -15,9 +15,18 @@ export default StyleSheet.create({
     borderRadius: 100
   },
   nickname: {
-    flexGrow: 1
+    flexGrow: 1,
+    marginLeft: 20,
+    marginRight: 20,
   },
   textField: {
-    marginTop: 20
-  }
+    marginTop: 20,
+    marginLeft: 20,
+    marginRight: 20,
+  },
+  genderContainerStyle: {
+    marginTop: 20,
+    marginLeft: 20,
+    marginRight: 20,
+  },
 });

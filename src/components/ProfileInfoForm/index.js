@@ -22,10 +22,12 @@ class ProfileForm extends PureComponent {
           <Field title='Nickname*' name='nickname' placeholder='Nickname*' component={TextField} containerStyle={styles.nickname} />
         </View>
         <Field
-          titles={['Female', 'Male', 'Other']}
-          values={['Female', 'Male', 'Other']}
+          title='Sex'
           name='gender'
+          labels={['Female', 'Male', 'Other']}
+          values={['Female', 'Male', 'Other']}
           component={SegmentedControlField}
+          containerStyle={styles.genderContainerStyle}
         />
         <Field
           title='Name'
