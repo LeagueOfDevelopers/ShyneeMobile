@@ -25,3 +25,20 @@ export const setShyneeReady = (id, isReady) => {
   return request(`/shynees/${id}/ready/${isReady}`, params)
     .then(data => data.json());
 };
+
+export const signShyneeUp = (email, password, nickname) => {
+  const params = {
+    method: 'POST',
+    body: {
+      email,
+      password,
+      nickname: {
+        status: 'Visible',
+        parameter: nickname
+      }
+    }
+  };
+
+  return request('/shynees', params)
+    .then(data => data.json());
+};
