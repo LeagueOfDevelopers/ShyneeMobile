@@ -7,6 +7,11 @@ class SegmentedControlField extends PureComponent {
     selectedIndex: 0,
   }
 
+  componentDidMount() {
+    const {input, values} = this.props;
+    input.onChange(values[this.state.selectedIndex]);
+  }
+
   handleIndexChange = (index) => {
     const {input, values} = this.props;
     input.onChange(values[index]);
