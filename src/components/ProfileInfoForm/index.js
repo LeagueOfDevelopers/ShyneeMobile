@@ -53,4 +53,8 @@ ProfileForm.propTypes = {
   shynee: PropTypes.object,
 };
 
-export default reduxForm({ form: 'profileEdit' })(ProfileForm);
+export default reduxForm({
+  form: 'profileEditFrom',
+  //TODO: Добавить отправку данных
+  onSubmit: ()=>{}
+})(ProfileForm);

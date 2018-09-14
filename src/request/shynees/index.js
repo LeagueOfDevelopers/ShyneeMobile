@@ -1,8 +1,12 @@
 import request from '../index';
 
-export const getShyneesAroundRequest = () => 
-  request('/shynees/around')
+export const getShyneesAroundRequest = () => {
+  const params = {
+    method: 'PUT',
+  };
+  return request('/shynees/around?latitude=1&longitude=1', params)
     .then(data => data.json());
+};
 
 export const getShyneeInfoRequest = (id) => {
   return request(`/shynees/${id}`)
