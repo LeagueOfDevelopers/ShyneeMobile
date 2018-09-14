@@ -55,7 +55,7 @@ class Button extends PureComponent {
 Button.propTypes = {
   title: PropTypes.string,
   onPress: PropTypes.func,
-  disabled: PropTypes.func,
+  disabled: PropTypes.bool,
   style: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.array

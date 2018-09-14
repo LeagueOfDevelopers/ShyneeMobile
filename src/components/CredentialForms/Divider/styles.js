@@ -5,7 +5,7 @@ import { colors, fonts } from '../../../constants/styles';
 export default StyleSheet.create({
   container: {
     paddingHorizontal: 20,
-    marginBottom: 30,
+    marginBottom: 28,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center' 

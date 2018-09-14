@@ -9,11 +9,21 @@ export default StyleSheet.create({
   textField: {
     marginBottom: 20
   },
+  forgotPasswordButton: {
+    paddingLeft: 20,
+    marginTop: 8,
+    justifyContent: 'center',
+    alignItems: 'flex-start'
+  },
+  forgotPasswordText: {
+    fontSize: fonts.size.xsmall,
+    color: colors.primary + 'AA'
+  },
   form: {
-    marginBottom: 30
+    marginBottom: 28
   },
   submit: {
-    marginBottom: 30
+    marginBottom: 28
   },
   submitText: {
     fontSize: fonts.size.medium,
@@ -25,14 +35,16 @@ export default StyleSheet.create({
   },
   disabledSubmit: {
     backgroundColor: colors.white,
-    borderColor: '#51368C',
-    borderWidth: 1
+    borderColor: colors.primary,
+    borderWidth: 1,
+    minWidth: 170
   },
   disabledSubmitText: {
-    color: '#51368C'    
+    color: colors.primary    
   },
   enabledSubmit: {
-    backgroundColor: '#665295'
+    backgroundColor: colors.primary,
+    minWidth: 170
   },
   enabledSubmitText: {
     color: colors.white
