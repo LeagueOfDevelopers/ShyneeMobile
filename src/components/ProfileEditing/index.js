@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {ScrollView, View} from 'react-native';
+import { submit } from 'redux-form';
 
 import ProfileInfoForm from '../ProfileInfoForm';
 import ProfileCard from '../ProfileCard';
@@ -36,8 +37,8 @@ class ProfileEditing extends PureComponent {
   onPressEditButton = () =>
     this.setState({isEditing: !this.state.isEditing}, this.updateEditButton)
 
-  //TODO: Добавить отправку данных
   onPressDoneButton = () => {
+    this.props.dispatch(submit('profileEditFrom'));
   }
 
   //TODO: Добавить очистку формы
