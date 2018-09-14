@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {View, Image} from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 
-import TextField from './TextField';
+import TextField from '../Form/TextField';
 
 import styles from './styles';
 
