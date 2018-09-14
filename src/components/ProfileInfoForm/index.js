@@ -4,6 +4,7 @@ import {View, Image} from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 
 import TextField from '../Form/TextField';
+import SegmentedControlField from '../Form/SegmentedControlField';
 
 import styles from './styles';
 
@@ -20,6 +21,12 @@ class ProfileForm extends PureComponent {
           <Image style={styles.avatar} source={{uri: shynee.avatarUri}}/>
           <Field title='Nickname*' name='nickname' placeholder='Nickname*' component={TextField} containerStyle={styles.nickname} />
         </View>
+        <Field
+          titles={['Female', 'Male', 'Other']}
+          values={['Female', 'Male', 'Other']}
+          name='gender'
+          component={SegmentedControlField}
+        />
         <Field
           title='Name'
           placeholder='Name'
