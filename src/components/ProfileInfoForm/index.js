@@ -39,6 +39,7 @@ class ProfileForm extends PureComponent {
         <Field
           title='Date of birth'
           placeholder='Date of birth'
+          activePlaceholder='19/02/1999'
           name='dob'
           component={TextField}
           containerStyle={styles.textField}

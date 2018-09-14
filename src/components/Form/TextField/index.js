@@ -7,7 +7,7 @@ import {colors} from '../../../constants/styles';
 
 import styles from './styles';
 
-const TextField = ({title, placeholder, style, containerStyle, input, meta, ...inputProps}) =>
+const TextField = ({title, placeholder, activePlaceholder, style, containerStyle, input, meta, ...inputProps}) =>
   <View style={[
     styles.container,
     meta.active ? {borderBottomColor: colors.primary} : null,
@@ -21,11 +21,11 @@ const TextField = ({title, placeholder, style, containerStyle, input, meta, ...i
       onBlur={input.onBlur}
       onFocus={input.onFocus}
       value={input.value}
-      placeholder={input.value || meta.active ? null : placeholder}
+      placeholder={meta.active ? activePlaceholder : placeholder}
       style={[
         styles.input,
-        input.value || meta.active ? null : {height: 50},
-        input.value && meta.valid && !meta.active ? {color: colors.primary} : null,
+        input.value || meta.active ? {} : {height: 50},
+        input.value && meta.valid && !meta.active ? {color: colors.primary} : {color: colors.black},
         style
       ]}
     />
@@ -34,6 +34,7 @@ const TextField = ({title, placeholder, style, containerStyle, input, meta, ...i
 TextField.propTypes = {
   title: PropTypes.string,
   placeholder: PropTypes.string,
+  activePlaceholder: PropTypes.string,
   style: PropTypes.object,
   containerStyle: PropTypes.object,
   input: PropTypes.object,
