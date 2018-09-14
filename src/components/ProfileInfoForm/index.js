@@ -8,6 +8,10 @@ import TextField from '../Form/TextField';
 import styles from './styles';
 
 class ProfileForm extends PureComponent {
+  componentDidMount() {
+    this.props.initialize(this.props.shynee);
+  }
+
   render() {
     const {shynee} = this.props;
     return (
@@ -51,6 +55,7 @@ class ProfileForm extends PureComponent {
 
 ProfileForm.propTypes = {
   shynee: PropTypes.object,
+  initialize: PropTypes.func
 };
 
 export default reduxForm({
