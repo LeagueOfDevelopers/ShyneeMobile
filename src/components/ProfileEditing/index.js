@@ -73,7 +73,7 @@ class ProfileEditing extends PureComponent {
     if (shynee.data) {
       if (this.state.isEditing) {
         return (
-          <ScrollView>
+          <ScrollView style={styles.wrapper}>
             <View style={styles.content}>
               <TabMenu
                 tabs={this.getTabs()}
@@ -91,7 +91,7 @@ class ProfileEditing extends PureComponent {
       const infoExist = name || dob || gender || interests || personalInfo ? true : false;
 
       return (
-        <ScrollView>
+        <ScrollView style={styles.wrapper}>
           <View style={styles.topContent}>
             <ProfileCard style={{marginTop: 8}} shynee={shynee.data} />
             <TabMenu 

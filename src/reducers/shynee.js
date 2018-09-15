@@ -26,6 +26,7 @@ function info (state = initialState, {type, payload}) {
       fetching: true
     }; 
   case SHYNEE_INFO_SUCCESS:
+    payload.avatarUri = 'https://s3.amazonaws.com/uifaces/faces/twitter/joelhelin/128.jpg';
     return {
       ...state,
       fetching: false,

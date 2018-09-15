@@ -6,7 +6,7 @@ import Button from '../Button';
 
 import tabMenuStyles from './styles';
 
-class ShyneesAroundScreen extends PureComponent {
+class TabMenu extends PureComponent {
   state = {
     tabs: this.props.tabs
   }
@@ -49,7 +49,7 @@ class ShyneesAroundScreen extends PureComponent {
   }
 }
 
-ShyneesAroundScreen.propTypes = {
+TabMenu.propTypes = {
   tabs: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,
     onPress: PropTypes.func
@@ -60,4 +60,4 @@ ShyneesAroundScreen.propTypes = {
   textStyle: PropTypes.object,
 };
 
-export default ShyneesAroundScreen;
+export default TabMenu;

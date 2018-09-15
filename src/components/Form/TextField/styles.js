@@ -8,6 +8,8 @@ export default StyleSheet.create({
     marginRight: 20
   },
   inputContainer: {
+    flexDirection: 'column',
+    height: 50,
     borderStyle: 'solid',
     borderBottomWidth: 1,
     maxHeight: 50,

@@ -4,7 +4,7 @@ export const getShyneesAroundRequest = () => {
   const params = {
     method: 'PUT',
   };
-  return request('/shynees/around?latitude=1&longitude=1', params)
+  return request('/shynees/around?latitude=100&longitude=100', params)
     .then(data => data.json());
 };
 
