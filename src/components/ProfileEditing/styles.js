@@ -15,9 +15,13 @@ export default StyleSheet.create({
   topContent: {
     backgroundColor: colors.white
   },
-  content: {
-    margin: 3,
-    paddingBottom: 17,
+  wrapper: {
+    marginTop: 3,
+    marginLeft: 3,
+    marginRight: 3,
     backgroundColor: colors.white,
+  },
+  content: {
+    paddingBottom: 17,
   }
 });
