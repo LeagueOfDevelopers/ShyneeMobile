@@ -19,12 +19,7 @@ export default StyleSheet.create({
     marginLeft: 20,
     marginRight: 20,
   },
-  textField: {
-    marginTop: 20,
-    marginLeft: 20,
-    marginRight: 20,
-  },
-  genderContainerStyle: {
+  field: {
     marginTop: 20,
     marginLeft: 20,
     marginRight: 20,
