@@ -32,17 +32,19 @@ class SegmentedControlField extends PureComponent {
   }
 
   render() {
+    const {text, interests} = this.state;
     const {
       title,
       containerStyle,
     } = this.props;
+
     return <View style={[styles.container, containerStyle]}>
       <Text style={styles.title}>{title}</Text>
       <TagInput
-        value={this.state.interests}
-        onChange={(interests) => this.setState({ interests })}
-        labelExtractor={(interests) => interests}
-        text={this.state.text}
+        value={interests}
+        onChange={interests => this.setState({ interests })}
+        labelExtractor={interests => interests}
+        text={text}
         onChangeText={this.onChangeText}
       />
     </View>;

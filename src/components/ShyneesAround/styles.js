@@ -5,6 +5,7 @@ import {fonts, colors} from '../../constants/styles';
 export default StyleSheet.create({
   background: {
     backgroundColor: colors.white,
+    height: '100%',
     zIndex: -1
   },
   descriptionContainer: {
