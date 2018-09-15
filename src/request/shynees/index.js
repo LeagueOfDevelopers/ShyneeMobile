@@ -26,19 +26,29 @@ export const setShyneeReady = (id, isReady) => {
     .then(data => data.json());
 };
 
-export const signShyneeUp = (email, password, nickname) => {
+export const signShyneeUp = async (email, password, nickname) => {
   const params = {
     method: 'POST',
-    body: {
+    body: JSON.stringify({
       email,
       password,
       nickname: {
         status: 'Visible',
         parameter: nickname
       }
-    }
+    })
   };
 
-  return request('/shynees', params)
-    .then(data => data.json());
+  const response = await request('/shynees', params);
+  const validationError = response.status === 400;
+  const alreadyExistError = response.status === 409;
+  const data = response.ok || validationError
+    ? await response.json()
+    : await response.text();
+  return {
+    error: !response.ok,
+    validationError,
+    alreadyExistError,
+    data
+  };
 };

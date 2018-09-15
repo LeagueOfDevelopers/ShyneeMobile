@@ -7,7 +7,30 @@ import Button from '../../Button';
 import Divider from '../Divider';
 import Header from '../Header';
 import Socials from '../Socials';
+import { required, email, password } from '../../../utils/validators';
 import TextField from '../../ProfileInfoForm/TextField';
+
+const validate = (values) => {
+  const errors = {};
+
+  const emailRequiredRaised = required(values.email, 'Enter email to sign in');
+  const emailInvalidRaised = email(values.email);
+  if (emailRequiredRaised) {
+    errors.email = emailRequiredRaised;
+  } else if (emailInvalidRaised) {
+    errors.email = emailInvalidRaised;
+  }
+
+  const passwordRequiredRaised = required(values.password, 'Enter password to sign in');
+  const passwordInvalidRaised = password(values.password);
+  if (passwordRequiredRaised) {
+    errors.password = passwordRequiredRaised;
+  } else if (passwordInvalidRaised) {
+    errors.password = passwordInvalidRaised;
+  }
+
+  return errors;
+};
 
 class SignInForm extends PureComponent {
   render() {
@@ -55,4 +78,4 @@ SignInForm.propTypes = {
   navigation: PropTypes.object
 };
 
-export default reduxForm({ form: 'signInForm' })(SignInForm);
+export default reduxForm({ form: 'signInForm', validate })(SignInForm);

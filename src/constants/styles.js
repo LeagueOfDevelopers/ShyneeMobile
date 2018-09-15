@@ -7,6 +7,7 @@ export const colors = {
   primary: '#774E9C',
   secondary: '',
   tertiary: '',
+  error: '#C3646F'
 };
 
 export const fonts = {
