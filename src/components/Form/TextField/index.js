@@ -6,7 +6,19 @@ import Text from '../../Text';
 
 import styles from './styles';
 
-const TextField = ({ title, placeholder, style, containerStyle, input, meta, ...inputProps }) => {
+const TextField = (
+  {
+    title,
+    placeholder,
+    multiline = false,
+    activePlaceholder,
+    style,
+    containerStyle,
+    input,
+    meta,
+    ...inputProps
+  }
+) => {
   const error = meta.touched && !meta.valid;
   const expanded = input.value || meta.active;
   return (
@@ -26,7 +38,8 @@ const TextField = ({ title, placeholder, style, containerStyle, input, meta, ...
           onBlur={input.onBlur}
           onFocus={input.onFocus}
           value={input.value}
-          placeholder={expanded ? null : placeholder}
+          placeholder={expanded ? activePlaceholder : placeholder}
+          multiline={multiline}
           style={[
             styles.input,
             expanded ? styles.activeInput : styles.inactiveInput,
@@ -47,6 +60,8 @@ TextField.propTypes = {
   containerStyle: PropTypes.object,
   input: PropTypes.object,
   meta: PropTypes.object,
+  activePlaceholder: PropTypes.string,
+  multiline: PropTypes.bool
 };
 
 export default TextField;
