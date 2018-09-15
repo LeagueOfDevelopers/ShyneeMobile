@@ -9,7 +9,12 @@ import Socials from '../Socials';
 import TextField from '../../ProfileInfoForm/TextField';
 import { signUpShynee } from '../../../actions/auth';
 import { required, email, password } from '../../../utils/validators';
+import { PROFILE_EDITING } from '../../../constants/screens';
 import styles from '../styles';
+
+const onSubmitSuccess = (result, dispatch, props) => {
+  props.navigation.navigate(PROFILE_EDITING);
+};
 
 const validate = (values) => {
   const errors = {};
@@ -83,4 +88,7 @@ SignUpForm.propTypes = {
   submitting: PropTypes.bool
 };
 
-export default reduxForm({ form: 'signUpForm', validate })(SignUpForm);
+export default reduxForm({ 
+  form: 'signUpForm',
+  onSubmitSuccess, 
+  validate })(SignUpForm);

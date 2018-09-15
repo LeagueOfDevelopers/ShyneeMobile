@@ -1,5 +1,6 @@
 import { signShyneeUp } from '../request/shynees';
 import { SubmissionError } from 'redux-form';
+import { persistUserCredentials } from '../utils/persistence';
 
 export const SHYNEE_SIGN_UP = 'SHYNEE_SIGN_UP';
 export const signUpShynee = async (email, password) => {
@@ -11,7 +12,7 @@ export const signUpShynee = async (email, password) => {
       _error: error
     });
   }
-  
+
   if (response.validationError) {
     throw new SubmissionError({
       email: response.data.Email,
@@ -30,6 +31,8 @@ export const signUpShynee = async (email, password) => {
     });
   }
 
+  const { id, token } = response.data;
+  await persistUserCredentials({ id, token });
   return {
     type: SHYNEE_SIGN_UP,
     payload: response.data

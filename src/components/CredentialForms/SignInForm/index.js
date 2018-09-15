@@ -64,6 +64,7 @@ class SignInForm extends PureComponent {
         <Button
           title='Login'
           type='colorful'
+          disabled={!this.props.valid || this.props.submitting}
           style={styles.submit}
           buttonStyle={styles.disabledSubmit}
           textStyle={[styles.submitText, styles.disabledSubmitText]} />
@@ -75,7 +76,10 @@ class SignInForm extends PureComponent {
 }
 
 SignInForm.propTypes = {
-  navigation: PropTypes.object
+  navigation: PropTypes.object,  
+  handleSubmit: PropTypes.func,
+  valid: PropTypes.bool,
+  submitting: PropTypes.bool
 };
 
 export default reduxForm({ form: 'signInForm', validate })(SignInForm);
