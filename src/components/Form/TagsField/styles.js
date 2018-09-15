@@ -5,6 +5,9 @@ import {fonts, colors} from '../../../constants/styles';
 export default StyleSheet.create({
   container: {
     flexDirection: 'column',
+    borderStyle: 'solid',
+    borderBottomWidth: 1,
+    borderBottomColor: colors.grey,
   },
   title: {
     ...fonts.weight.light,
@@ -12,17 +15,17 @@ export default StyleSheet.create({
     fontSize: fonts.size.xsmall,
     marginBottom: 5
   },
-  tabStyle: {
-    borderColor: colors.primary
+  tagContainerStyle: {
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: colors.grey,
+    borderRadius: 100,
+    paddingTop: 13,
+    paddingBottom: 13,
+    paddingLeft: 13,
+    marginRight: 8
   },
-  tabTextStyle: {
-    color: colors.primary,
-    fontSize: fonts.xsmall
-  },
-  activeTabStyle: {
-    backgroundColor: colors.primary
-  },
-  activeTabTextStyle: {
-    color: colors.white
+  tagTextStyle: {
+    fontSize: fonts.size.small,
   }
 });

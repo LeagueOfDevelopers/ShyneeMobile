@@ -48,6 +48,7 @@ class ProfileForm extends PureComponent {
         <Field
           title='Interests'
           placeholder='Interests'
+          activePlaceholder='Separated by commas'
           name='interests'
           component={TagsField}
           containerStyle={styles.field}
