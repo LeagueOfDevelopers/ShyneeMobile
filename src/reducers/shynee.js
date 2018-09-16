@@ -11,7 +11,7 @@ import {
 } from '../actions/shynee';
 
 import { 
-  SHYNEE_SIGN_UP, 
+  SHYNEE_SIGN_IN, 
   SHYNEE_REFRESH_STARTED, 
   SHYNEE_REFRESH_FAILED, 
   SHYNEE_REFRESH_SUCCESS 
@@ -47,7 +47,7 @@ function info (state = initialState, {type, payload}) {
       fetching: false,
       error: true,
     };
-  case SHYNEE_SIGN_UP:
+  case SHYNEE_SIGN_IN:
   case SHYNEE_REFRESH_SUCCESS:
     return {
       ...state,

@@ -2,6 +2,7 @@ import React from 'react';
 import {
   createBottomTabNavigator,
   createStackNavigator,
+  createSwitchNavigator
 } from 'react-navigation';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
@@ -15,7 +16,9 @@ import {
   CHAT,
   BUY_THIS_APP,
   SIGN_IN,
-  SIGN_UP
+  SIGN_UP,
+  AUTH,
+  PROFILE
 } from '../../constants/screens';
 import {fonts, colors} from '../../constants/styles';
 
@@ -61,14 +64,22 @@ const ChatsStack = createStackNavigator({
   [CHAT]: ChatScreen,
 }, commonStackOptions);
 
-const ProfileEditingStack = createStackNavigator({
+const AuthStack = createStackNavigator({
   [SIGN_IN]: SignInScreen,
-  [SIGN_UP]: SignUpScreen,
+  [SIGN_UP]: SignUpScreen
+}, commonStackOptions);
+
+const ProfileEditingStack = createStackNavigator({
   [PROFILE_EDITING]: ProfileEditingScreen,
   [VIEW_PROFILE]: ViewProfileScreen,
   [CHAT]: ChatScreen,
   [SETTINGS]: SettingsScreen,
 }, commonStackOptions);
+
+const AuthProfileSwitch = createSwitchNavigator({
+  [AUTH]: AuthStack,
+  [PROFILE]: ProfileEditingStack
+});
 
 const getTabNavigationOptions = (title, iconName) => ({
   title,
@@ -90,7 +101,7 @@ export default createBottomTabNavigator(
       navigationOptions: getTabNavigationOptions('Chat', 'bubble')
     },
     ProfileEditing: {
-      screen: ProfileEditingStack,
+      screen: AuthProfileSwitch,
       navigationOptions: getTabNavigationOptions('Profile', 'user')
     },
   },

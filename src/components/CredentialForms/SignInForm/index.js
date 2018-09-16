@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
 
 import { required, email, password } from '../../../utils/validators';
+import { signInShynee } from '../../../actions/auth';
+import { PROFILE } from '../../../constants/screens';
 import Button from '../../Button';
 import Divider from '../Divider';
 import Header from '../Header';
@@ -11,6 +13,10 @@ import Socials from '../Socials';
 import TextField from '../../Form/TextField';
 
 import styles from '../styles';
+
+const onSubmitSuccess = (result, dispatch, props) => {
+  props.navigation.navigate(PROFILE);
+};
 
 const validate = (values) => {
   const errors = {};
@@ -35,6 +41,12 @@ const validate = (values) => {
 };
 
 class SignInForm extends PureComponent {
+  async onSubmitPressed(values, dispatch) {
+    const { email, password } = values;
+    const action = await signInShynee(email, password);
+    dispatch(action);
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -56,20 +68,22 @@ class SignInForm extends PureComponent {
               component={TextField}
             />
             <Button
+              disabled={!this.props.valid || this.props.submitting}
+              onPress={this.props.handleSubmit(this.onSubmitPressed)}
               title='Forgot password?'
               style={styles.forgotPasswordButton}
               textStyle={styles.forgotPasswordText}
             />
           </View>
-
         </View>
         <Button
-          title='Login'
+          title={this.props.submitting ? 'Logging in...' : 'Login'}
+          onPress={this.props.handleSubmit(this.onSubmitPressed)}
           type='colorful'
           disabled={!this.props.valid || this.props.submitting}
           style={styles.submit}
-          buttonStyle={styles.disabledSubmit}
-          textStyle={[styles.submitText, styles.disabledSubmitText]} />
+          buttonStyle={this.props.valid ? styles.enabledSubmit : styles.disabledSubmit}
+          textStyle={[styles.submitText, this.props.valid ? styles.enabledSubmitText : styles.disabledSubmitText]} />
         <Divider />
         <Socials />
       </View>
@@ -84,4 +98,4 @@ SignInForm.propTypes = {
   submitting: PropTypes.bool
 };
 
-export default reduxForm({ form: 'signInForm', validate })(SignInForm);
+export default reduxForm({ form: 'signInForm', validate, onSubmitSuccess })(SignInForm);

@@ -1,9 +1,19 @@
 import { SubmissionError } from 'redux-form';
 
-import { signShyneeUp, refreshShyneeData } from '../request/shynees';
-import { getUserCredentials, persistUserCredentials } from '../utils/persistence';
+import { signShyneeUp, refreshShyneeData, signShyneeIn } from '../request/shynees';
+import { getUserCredentials, persistUserCredentials, removeUserCredentials } from '../utils/persistence';
 
-export const SHYNEE_SIGN_UP = 'SHYNEE_SIGN_UP';
+export const SHYNEE_SIGN_IN = 'SHYNEE_SIGN_IN';
+
+const signInUser = async (shyneeData) => {
+  const { id, token } = shyneeData;
+  await persistUserCredentials({ id, token });
+  return {
+    type: SHYNEE_SIGN_IN,
+    payload: shyneeData
+  };
+};
+
 export const signUpShynee = async (email, password) => {
   let response;
   try {
@@ -32,12 +42,32 @@ export const signUpShynee = async (email, password) => {
     });
   }
 
-  const { id, token } = response.data;
-  await persistUserCredentials({ id, token });
-  return {
-    type: SHYNEE_SIGN_UP,
-    payload: response.data
-  };
+  return await signInUser(response.data);
+};
+
+export const signInShynee = async (email, password) => {
+  let response;
+  try {
+    response = await signShyneeIn(email, password);
+  } catch (error) {
+    throw new SubmissionError({
+      _error: error
+    });
+  }
+
+  if (response.notFound || response.wrongPassword) {
+    throw new SubmissionError({
+      password: 'Wrong email or password'
+    });
+  }
+
+  if (response.success) {
+    return await signInUser(response.data);
+  }
+
+  throw new SubmissionError({
+    _error: response.data
+  });
 };
 
 export const SHYNEE_REFRESH_STARTED = 'SHYNEE_REFRESH_STARTED';
@@ -59,6 +89,7 @@ export const refreshShynee = () => async (dispatch) => {
 
   const response = await refreshShyneeData(credentials.token);
   if (response.invalidToken) {
+    await removeUserCredentials();
     dispatch({
       type: SHYNEE_REFRESH_SUCCESS,
       payload: null

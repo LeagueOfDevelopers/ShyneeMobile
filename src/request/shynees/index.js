@@ -53,6 +53,35 @@ export const signShyneeUp = async (email, password) => {
   };
 };
 
+export const signShyneeIn = async (email, password) => {
+  const params = {
+    method: 'POST',
+    body: JSON.stringify({
+      email,
+      password
+    })
+  };
+
+  const response = await request('/login', params);
+  const notFound = response.status === 404;
+  if (notFound) {
+    return { notFound };
+  }
+
+  const wrongPassword = response.status === 401;
+  if (wrongPassword) {
+    return { wrongPassword };
+  }
+
+  const data = response.ok
+    ? await response.json()
+    : await response.text();
+  return {
+    success: response.ok,
+    data
+  };
+};
+
 export const refreshShyneeData = async (token) => {
   const params = {
     headers: {
@@ -72,5 +101,5 @@ export const refreshShyneeData = async (token) => {
   return {
     success: response.ok,
     data
-  };  
+  };
 };

@@ -5,7 +5,7 @@ import { reduxForm, Field } from 'redux-form';
 
 import { signUpShynee } from '../../../actions/auth';
 import { required, email, password } from '../../../utils/validators';
-import { PROFILE_EDITING } from '../../../constants/screens';
+import { PROFILE } from '../../../constants/screens';
 import Button from '../../Button';
 import Divider from '../Divider';
 import Header from '../Header';
@@ -15,7 +15,7 @@ import TextField from '../../Form/TextField';
 import styles from '../styles';
 
 const onSubmitSuccess = (result, dispatch, props) => {
-  props.navigation.navigate(PROFILE_EDITING);
+  props.navigation.navigate(PROFILE);
 };
 
 const validate = (values) => {
