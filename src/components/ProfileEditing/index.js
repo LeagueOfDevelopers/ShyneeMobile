@@ -8,30 +8,9 @@ import EditingProfile from './EditingProfile';
 import Profile from './Profile';
 
 class ProfileEditing extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isEditing: false,
-    };
-
-    this.tabsOnEditingProfile = [{
-      title: 'Profile Info',
-      active: true,
-      onPress: () => {}
-    },{
-      title: 'Privacy settings',
-      onPress: () => {}
-    }];
-    
-    this.tabsOnProfile = [{
-      title: 'For me',
-      active: true,
-      onPress: () => {}
-    },{
-      title: 'For shynees',
-      onPress: () => {}
-    }];
-  }
+  state = {
+    isEditing: false,
+  };
 
   componentDidMount = () => 
     this.updateEditButton();
@@ -64,9 +43,9 @@ class ProfileEditing extends PureComponent {
     const {shynee} = this.props;
     if (shynee.data) {
       if (this.state.isEditing) 
-        return <EditingProfile shynee={shynee} tabs={this.tabsOnEditingProfile} />;
+        return <EditingProfile shynee={shynee} />;
 
-      return <Profile shynee={shynee} tabs={this.tabsOnProfile} />;
+      return <Profile shynee={shynee} />;
     }
 
     if (shynee.error) {
