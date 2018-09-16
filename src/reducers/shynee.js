@@ -12,7 +12,7 @@ import {
 
 import { 
   SHYNEE_SIGN_IN, 
-  SHYNEE_REFRESH_STARTED, 
+  SHYNEE_REFRESH_REQUEST, 
   SHYNEE_REFRESH_FAILED, 
   SHYNEE_REFRESH_SUCCESS 
 } from '../actions/auth';
@@ -26,7 +26,7 @@ const initialState = {
 function info (state = initialState, {type, payload}) {
   switch (type) {
   case SHYNEE_INFO_REQUEST:
-  case SHYNEE_REFRESH_STARTED:
+  case SHYNEE_REFRESH_REQUEST:
     return {
       ...state,
       fetching: true
