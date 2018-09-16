@@ -10,6 +10,5 @@ export const shyneeIsReadySelector = createSelector(
 
 export const shyneeIdSelector = createSelector(
   shyneeInfoSelector,
-  //TODO: Убрать фэйковый id, когда ручка будет отдавать id (на null)
   info => info.data ? info.data.id : null
 );

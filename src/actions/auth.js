@@ -70,12 +70,12 @@ export const signInShynee = async (email, password) => {
   });
 };
 
-export const SHYNEE_REFRESH_STARTED = 'SHYNEE_REFRESH_STARTED';
+export const SHYNEE_REFRESH_REQUEST = 'SHYNEE_REFRESH_REQUEST';
 export const SHYNEE_REFRESH_SUCCESS = 'SHYNEE_REFRESH_SUCCESS';
 export const SHYNEE_REFRESH_FAILED = 'SHYNEE_REFRESH_FAILED';
 export const refreshShynee = () => async (dispatch) => {
   dispatch({
-    type: SHYNEE_REFRESH_STARTED
+    type: SHYNEE_REFRESH_REQUEST
   });
 
   const credentials = await getUserCredentials();
