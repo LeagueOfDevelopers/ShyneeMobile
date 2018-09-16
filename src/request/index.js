@@ -4,7 +4,9 @@ const request = (path, params = {}) => {
   const requestUrl = host + path;
   const {
     method = 'GET',
-    headers = {},
+    headers = {
+      'Content-Type': 'application/json'
+    },
     body = null
   } = params;
 

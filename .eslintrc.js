@@ -31,7 +31,8 @@ module.exports = {
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "linebreak-style": "off"
     },
     "parser": "babel-eslint",
 };

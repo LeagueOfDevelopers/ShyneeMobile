@@ -1,22 +1,35 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Platform from 'Platform';
-import {View, TouchableNativeFeedback, TouchableOpacity, Animated} from 'react-native';
+import { View, TouchableNativeFeedback, TouchableOpacity, Animated } from 'react-native';
 
 import Text from '../Text';
 
 import buttonStyles from './styles';
 
 class Button extends PureComponent {
+  renderButtonPayload(children, title, textStyle, customTextStyles, disabled) {
+    if (children) {
+      return children;
+    }
+
+    return (
+      <Text style={[textStyle, customTextStyles]} disabled={disabled}>
+        {title}
+      </Text>
+    );
+  }
+
   render() {
     const {
-      onPress = () => {},
+      onPress = () => { },
       title,
       disabled,
       style: customStyles,
       buttonStyle: customButtonStyles,
       textStyle: customTextStyles,
-      type = 'normal'
+      type = 'normal',
+      children
     } = this.props;
     // const accessibilityTraits = ['button'];
     // if (disabled) {
@@ -31,9 +44,7 @@ class Button extends PureComponent {
           disabled={disabled}
           onPress={onPress}>
           <View style={[styles.button, customButtonStyles]}>
-            <Text style={[styles.text, customTextStyles]} disabled={disabled}>
-              {title}
-            </Text>
+            {this.renderButtonPayload(children, title, styles.text, customTextStyles, disabled)}
           </View>
         </Touchable>
       </Animated.View>
@@ -44,7 +55,7 @@ class Button extends PureComponent {
 Button.propTypes = {
   title: PropTypes.string,
   onPress: PropTypes.func,
-  disabled: PropTypes.func,
+  disabled: PropTypes.bool,
   style: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.array
@@ -57,7 +68,8 @@ Button.propTypes = {
     PropTypes.object,
     PropTypes.array
   ]),
-  type: PropTypes.oneOf(['colorful', 'normal'])
+  type: PropTypes.oneOf(['colorful', 'normal']),
+  children: PropTypes.node
 };
 
 export default Button;

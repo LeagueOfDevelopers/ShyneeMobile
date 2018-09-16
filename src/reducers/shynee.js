@@ -10,6 +10,8 @@ import {
   SHYNEE_IS_READY
 } from '../actions/shynee';
 
+import { SHYNEE_SIGN_UP } from '../actions/auth';
+
 const initialState = {
   fetching: false,
   error: false,
@@ -35,6 +37,12 @@ function info (state = initialState, {type, payload}) {
       ...state,
       fetching: false,
       error: true,
+    };
+  case SHYNEE_SIGN_UP:
+    return {
+      ...state,
+      fetching: false,
+      data: payload.profile
     };
   default: 
     return state;

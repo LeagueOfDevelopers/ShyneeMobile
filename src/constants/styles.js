@@ -1,4 +1,4 @@
-import Platform from 'Platform';
+import { Platform } from 'react-native';
 
 export const colors = {
   black: '#000',
@@ -7,6 +7,7 @@ export const colors = {
   primary: '#774E9C',
   secondary: '',
   tertiary: '',
+  error: '#C3646F'
 };
 
 export const fonts = {
