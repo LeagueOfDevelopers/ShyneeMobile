@@ -1,6 +1,6 @@
 import {StyleSheet } from 'react-native';
 
-import {colors} from '../../constants/styles';
+import {colors} from '../../../constants/styles';
 
 export default StyleSheet.create({
   tab: {
@@ -11,9 +11,6 @@ export default StyleSheet.create({
     paddingRight:10, 
     paddingTop: 8, 
     paddingBottom: 8,
-  },
-  topContent: {
-    backgroundColor: colors.white
   },
   wrapper: {
     marginTop: 3,
