@@ -2,14 +2,16 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
+
+import { signUpShynee } from '../../../actions/auth';
+import { required, email, password } from '../../../utils/validators';
+import { PROFILE_EDITING } from '../../../constants/screens';
 import Button from '../../Button';
 import Divider from '../Divider';
 import Header from '../Header';
 import Socials from '../Socials';
-import TextField from '../../ProfileInfoForm/TextField';
-import { signUpShynee } from '../../../actions/auth';
-import { required, email, password } from '../../../utils/validators';
-import { PROFILE_EDITING } from '../../../constants/screens';
+import TextField from '../../Form/TextField';
+
 import styles from '../styles';
 
 const onSubmitSuccess = (result, dispatch, props) => {

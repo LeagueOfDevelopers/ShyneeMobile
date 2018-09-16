@@ -3,8 +3,12 @@ import request from '../index';
 export const getShyneesAroundRequest = () => {
   const params = {
     method: 'PUT',
+    body: JSON.stringify({
+      latitude: 100,
+      longitude: 100
+    })
   };
-  return request('/shynees/around?latitude=100&longitude=100', params)
+  return request('/shynees/around', params)
     .then(data => data.json());
 };
 
@@ -26,16 +30,12 @@ export const setShyneeReady = (id, isReady) => {
     .then(data => data.json());
 };
 
-export const signShyneeUp = async (email, password, nickname) => {
+export const signShyneeUp = async (email, password) => {
   const params = {
     method: 'POST',
     body: JSON.stringify({
       email,
-      password,
-      nickname: {
-        status: 'Visible',
-        parameter: nickname
-      }
+      password
     })
   };
 

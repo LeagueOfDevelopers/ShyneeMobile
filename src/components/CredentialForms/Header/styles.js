@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { colors } from '../../../constants/styles';
+import { convertHex } from '../../../utils/helpers';
 
 export default StyleSheet.create({
   container: {
@@ -27,6 +28,6 @@ export default StyleSheet.create({
     color: colors.primary
   },
   inactiveTitle: {
-    color: colors.primary + '71'
+    color: convertHex(colors.primary, 0.4457)
   }
 });

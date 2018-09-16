@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import styles from './styles';
-import Button from '../../Button';
 
 import { SIGN_IN, SIGN_UP } from '../../../constants/screens';
+import Button from '../../Button';
+
+import styles from './styles';
 
 const titles = {
   [SIGN_IN]: 'Sign In',

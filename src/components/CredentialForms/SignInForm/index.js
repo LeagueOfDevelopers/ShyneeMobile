@@ -2,13 +2,15 @@ import React, { PureComponent } from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
-import styles from '../styles';
+
+import { required, email, password } from '../../../utils/validators';
 import Button from '../../Button';
 import Divider from '../Divider';
 import Header from '../Header';
 import Socials from '../Socials';
-import { required, email, password } from '../../../utils/validators';
-import TextField from '../../ProfileInfoForm/TextField';
+import TextField from '../../Form/TextField';
+
+import styles from '../styles';
 
 const validate = (values) => {
   const errors = {};

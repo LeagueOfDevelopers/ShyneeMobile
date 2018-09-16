@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { colors, fonts } from '../../constants/styles';
+import { convertHex } from '../../utils/helpers';
 
 export default StyleSheet.create({
   container: {
@@ -7,17 +8,17 @@ export default StyleSheet.create({
     backgroundColor: colors.white
   },
   textField: {
+    marginHorizontal: 20,
     marginBottom: 20
   },
   forgotPasswordButton: {
-    paddingLeft: 20,
     marginTop: 8,
     justifyContent: 'center',
     alignItems: 'flex-start'
   },
   forgotPasswordText: {
     fontSize: fonts.size.xsmall,
-    color: colors.primary + 'AA'
+    color: convertHex(colors.primary, 0.6)
   },
   form: {
     marginBottom: 28

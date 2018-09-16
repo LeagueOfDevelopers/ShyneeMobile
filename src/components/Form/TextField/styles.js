@@ -3,10 +3,6 @@ import {StyleSheet } from 'react-native';
 import {fonts, colors} from '../../../constants/styles';
 
 export default StyleSheet.create({
-  container: {
-    marginLeft: 20,
-    marginRight: 20
-  },
   inputContainer: {
     flexDirection: 'column',
     height: 50,
