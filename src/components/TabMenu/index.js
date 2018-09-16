@@ -7,8 +7,11 @@ import Button from '../Button';
 import tabMenuStyles from './styles';
 
 class TabMenu extends PureComponent {
-  state = {
-    tabs: this.props.tabs
+  constructor(props) {
+    super(props);
+    this.state = {
+      tabs: props.tabs
+    };
   }
 
   onPress = (currentTab) => () => {
@@ -25,7 +28,6 @@ class TabMenu extends PureComponent {
 
   render() {
     const {
-      tabs,
       type = 'normal',
       style: customStyles,
       tabStyle: customTabStyles,
@@ -35,7 +37,7 @@ class TabMenu extends PureComponent {
 
     return (
       <View style={[styles.tabsContainer, customStyles]}>
-        {tabs.map((tab, index)=> 
+        {this.state.tabs.map((tab, index)=> 
           <Button
             key={index}
             style={[styles.tab, customTabStyles, tab.active ? styles.activeTab: {}]}
