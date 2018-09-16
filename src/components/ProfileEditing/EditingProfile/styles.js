@@ -4,7 +4,7 @@ import {colors} from '../../../constants/styles';
 
 export default StyleSheet.create({
   tab: {
-    marginTop: 9
+    backgroundColor: colors.white
   },
   tabText: {
     paddingLeft: 10, 
@@ -16,7 +16,6 @@ export default StyleSheet.create({
     marginTop: 3,
     marginLeft: 3,
     marginRight: 3,
-    backgroundColor: colors.white,
   },
   content: {
     paddingBottom: 17,

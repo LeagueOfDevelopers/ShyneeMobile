@@ -11,7 +11,7 @@ import styles from './styles';
 const FOR_ME_TAB = 'For me';
 const FOR_SHYNEES_TAB = 'For shynees';
 
-class ProfileEditing extends PureComponent {
+class Profile extends PureComponent {
   constructor(props) {
     super(props);
     this.tabs = [{
@@ -49,8 +49,8 @@ class ProfileEditing extends PureComponent {
   }
 }
 
-ProfileEditing.propTypes = {
+Profile.propTypes = {
   shynee: PropTypes.object,
 };
 
-export default ProfileEditing;
+export default Profile;

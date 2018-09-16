@@ -4,13 +4,14 @@ import {ScrollView, View} from 'react-native';
 
 import TabMenu from '../../TabMenu';
 import ProfileInfoForm from '../../ProfileInfoForm';
+import ProfileSettingsForm from '../../ProfileSettingsForm';
 
 import styles from './styles';
 
 const INFO_TAB = 'Profile Info';
 const SETTINGS_TAB = 'Privacy settings';
 
-class ProfileEditing extends PureComponent {
+class EditingProfile extends PureComponent {
   constructor(props) {
     super(props);
     this.tabs = [{
@@ -29,6 +30,7 @@ class ProfileEditing extends PureComponent {
 
   render() {
     const {shynee} = this.props;
+    const  {activeTab} = this.state;
     return <ScrollView style={styles.wrapper}>
       <View style={styles.content}>
         <TabMenu
@@ -37,17 +39,17 @@ class ProfileEditing extends PureComponent {
           tabStyle={styles.tab}
           textStyle={styles.tabText}
         />
-        {this.state.activeTab === INFO_TAB ? 
+        {activeTab === INFO_TAB ? 
           <ProfileInfoForm shynee={shynee.data}/>
           :
-          null}
+          <ProfileSettingsForm/>}
       </View>
     </ScrollView>;
   }
 }
 
-ProfileEditing.propTypes = {
+EditingProfile.propTypes = {
   shynee: PropTypes.object,
 };
 
-export default ProfileEditing;
+export default EditingProfile;
