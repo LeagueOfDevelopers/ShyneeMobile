@@ -3,7 +3,7 @@ import {StyleSheet } from 'react-native';
 import {colors} from '../../../constants/styles';
 
 export default StyleSheet.create({
-  tab: {
+  tabsContainer: {
     backgroundColor: colors.white
   },
   tabText: {
@@ -13,11 +13,16 @@ export default StyleSheet.create({
     paddingBottom: 8,
   },
   wrapper: {
-    marginTop: 3,
     marginLeft: 3,
     marginRight: 3,
   },
   content: {
     paddingBottom: 17,
+  },
+  form: {
+    marginTop: 3,
+  },
+  infoForm: {
+    backgroundColor: colors.white,
   }
 });

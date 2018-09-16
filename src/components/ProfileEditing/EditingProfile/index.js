@@ -36,13 +36,18 @@ class EditingProfile extends PureComponent {
         <TabMenu
           tabs={this.tabs}
           type='underlined'
-          tabStyle={styles.tab}
+          style={styles.tabsContainer}
           textStyle={styles.tabText}
         />
-        {activeTab === INFO_TAB ? 
-          <ProfileInfoForm shynee={shynee.data}/>
-          :
-          <ProfileSettingsForm/>}
+        <View style={[
+          styles.form,
+          activeTab === INFO_TAB ? styles.infoForm : {}
+        ]}>
+          {activeTab === INFO_TAB ? 
+            <ProfileInfoForm shynee={shynee.data}/>
+            :
+            <ProfileSettingsForm/>}
+        </View>
       </View>
     </ScrollView>;
   }
