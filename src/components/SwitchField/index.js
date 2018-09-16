@@ -1,26 +1,34 @@
+import Platform from 'Platform';
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {View, Switch} from 'react-native';
 
+import {colors} from '../../constants/styles';
 import Text from '../Text';
 
 import styles from './styles';
 
 class ProfileForm extends PureComponent {
   render() {
-    const {shynee} = this.props;
+    const {text, value, onValueChange} = this.props;
     return (
       <View style={styles.profileDataContainer}>
-        <Text style={styles.profileDataTitle}>Profile data</Text>
-        <Switch />
+        <Text style={styles.profileDataTitle}>{text}</Text>
+        <Switch 
+          trackColor={{true: colors.primary}}
+          thumbTintColor={Platform.OS === 'ios' ? null : colors.white}
+          onValueChange={onValueChange}
+          value={value} 
+        />
       </View>
     );
   }
 }
 
 ProfileForm.propTypes = {
-  shynee: PropTypes.object,
-  initialize: PropTypes.func
+  text: PropTypes.string,
+  value: PropTypes.bool,
+  onValueChange: PropTypes.func
 };
 
 export default ProfileForm;

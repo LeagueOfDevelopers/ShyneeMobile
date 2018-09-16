@@ -44,9 +44,11 @@ class EditingProfile extends PureComponent {
           activeTab === INFO_TAB ? styles.infoForm : {}
         ]}>
           {activeTab === INFO_TAB ? 
+          
             <ProfileInfoForm shynee={shynee.data}/>
             :
-            <ProfileSettingsForm/>}
+            //TODO: Берем из стора
+            <ProfileSettingsForm profilePrivacy={{avatarUri: true}}/>} 
         </View>
       </View>
     </ScrollView>;

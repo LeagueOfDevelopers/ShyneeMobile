@@ -8,8 +8,17 @@ import SwitchField from '../SwitchField';
 import styles from './styles';
 
 class ProfileForm extends PureComponent {
+  onChange = parameter => value => {
+    const {profilePrivacy} = this.props;
+    //TODO: Добавить отпраку данных, и перезапись в сторе
+    console.log({
+      ...profilePrivacy,
+      [parameter]: value
+    });
+  }
   render() {
-    const {shynee} = this.props;
+    const {profilePrivacy} = this.props;
+    const {avatarUri, dob, gender, name, interests, personalInfo} = profilePrivacy;
     return (
       <ScrollView>
         <View style={styles.profileDataContainer}>
@@ -17,7 +26,12 @@ class ProfileForm extends PureComponent {
             <Text style={[styles.profileDataTitle, {textAlign: 'left'}]}>Profile data</Text>
             <Text style={[styles.profileDataTitle, {textAlign: 'right'}]}>Public</Text>
           </View>
-          <SwitchField/>
+          <SwitchField text='Profile image' value={avatarUri} onValueChange={this.onChange('avatarUri')}/>
+          <SwitchField text='Sex' value={gender} onValueChange={this.onChange('gender')}/>
+          <SwitchField text='Name' value={name} onValueChange={this.onChange('name')}/>
+          <SwitchField text='Date of birth' value={dob} onValueChange={this.onChange('dob')}/>
+          <SwitchField text='Interests' value={interests} onValueChange={this.onChange('interests')}/>
+          <SwitchField text='About me' value={personalInfo} onValueChange={this.onChange('personalInfo')}/>
         </View>
       </ScrollView>
     );
@@ -25,7 +39,7 @@ class ProfileForm extends PureComponent {
 }
 
 ProfileForm.propTypes = {
-  shynee: PropTypes.object,
+  profilePrivacy: PropTypes.object,
   initialize: PropTypes.func
 };
 
