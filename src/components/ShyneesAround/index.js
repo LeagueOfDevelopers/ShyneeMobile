@@ -11,6 +11,7 @@ import Loader from '../Loader';
 import {colors} from '../../constants/styles';
 import {convertHex} from '../../utils/helpers';
 import {shyneeIsReady} from '../../actions/shynee';
+import {AUTH} from '../../constants/screens';
 
 import styles from './styles';
 
@@ -72,7 +73,10 @@ class ShyneesAroundScreen extends PureComponent {
   }
 
   onIAmReadyButtonPress = () => {
-    const {dispatch, shyneeIsReady: isReady, shyneeId} = this.props;
+    const {dispatch, navigation, shyneeIsReady: isReady, shyneeId} = this.props;
+    if (!shyneeId) {
+      navigation.navigate(AUTH);
+    }
     dispatch(shyneeIsReady(shyneeId, !isReady, () => 
       this.dropdown.alertWithType('error', 'Error', 'Something went wrong')));
   }
