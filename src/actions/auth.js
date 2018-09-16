@@ -1,12 +1,13 @@
-import { signShyneeUp } from '../request/shynees';
 import { SubmissionError } from 'redux-form';
-import { persistUserCredentials } from '../utils/persistence';
+
+import { signShyneeUp, refreshShyneeData } from '../request/shynees';
+import { getUserCredentials, persistUserCredentials } from '../utils/persistence';
 
 export const SHYNEE_SIGN_UP = 'SHYNEE_SIGN_UP';
 export const signUpShynee = async (email, password) => {
   let response;
   try {
-    response = await signShyneeUp(email, password, 'Shynee');
+    response = await signShyneeUp(email, password);
   } catch (error) {
     throw new SubmissionError({
       _error: error
@@ -37,5 +38,37 @@ export const signUpShynee = async (email, password) => {
     type: SHYNEE_SIGN_UP,
     payload: response.data
   };
+};
+
+export const SHYNEE_REFRESH_STARTED = 'SHYNEE_REFRESH_STARTED';
+export const SHYNEE_REFRESH_SUCCESS = 'SHYNEE_REFRESH_SUCCESS';
+export const SHYNEE_REFRESH_FAILED = 'SHYNEE_REFRESH_FAILED';
+export const refreshShynee = () => async (dispatch) => {
+  dispatch({
+    type: SHYNEE_REFRESH_STARTED
+  });
+
+  const credentials = await getUserCredentials();
+  if (!credentials) {
+    dispatch({
+      type: SHYNEE_REFRESH_SUCCESS,
+      payload: null
+    });
+    return;
+  }
+
+  const response = await refreshShyneeData(credentials.token);
+  if (response.invalidToken) {
+    dispatch({
+      type: SHYNEE_REFRESH_SUCCESS,
+      payload: null
+    });
+    return;
+  }
+
+  dispatch({
+    type: response.success ? SHYNEE_REFRESH_SUCCESS : SHYNEE_REFRESH_FAILED,
+    payload: response.data
+  });
 };
 

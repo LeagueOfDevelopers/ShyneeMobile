@@ -10,7 +10,12 @@ import {
   SHYNEE_IS_READY
 } from '../actions/shynee';
 
-import { SHYNEE_SIGN_UP } from '../actions/auth';
+import { 
+  SHYNEE_SIGN_UP, 
+  SHYNEE_REFRESH_STARTED, 
+  SHYNEE_REFRESH_FAILED, 
+  SHYNEE_REFRESH_SUCCESS 
+} from '../actions/auth';
 
 const initialState = {
   fetching: false,
@@ -21,6 +26,7 @@ const initialState = {
 function info (state = initialState, {type, payload}) {
   switch (type) {
   case SHYNEE_INFO_REQUEST:
+  case SHYNEE_REFRESH_STARTED:
     return {
       ...state,
       fetching: true
@@ -30,7 +36,10 @@ function info (state = initialState, {type, payload}) {
     return {
       ...state,
       fetching: false,
-      data: payload
+      data: {
+        ...state.data,
+        profile: payload
+      }
     };
   case SHYNEE_INFO_FAILURE:
     return {
@@ -39,10 +48,19 @@ function info (state = initialState, {type, payload}) {
       error: true,
     };
   case SHYNEE_SIGN_UP:
+  case SHYNEE_REFRESH_SUCCESS:
     return {
       ...state,
       fetching: false,
-      data: payload.profile
+      error: false,
+      data: payload
+    };
+  case SHYNEE_REFRESH_FAILED:
+    return {
+      ...state,
+      fetching: false,
+      error: true,
+      data: null
     };
   default: 
     return state;

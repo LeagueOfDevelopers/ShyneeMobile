@@ -52,3 +52,25 @@ export const signShyneeUp = async (email, password) => {
     data
   };
 };
+
+export const refreshShyneeData = async (token) => {
+  const params = {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  };
+
+  const response = await request('/refresh', params);
+  const invalidToken = response.status === 401;
+  if (invalidToken) {
+    return { invalidToken };
+  }
+
+  const data = response.ok
+    ? await response.json()
+    : await response.text();
+  return {
+    success: response.ok,
+    data
+  };  
+};
