@@ -4,7 +4,7 @@ import {ScrollView, View} from 'react-native';
 
 import TabMenu from '../../TabMenu';
 import ProfileInfoForm from '../../ProfileInfoForm';
-import ProfileSettingsForm from '../../ProfileSettingsForm';
+import ProfileRrivacySettings from '../../ProfileRrivacySettings';
 
 import styles from './styles';
 
@@ -48,7 +48,7 @@ class EditingProfile extends PureComponent {
             <ProfileInfoForm shynee={shynee.data}/>
             :
             //TODO: Берем из стора
-            <ProfileSettingsForm profilePrivacy={{avatarUri: true}}/>} 
+            <ProfileRrivacySettings profilePrivacy={{avatarUri: true}}/>} 
         </View>
       </View>
     </ScrollView>;
