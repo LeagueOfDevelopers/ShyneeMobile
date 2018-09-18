@@ -40,10 +40,10 @@ class ProfileEditing extends PureComponent {
   }
 
   render() {
-    const {shynee} = this.props;
+    const {shynee, shyneeSettingsPrivacy} = this.props;
     if (shynee.data) {
       if (this.state.isEditing) 
-        return <EditingProfile shynee={shynee} />;
+        return <EditingProfile shynee={shynee} shyneeSettingsPrivacy={shyneeSettingsPrivacy} />;
 
       return <Profile shynee={shynee} />;
     }
@@ -59,6 +59,7 @@ ProfileEditing.propTypes = {
   navigation: PropTypes.object,
   dispatch: PropTypes.func,
   shynee: PropTypes.object,
+  shyneeSettingsPrivacy: PropTypes.object,
 };
 
 export default ProfileEditing;

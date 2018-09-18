@@ -18,6 +18,8 @@ class ProfileForm extends PureComponent {
   }
   render() {
     const {profilePrivacy} = this.props;
+    if(!profilePrivacy) return null;
+
     const {avatarUri, dob, gender, name, interests, personalInfo} = profilePrivacy;
     return (
       <ScrollView>

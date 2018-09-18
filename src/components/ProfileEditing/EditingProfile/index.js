@@ -29,8 +29,9 @@ class EditingProfile extends PureComponent {
   }
 
   render() {
-    const {shynee} = this.props;
+    const {shynee, shyneeSettingsPrivacy} = this.props;
     const  {activeTab} = this.state;
+
     return <ScrollView contentContainerStyle={styles.wrapper}>
       <View style={styles.content}>
         <TabMenu
@@ -47,8 +48,7 @@ class EditingProfile extends PureComponent {
           
             <ProfileInfoForm shynee={shynee.data}/>
             :
-            //TODO: Берем из стора
-            <ProfileRrivacySettings profilePrivacy={{avatarUri: true}}/>} 
+            <ProfileRrivacySettings profilePrivacy={shyneeSettingsPrivacy.data}/>} 
         </View>
       </View>
     </ScrollView>;
@@ -57,6 +57,7 @@ class EditingProfile extends PureComponent {
 
 EditingProfile.propTypes = {
   shynee: PropTypes.object,
+  shyneeSettingsPrivacy: PropTypes.object,
 };
 
 export default EditingProfile;
