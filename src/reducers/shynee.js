@@ -10,6 +10,7 @@ import {
   SHYNEE_SETTINGS_PRIVACY_REQUEST,
   SHYNEE_SETTINGS_PRIVACY_SUCCESS,
   SHYNEE_SETTINGS_PRIVACY_FAILURE,
+  EDIT_SHYNEE_SETTINGS_PRIVACY_SUCCESS,
   SHYNEE_IS_READY
 } from '../actions/shynee';
 
@@ -86,18 +87,17 @@ function settings (state = initialState, {type, payload}) {
 
 function settingsPrivacy (state = initialState, {type, payload}) {
   switch (type) {
-  case SHYNEE_SETTINGS_PRIVACY_REQUEST:
+  case SHYNEE_SETTINGS_PRIVACY_REQUEST :
     return {
       ...state,
       fetching: true
     }; 
-  case SHYNEE_SETTINGS_PRIVACY_SUCCESS:
+  case SHYNEE_SETTINGS_PRIVACY_SUCCESS | EDIT_SHYNEE_SETTINGS_PRIVACY_SUCCESS :
     return {
-      ...state,
-      fetching: false,
+      ...initialState,
       data: payload
     };
-  case SHYNEE_SETTINGS_PRIVACY_FAILURE:
+  case SHYNEE_SETTINGS_PRIVACY_FAILURE :
     return {
       ...state,
       fetching: false,

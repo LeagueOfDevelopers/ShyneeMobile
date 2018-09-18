@@ -2,8 +2,9 @@ import {
   getShyneeInfoRequest,
   getShyneeSettingsRequest,
   getShyneeSettingsPrivacyRequest,
+  editShyneeSettingsPrivacyRequest,
   setShyneeReady
-} from '../request/shynees';
+} from '../../../request/shynees';
 
 export const SHYNEE_INFO_REQUEST = 'SHYNEE_INFO_REQUEST';
 export const SHYNEE_INFO_SUCCESS = 'SHYNEE_INFO_SUCCESS';
@@ -61,6 +62,14 @@ export const getShyneeSettingsPrivacy = (shyneeId) => (dispatch) => {
       payload: error
     }));
 };
+
+export const EDIT_SHYNEE_SETTINGS_PRIVACY_SUCCESS = 'EDIT_SHYNEE_SETTINGS_PRIVACY_SUCCESS';
+export const editShyneeSettingsPrivacy = (shyneeId, settingsPrivacy) => (dispatch) =>
+  editShyneeSettingsPrivacyRequest(shyneeId, settingsPrivacy)
+    .then((shynees) => dispatch({
+      type: EDIT_SHYNEE_SETTINGS_PRIVACY_SUCCESS,
+      payload: shynees
+    }));
 
 export const SHYNEE_IS_READY = 'SHYNEE_IS_READY';
 export const shyneeIsReady = (id, isReady, onCatch) => (dispatch) => {

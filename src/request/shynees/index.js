@@ -22,8 +22,17 @@ export const getShyneeSettingsRequest = (id) => {
     .then(data => data.json());
 };
 
-export const getShyneeSettingsPrivacyRequest = id => request(`/shynees/${id}/settings`)
-  .then(data => data.json());
+export const getShyneeSettingsPrivacyRequest = id => 
+  request(`/shynees/${id}/profile/privacy`)
+    .then(data => data.json());
+
+export const editShyneeSettingsPrivacyRequest = (id, settingsPrivacy) => 
+  request(`/shynees/${id}/profile/privacy`, {
+    method: 'PUT',
+    body: {
+      fieldsPrivacy: settingsPrivacy
+    }
+  }).then(data => data.json());
 
 export const setShyneeReady = (id, isReady) => {
   const params = {
