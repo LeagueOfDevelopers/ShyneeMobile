@@ -4,7 +4,7 @@ import {
   getShyneeSettingsPrivacyRequest,
   editShyneeSettingsPrivacyRequest,
   setShyneeReady
-} from '../../../request/shynees';
+} from '../request/shynees';
 
 export const SHYNEE_INFO_REQUEST = 'SHYNEE_INFO_REQUEST';
 export const SHYNEE_INFO_SUCCESS = 'SHYNEE_INFO_SUCCESS';

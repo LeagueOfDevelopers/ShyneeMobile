@@ -62,8 +62,8 @@ const ChatsStack = createStackNavigator({
 }, commonStackOptions);
 
 const ProfileEditingStack = createStackNavigator({
-  // [SIGN_IN]: SignInScreen,
-  // [SIGN_UP]: SignUpScreen,
+  [SIGN_IN]: SignInScreen,
+  [SIGN_UP]: SignUpScreen,
   [PROFILE_EDITING]: ProfileEditingScreen,
   [VIEW_PROFILE]: ViewProfileScreen,
   [CHAT]: ChatScreen,
