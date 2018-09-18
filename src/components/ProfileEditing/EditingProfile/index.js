@@ -31,7 +31,7 @@ class EditingProfile extends PureComponent {
   render() {
     const {shynee} = this.props;
     const  {activeTab} = this.state;
-    return <ScrollView style={styles.wrapper}>
+    return <ScrollView contentContainerStyle={styles.wrapper}>
       <View style={styles.content}>
         <TabMenu
           tabs={this.tabs}

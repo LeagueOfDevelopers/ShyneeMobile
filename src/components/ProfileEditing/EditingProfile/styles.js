@@ -13,6 +13,7 @@ export default StyleSheet.create({
     paddingBottom: 8,
   },
   wrapper: {
+    flexGrow: 1,
     marginLeft: 3,
     marginRight: 3,
   },
@@ -20,6 +21,7 @@ export default StyleSheet.create({
     paddingBottom: 17,
   },
   form: {
+    height: '100%',
     marginTop: 3,
   },
   infoForm: {
