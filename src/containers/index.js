@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import {getShyneeInfo, getShyneeSettings} from '../actions/shynee';
+import {getShyneeInfo, getShyneeSettings, getShyneeSettingsPrivacy} from '../actions/shynee';
 import { getUserCredentials } from '../utils/persistence';
 
 import AppNavigator from './AppNavigator';
@@ -17,6 +17,7 @@ class App extends React.Component {
 
     dispatch(getShyneeInfo(credentials.id));
     dispatch(getShyneeSettings(credentials.id));
+    dispatch(getShyneeSettingsPrivacy(credentials.id));
   }
   
   render() {

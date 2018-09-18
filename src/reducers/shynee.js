@@ -7,6 +7,9 @@ import {
   SHYNEE_SETTINGS_REQUEST,
   SHYNEE_SETTINGS_SUCCESS,
   SHYNEE_SETTINGS_FAILURE,
+  SHYNEE_SETTINGS_PRIVACY_REQUEST,
+  SHYNEE_SETTINGS_PRIVACY_SUCCESS,
+  SHYNEE_SETTINGS_PRIVACY_FAILURE,
   SHYNEE_IS_READY
 } from '../actions/shynee';
 
@@ -81,7 +84,32 @@ function settings (state = initialState, {type, payload}) {
   }
 }
 
+function settingsPrivacy (state = initialState, {type, payload}) {
+  switch (type) {
+  case SHYNEE_SETTINGS_PRIVACY_REQUEST:
+    return {
+      ...state,
+      fetching: true
+    }; 
+  case SHYNEE_SETTINGS_PRIVACY_SUCCESS:
+    return {
+      ...state,
+      fetching: false,
+      data: payload
+    };
+  case SHYNEE_SETTINGS_PRIVACY_FAILURE:
+    return {
+      ...state,
+      fetching: false,
+      error: true,
+    };
+  default: 
+    return state;
+  }
+}
+
 export default combineReducers({
   info,
-  settings
+  settings,
+  settingsPrivacy
 });
