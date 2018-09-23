@@ -5,7 +5,7 @@ import {fonts, colors} from '../../constants/styles';
 
 class Text extends PureComponent {
   render() {
-    const {children, style: customStyle, disabled} = this.props;
+    const {children, style: customStyle, ...rest} = this.props;
 
     const textStyle = {
       color: colors.black,
@@ -14,7 +14,7 @@ class Text extends PureComponent {
     };
     
     return (
-      <Animated.Text style={[textStyle, customStyle]} disabled={disabled}>
+      <Animated.Text style={[textStyle, customStyle]} {...rest}>
         {children}
       </Animated.Text>
     );
@@ -26,7 +26,6 @@ Text.propTypes = {
     PropTypes.object,
     PropTypes.array
   ]),
-  disabled: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number

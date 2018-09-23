@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { View, TouchableNativeFeedback, TouchableOpacity, Animated, Platform } from 'react-native';
 
 import Text from '../Text';
+import Touchable from '../Touchable';
 
 import buttonStyles from './styles';
 
@@ -36,7 +37,6 @@ class Button extends PureComponent {
     //   accessibilityTraits.push('disabled');
     // }
     const styles = buttonStyles[type];
-    const Touchable = Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
     return (
       <Animated.View style={[styles.container, customStyles]}>
         <Touchable
