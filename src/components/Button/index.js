@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Platform from 'Platform';
-import { View, TouchableNativeFeedback, TouchableOpacity, Animated } from 'react-native';
+import { View, TouchableNativeFeedback, TouchableOpacity, Animated, Platform } from 'react-native';
 
 import Text from '../Text';
 

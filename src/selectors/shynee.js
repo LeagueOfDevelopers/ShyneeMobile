@@ -12,3 +12,8 @@ export const shyneeIdSelector = createSelector(
   shyneeInfoSelector,
   info => info.data ? info.data.id : null
 );
+
+export const shyneeCredentialsSelector = createSelector(
+  shyneeInfoSelector,
+  info => info.data ? { shyneeId: info.data.id, token: info.data.token } : null
+)
