@@ -2,13 +2,21 @@ const host = 'http://85.143.104.47:19902';
 
 const request = (path, params = {}) => {
   const requestUrl = host + path;
-  const {
+  let {
     method = 'GET',
-    headers = {
-      'Content-Type': 'application/json'
-    },
-    body = null
+    headers = {},
+    body = null,
+    token
   } = params;
+
+  if (token) {
+    headers.Authorization = `Bearer ${token}`;
+  }
+
+  headers = {
+    'Content-Type': 'application/json',
+    ...headers,
+  };
 
   const reqParams = {
     method,
