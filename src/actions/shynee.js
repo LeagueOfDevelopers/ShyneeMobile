@@ -47,15 +47,15 @@ export const getShyneeSettings = (shyneeId) => (dispatch) => {
 export const SHYNEE_SETTINGS_PRIVACY_REQUEST = 'SHYNEE_SETTINGS_PRIVACY_REQUEST';
 export const SHYNEE_SETTINGS_PRIVACY_SUCCESS = 'SHYNEE_SETTINGS_PRIVACY_SUCCESS';
 export const SHYNEE_SETTINGS_PRIVACY_FAILURE = 'SHYNEE_SETTINGS_PRIVACY_FAILURE';
-export const getShyneeSettingsPrivacy = (shyneeId) => (dispatch) => {
+export const getShyneeSettingsPrivacy = (shyneeId, token) => (dispatch) => {
   dispatch({
     type: SHYNEE_SETTINGS_PRIVACY_REQUEST
   });
 
-  return getShyneeSettingsPrivacyRequest(shyneeId)
-    .then((shynees) => dispatch({
+  return getShyneeSettingsPrivacyRequest(shyneeId, token)
+    .then((settings) => dispatch({
       type: SHYNEE_SETTINGS_PRIVACY_SUCCESS,
-      payload: shynees
+      payload: settings
     }))
     .catch(error => dispatch({
       type: SHYNEE_SETTINGS_PRIVACY_FAILURE,
@@ -64,11 +64,11 @@ export const getShyneeSettingsPrivacy = (shyneeId) => (dispatch) => {
 };
 
 export const EDIT_SHYNEE_SETTINGS_PRIVACY_SUCCESS = 'EDIT_SHYNEE_SETTINGS_PRIVACY_SUCCESS';
-export const editShyneeSettingsPrivacy = (shyneeId, settingsPrivacy) => (dispatch) =>
-  editShyneeSettingsPrivacyRequest(shyneeId, settingsPrivacy)
-    .then((shynees) => dispatch({
+export const editShyneeSettingsPrivacy = (shyneeId, token, settingsPrivacy) => (dispatch) =>
+  editShyneeSettingsPrivacyRequest(shyneeId, token, settingsPrivacy)
+    .then((settings) => dispatch({
       type: EDIT_SHYNEE_SETTINGS_PRIVACY_SUCCESS,
-      payload: shynees
+      payload: settings
     }));
 
 export const SHYNEE_IS_READY = 'SHYNEE_IS_READY';

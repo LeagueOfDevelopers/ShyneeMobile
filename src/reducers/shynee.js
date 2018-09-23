@@ -110,7 +110,8 @@ function settingsPrivacy (state = initialState, {type, payload}) {
       ...state,
       fetching: true
     }; 
-  case SHYNEE_SETTINGS_PRIVACY_SUCCESS | EDIT_SHYNEE_SETTINGS_PRIVACY_SUCCESS :
+  case SHYNEE_SETTINGS_PRIVACY_SUCCESS :
+  case EDIT_SHYNEE_SETTINGS_PRIVACY_SUCCESS :
     return {
       ...initialState,
       data: payload

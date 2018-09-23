@@ -2,7 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import {shyneeIdSelector, shyneeInfoSelector, shyneeSettingsPrivacySelector} from '../../selectors/shynee';
+import {
+  shyneeTokenSelector,
+  shyneeIdSelector,
+  shyneeInfoSelector,
+  shyneeSettingsPrivacySelector
+} from '../../selectors/shynee';
 import ProfileEditing from '../../components/ProfileEditing';
 
 class ProfileEditingScreen extends React.PureComponent {
@@ -26,11 +31,13 @@ ProfileEditingScreen.propTypes = {
   navigation: PropTypes.object,
   dispatch: PropTypes.func,
   shyneeId: PropTypes.string,
+  token: PropTypes.string,
   shynee: PropTypes.object,
   shyneeSettingsPrivacy: PropTypes.object,
 };
 
 const mapStateToProps = state => ({
+  token: shyneeTokenSelector(state),
   shyneeId: shyneeIdSelector(state),
   shynee: shyneeInfoSelector(state),
   shyneeSettingsPrivacy: shyneeSettingsPrivacySelector(state)

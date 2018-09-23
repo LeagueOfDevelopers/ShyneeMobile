@@ -13,3 +13,8 @@ export const shyneeIdSelector = createSelector(
   shyneeInfoSelector,
   info => info.data ? info.data.id : null
 );
+
+export const shyneeTokenSelector = createSelector(
+  shyneeInfoSelector,
+  info => info.data ? info.data.token : null
+);

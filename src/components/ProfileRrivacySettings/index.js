@@ -6,73 +6,62 @@ import DropdownAlert from 'react-native-dropdownalert';
 import {getShyneeSettingsPrivacy, editShyneeSettingsPrivacy} from '../../actions/shynee';
 import Text from '../Text';
 import SwitchField from '../SwitchField';
+import Loader from '../Loader';
 
 import styles from './styles';
 
 class ProfileForm extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      settings: props.profilePrivacy
-    };
-  }
-
   componentDidMount() {
-    const {shyneeId, dispatch} = this.props;
-    dispatch(getShyneeSettingsPrivacy(shyneeId));
+    const {token, shyneeId, dispatch} = this.props;
+    dispatch(getShyneeSettingsPrivacy(shyneeId, token));
   }
 
   onChange = parameter => value => {
-    const {profilePrivacy, shyneeId, dispatch} = this.props;
+    const {shyneeId, token, dispatch} = this.props;
 
     const updatedSettings = {
-      ...profilePrivacy,
       [parameter]: value
     };
 
-    dispatch(editShyneeSettingsPrivacy(shyneeId, updatedSettings))
+    dispatch(editShyneeSettingsPrivacy(shyneeId, token, updatedSettings))
       .catch(() => {
         this.dropdown.alertWithType('error', 'Error', 'Something went wrong');
-        this.setState({
-          settings: profilePrivacy
-        });
       });
-
-    this.setState({
-      settings: updatedSettings
-    });
   }
 
   render() {
-    const {settings} = this.state;
-    if(!settings) return null;
-
-    const {avatarUri, dob, gender, name, interests, personalInfo} = settings;
-    return (
-      <View>
-        <ScrollView>
-          <View style={styles.profileDataContainer}>
-            <View style={styles.profileDataTitleContainer}>
-              <Text style={[styles.profileDataTitle, {textAlign: 'left'}]}>Profile data</Text>
-              <Text style={[styles.profileDataTitle, {textAlign: 'right'}]}>Public</Text>
+    const {settingsPrivacy} = this.props;
+    if (settingsPrivacy.data) {
+      const {avatarUri, dob, gender, name, interests, personalInfo} = settingsPrivacy.data;
+      return (
+        <View>
+          <ScrollView>
+            <View style={styles.profileDataContainer}>
+              <View style={styles.profileDataTitleContainer}>
+                <Text style={[styles.profileDataTitle, {textAlign: 'left'}]}>Profile data</Text>
+                <Text style={[styles.profileDataTitle, {textAlign: 'right'}]}>Public</Text>
+              </View>
+              <SwitchField text='Profile image' value={avatarUri} onValueChange={this.onChange('avatarUri')}/>
+              <SwitchField text='Sex' value={gender} onValueChange={this.onChange('gender')}/>
+              <SwitchField text='Name' value={name} onValueChange={this.onChange('name')}/>
+              <SwitchField text='Date of birth' value={dob} onValueChange={this.onChange('dob')}/>
+              <SwitchField text='Interests' value={interests} onValueChange={this.onChange('interests')}/>
+              <SwitchField text='About me' value={personalInfo} onValueChange={this.onChange('personalInfo')}/>
             </View>
-            <SwitchField text='Profile image' value={avatarUri} onValueChange={this.onChange('avatarUri')}/>
-            <SwitchField text='Sex' value={gender} onValueChange={this.onChange('gender')}/>
-            <SwitchField text='Name' value={name} onValueChange={this.onChange('name')}/>
-            <SwitchField text='Date of birth' value={dob} onValueChange={this.onChange('dob')}/>
-            <SwitchField text='Interests' value={interests} onValueChange={this.onChange('interests')}/>
-            <SwitchField text='About me' value={personalInfo} onValueChange={this.onChange('personalInfo')}/>
-          </View>
-        </ScrollView>
-        <DropdownAlert ref={ref => this.dropdown = ref} useNativeDriver={true}/>
-      </View>
-    );
+          </ScrollView>
+          <DropdownAlert ref={ref => this.dropdown = ref} useNativeDriver={true}/>
+        </View>
+      );
+    }
+
+    return <Loader/>;
   }
 }
 
 ProfileForm.propTypes = {
+  token: PropTypes.string,
   shyneeId: PropTypes.string,
-  profilePrivacy: PropTypes.object,
+  settingsPrivacy: PropTypes.object,
   dispatch: PropTypes.func,
 };
 
