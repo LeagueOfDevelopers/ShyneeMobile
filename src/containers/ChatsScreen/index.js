@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import ChatList from '../../components/ChatList';
-import Loader from '../../components/Loader';
 import { chatListSelector } from '../../selectors/chats';
 import { shyneeCredentialsSelector } from '../../selectors/shynee';
 import { getChatList } from '../../actions/chats';
@@ -16,19 +15,6 @@ class ChatsScreen extends React.Component {
 
   render() {
     const { navigation, dispatch, shyneeId, token, chatList } = this.props;
-    const { fetching, data } = chatList;
-    if (fetching) {
-      return <Loader />;
-    }
-
-    const chatListItems = [];
-    for (const key in data) {
-      if (data.hasOwnProperty(key)) {
-        chatListItems.push(data[key]);        
-      }
-    }
-
-    const sortedChatListItems = chatListItems.sort((item1, item2) => item1.lastMessageDate >= item2.lastMessageDate ? 1 : -1);
 
     return (
       <ChatList
@@ -36,7 +22,7 @@ class ChatsScreen extends React.Component {
         dispatch={dispatch}
         shyneeId={shyneeId}
         token={token}
-        chatList={sortedChatListItems}
+        chatList={chatList}
       />
     );
   }
