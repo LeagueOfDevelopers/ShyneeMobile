@@ -1,6 +1,6 @@
 import {StyleSheet } from 'react-native';
 
-import {colors} from '../../constants/styles';
+import {colors, fonts} from '../../constants/styles';
 
 export default {
   normal: StyleSheet.create({
@@ -38,6 +38,11 @@ export default {
     },
     tab: {
       flexGrow: 1,
+    },
+    text: {
+      marginTop: 4,
+      marginBottom: 4,
+      fontSize: fonts.size.small
     },
     activeTab: {
       borderStyle: 'solid',

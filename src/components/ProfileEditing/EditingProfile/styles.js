@@ -1,10 +1,10 @@
 import {StyleSheet } from 'react-native';
 
-import {colors} from '../../constants/styles';
+import {colors} from '../../../constants/styles';
 
 export default StyleSheet.create({
-  tab: {
-    marginTop: 9
+  tabsContainer: {
+    backgroundColor: colors.white
   },
   tabText: {
     paddingLeft: 10, 
@@ -12,16 +12,19 @@ export default StyleSheet.create({
     paddingTop: 8, 
     paddingBottom: 8,
   },
-  topContent: {
-    backgroundColor: colors.white
-  },
   wrapper: {
-    marginTop: 3,
+    flexGrow: 1,
     marginLeft: 3,
     marginRight: 3,
-    backgroundColor: colors.white,
   },
   content: {
     paddingBottom: 17,
+  },
+  form: {
+    height: '100%',
+    marginTop: 3,
+  },
+  infoForm: {
+    backgroundColor: colors.white,
   }
 });

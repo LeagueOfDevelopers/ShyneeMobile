@@ -1,24 +1,29 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {ScrollView, View} from 'react-native';
 import { submit } from 'redux-form';
 
-import ProfileInfoForm from '../ProfileInfoForm';
-import ProfileCard from '../ProfileCard';
-import TabMenu from '../TabMenu';
 import Loader from '../Loader';
-import {Info, NoInfo} from '../ProfileInfo';
 import HeaderButton from '../HeaderButton/Text';
-
-import styles from './styles';
+import EditingProfile from './EditingProfile';
+import Profile from './Profile';
 
 class ProfileEditing extends PureComponent {
   state = {
-    isEditing: false
-  }
+    isEditing: false,
+  };
 
   componentDidMount = () => 
     this.updateEditButton();
+
+  onPressEditButton = () =>
+    this.setState({isEditing: !this.state.isEditing}, this.updateEditButton)
+
+  onPressDoneButton = () => {
+    this.props.dispatch(submit('profileEditFrom'));
+  }
+  
+  //TODO: Добавить очистку формы
+  onPressCancelButton = () => this.onPressEditButton()
 
   updateEditButton = () => {
     const {isEditing} = this.state;
@@ -34,78 +39,19 @@ class ProfileEditing extends PureComponent {
     });
   }
 
-  onPressEditButton = () =>
-    this.setState({isEditing: !this.state.isEditing}, this.updateEditButton)
-
-  onPressDoneButton = () => {
-    this.props.dispatch(submit('profileEditFrom'));
-  }
-
-  //TODO: Добавить очистку формы
-  onPressCancelButton = () => this.onPressEditButton()
-
-  getTabs = () => {
-    const {isEditing} = this.state;
-
-    if (isEditing) {
-      return [{
-        title: 'Profile Info',
-        active: true,
-        onPress: () => {}
-      },{
-        title: 'Privacy settings',
-        onPress: () => {}
-      }];
-    }
-
-    return [{
-      title: 'For me',
-      active: true,
-      onPress: () => {}
-    },{
-      title: 'For shynees',
-      onPress: () => {}
-    }];
-  }
-
   render() {
-    const {shynee} = this.props;
-    if (shynee.data) {
-      if (this.state.isEditing) {
-        return (
-          <ScrollView style={styles.wrapper}>
-            <View style={styles.content}>
-              <TabMenu
-                tabs={this.getTabs()}
-                type='underlined'
-                tabStyle={styles.tab}
-                textStyle={styles.tabText}
-              />
-              <ProfileInfoForm shynee={shynee.data.profile}/>
-            </View>
-          </ScrollView>
-        );
-      }
+    const {token, shyneeId, shynee, shyneeSettingsPrivacy, dispatch} = this.props;
+    if (shynee.data && shynee.data.profile) {
+      if (this.state.isEditing) 
+        return <EditingProfile
+          token={token}
+          shyneeId={shyneeId}
+          shynee={shynee}
+          shyneeSettingsPrivacy={shyneeSettingsPrivacy}
+          dispatch={dispatch}
+        />;
 
-      const {name, dob, gender, interests, personalInfo} = shynee.data.profile;
-      const infoExist = name || dob || gender || interests || personalInfo ? true : false;
-
-      return (
-        <ScrollView style={styles.wrapper}>
-          <View style={styles.topContent}>
-            <ProfileCard style={{marginTop: 8}} shynee={shynee.data.profile} />
-            <TabMenu 
-              tabs={this.getTabs()}
-              type='underlined'
-              tabStyle={styles.tab}
-              textStyle={styles.tabText}
-            />
-          </View>
-          <View style={styles.content}>
-            {infoExist ?  <Info shynee={shynee.data.profile} /> : <NoInfo />}
-          </View>
-        </ScrollView>
-      );
+      return <Profile shynee={shynee} />;
     }
 
     if (shynee.error) {
@@ -118,7 +64,10 @@ class ProfileEditing extends PureComponent {
 ProfileEditing.propTypes = {
   navigation: PropTypes.object,
   dispatch: PropTypes.func,
+  token: PropTypes.string,
+  shyneeId: PropTypes.string,
   shynee: PropTypes.object,
+  shyneeSettingsPrivacy: PropTypes.object,
 };
 
 export default ProfileEditing;
