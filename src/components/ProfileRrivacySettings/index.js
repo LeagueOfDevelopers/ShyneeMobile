@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {View, ScrollView} from 'react-native';
 import DropdownAlert from 'react-native-dropdownalert';
 
-import {editShyneeSettingsPrivacy} from '../../actions/shynee';
+import {getShyneeSettingsPrivacy, editShyneeSettingsPrivacy} from '../../actions/shynee';
 import Text from '../Text';
 import SwitchField from '../SwitchField';
 
@@ -15,6 +15,11 @@ class ProfileForm extends PureComponent {
     this.state = {
       settings: props.profilePrivacy
     };
+  }
+
+  componentDidMount() {
+    const {shyneeId, dispatch} = this.props;
+    dispatch(getShyneeSettingsPrivacy(shyneeId));
   }
 
   onChange = parameter => value => {

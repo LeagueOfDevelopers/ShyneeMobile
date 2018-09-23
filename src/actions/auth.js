@@ -1,12 +1,23 @@
-import { signShyneeUp } from '../request/shynees';
 import { SubmissionError } from 'redux-form';
-import { persistUserCredentials } from '../utils/persistence';
 
-export const SHYNEE_SIGN_UP = 'SHYNEE_SIGN_UP';
+import { signShyneeUp, refreshShyneeData, signShyneeIn } from '../request/shynees';
+import { getUserCredentials, persistUserCredentials, removeUserCredentials } from '../utils/persistence';
+
+export const SHYNEE_SIGN_IN = 'SHYNEE_SIGN_IN';
+
+const signInUser = async (shyneeData) => {
+  const { id, token } = shyneeData;
+  await persistUserCredentials({ id, token });
+  return {
+    type: SHYNEE_SIGN_IN,
+    payload: shyneeData
+  };
+};
+
 export const signUpShynee = async (email, password) => {
   let response;
   try {
-    response = await signShyneeUp(email, password, 'Shynee');
+    response = await signShyneeUp(email, password);
   } catch (error) {
     throw new SubmissionError({
       _error: error
@@ -31,11 +42,64 @@ export const signUpShynee = async (email, password) => {
     });
   }
 
-  const { id, token } = response.data;
-  await persistUserCredentials({ id, token });
-  return {
-    type: SHYNEE_SIGN_UP,
+  return await signInUser(response.data);
+};
+
+export const signInShynee = async (email, password) => {
+  let response;
+  try {
+    response = await signShyneeIn(email, password);
+  } catch (error) {
+    throw new SubmissionError({
+      _error: error
+    });
+  }
+
+  if (response.notFound || response.wrongPassword) {
+    throw new SubmissionError({
+      password: 'Wrong email or password'
+    });
+  }
+
+  if (response.success) {
+    return await signInUser(response.data);
+  }
+
+  throw new SubmissionError({
+    _error: response.data
+  });
+};
+
+export const SHYNEE_REFRESH_REQUEST = 'SHYNEE_REFRESH_REQUEST';
+export const SHYNEE_REFRESH_SUCCESS = 'SHYNEE_REFRESH_SUCCESS';
+export const SHYNEE_REFRESH_FAILED = 'SHYNEE_REFRESH_FAILED';
+export const refreshShynee = () => async (dispatch) => {
+  dispatch({
+    type: SHYNEE_REFRESH_REQUEST
+  });
+
+  const credentials = await getUserCredentials();
+  if (!credentials) {
+    dispatch({
+      type: SHYNEE_REFRESH_SUCCESS,
+      payload: null
+    });
+    return;
+  }
+
+  const response = await refreshShyneeData(credentials.token);
+  if (response.invalidToken) {
+    await removeUserCredentials();
+    dispatch({
+      type: SHYNEE_REFRESH_SUCCESS,
+      payload: null
+    });
+    return;
+  }
+
+  dispatch({
+    type: response.success ? SHYNEE_REFRESH_SUCCESS : SHYNEE_REFRESH_FAILED,
     payload: response.data
-  };
+  });
 };
 

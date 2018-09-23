@@ -41,7 +41,7 @@ class ProfileEditing extends PureComponent {
 
   render() {
     const {shyneeId, shynee, shyneeSettingsPrivacy, dispatch} = this.props;
-    if (shynee.data) {
+    if (shynee.data.profile) {
       if (this.state.isEditing) 
         return <EditingProfile
           shyneeId={shyneeId}

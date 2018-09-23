@@ -30,11 +30,11 @@ class Profile extends PureComponent {
 
   render() {
     const {shynee} = this.props;
-    const {name, dob, gender, interests, personalInfo} = shynee.data;
+    const {name, dob, gender, interests, personalInfo} = shynee.data.profile;
     const infoExist = name || dob || gender || interests || personalInfo ? true : false;
     return <ScrollView style={styles.wrapper}>
       <View style={styles.topContent}>
-        <ProfileCard style={{marginTop: 8}} shynee={shynee.data} />
+        <ProfileCard style={{marginTop: 8}} shynee={shynee.data.profile} />
         <TabMenu 
           tabs={this.tabs}
           type='underlined'
@@ -43,7 +43,7 @@ class Profile extends PureComponent {
         />
       </View>
       <View style={styles.content}>
-        {infoExist ?  <Info shynee={shynee.data} /> : <NoInfo />}
+        {infoExist ?  <Info shynee={shynee.data.profile} /> : <NoInfo />}
       </View>
     </ScrollView>;
   }

@@ -46,7 +46,7 @@ class EditingProfile extends PureComponent {
         ]}>
           {activeTab === INFO_TAB ? 
           
-            <ProfileInfoForm shynee={shynee.data}/>
+            <ProfileInfoForm shynee={shynee.data.profile}/>
             :
             <ProfileRrivacySettings
               shyneeId={shyneeId}
