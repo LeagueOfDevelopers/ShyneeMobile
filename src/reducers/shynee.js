@@ -4,6 +4,9 @@ import {
   SHYNEE_INFO_REQUEST,
   SHYNEE_INFO_SUCCESS,
   SHYNEE_INFO_FAILURE,
+  EDIT_SHYNEE_INFO_REQUEST,
+  EDIT_SHYNEE_INFO_SUCCESS,
+  EDIT_SHYNEE_INFO_FAILURE,
   SHYNEE_SETTINGS_REQUEST,
   SHYNEE_SETTINGS_SUCCESS,
   SHYNEE_SETTINGS_FAILURE,
@@ -31,21 +34,24 @@ function info (state = initialState, {type, payload}) {
   switch (type) {
   case SHYNEE_INFO_REQUEST:
   case SHYNEE_REFRESH_REQUEST:
+  case EDIT_SHYNEE_INFO_REQUEST:
     return {
       ...state,
       fetching: true
     }; 
   case SHYNEE_INFO_SUCCESS:
-    payload.avatarUri = 'https://s3.amazonaws.com/uifaces/faces/twitter/joelhelin/128.jpg';
+  case EDIT_SHYNEE_INFO_SUCCESS:
     return {
       ...state,
       fetching: false,
+      error: false,
       data: {
         ...state.data,
         profile: payload
       }
     };
   case SHYNEE_INFO_FAILURE:
+  case EDIT_SHYNEE_INFO_FAILURE:
     return {
       ...state,
       fetching: false,

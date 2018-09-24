@@ -45,13 +45,18 @@ class EditingProfile extends PureComponent {
           activeTab === INFO_TAB ? styles.infoForm : {}
         ]}>
           {activeTab === INFO_TAB ? 
-            <ProfileInfoForm shynee={shynee.data.profile}/>
+            <ProfileInfoForm
+              token={token}
+              shynee={shynee.data.profile}
+              dropdown={this.dropdown}
+            />
             :
             <ProfileRrivacySettings
               token={token}
               shyneeId={shyneeId}
               settingsPrivacy={shyneeSettingsPrivacy}
               dispatch={dispatch}
+              dropdown={this.dropdown}
             />} 
         </View>
       </View>
@@ -65,6 +70,7 @@ EditingProfile.propTypes = {
   shynee: PropTypes.object,
   shyneeSettingsPrivacy: PropTypes.object,
   dispatch: PropTypes.func,
+  dropdown: PropTypes.node,
 };
 
 export default EditingProfile;

@@ -17,16 +17,22 @@ export const getShyneeInfoRequest = (id) => {
     .then(data => data.json());
 };
 
+export const editShyneeInfoRequest = (id, token) => 
+  request(`/shynees/${id}/profile`, {
+    token
+  }).then(data => data.json());
+
 export const getShyneeSettingsRequest = (id) => {
   return request(`/shynees/${id}/settings`)
     .then(data => data.json());
 };
 
-export const getShyneeSettingsPrivacyRequest = (id, token) => request(`/shynees/${id}/profile/privacy`, {
-  token
-}).then(data => {
-  return data.json();
-});
+export const getShyneeSettingsPrivacyRequest = (id, token) => 
+  request(`/shynees/${id}/profile/privacy`, {
+    token
+  }).then(data => {
+    return data.json();
+  });
 
 export const editShyneeSettingsPrivacyRequest = (id, token, settingsPrivacy) => 
   request(`/shynees/${id}/profile/privacy`, {
