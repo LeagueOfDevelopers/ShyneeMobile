@@ -22,7 +22,6 @@ class ProfileEditing extends PureComponent {
 
   onPressDoneButton = () => {
     this.props.dispatch(submit('profileEditFrom'));
-    this.onPressEditButton();
   }
   
   //TODO: Добавить очистку формы
@@ -46,19 +45,19 @@ class ProfileEditing extends PureComponent {
     const {token, shyneeId, shynee, shyneeSettingsPrivacy, dispatch} = this.props;
     if (shynee.data && shynee.data.profile) {
       return <View>
-        {() => {
-          if (this.state.isEditing) 
-            return <EditingProfile
+        {
+          this.state.isEditing ?
+            <EditingProfile
               token={token}
               shyneeId={shyneeId}
               shynee={shynee}
               shyneeSettingsPrivacy={shyneeSettingsPrivacy}
               dispatch={dispatch}
               dropdown={this.dropdown}
-            />;
-  
-          return <Profile shynee={shynee} />;
-        }}
+            />
+            :
+            <Profile shynee={shynee} />
+        }
         <DropdownAlert ref={ref => this.dropdown = ref} useNativeDriver={true}/>
       </View>;
     }

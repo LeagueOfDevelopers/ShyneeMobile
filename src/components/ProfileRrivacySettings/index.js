@@ -1,7 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {View, ScrollView} from 'react-native';
-import DropdownAlert from 'react-native-dropdownalert';
 
 import {getShyneeSettingsPrivacy, editShyneeSettingsPrivacy} from '../../actions/shynee';
 import Text from '../Text';
@@ -62,7 +61,7 @@ ProfileForm.propTypes = {
   shyneeId: PropTypes.string,
   settingsPrivacy: PropTypes.object,
   dispatch: PropTypes.func,
-  dropdown: PropTypes.node,
+  dropdown: PropTypes.any,
 };
 
 export default ProfileForm;

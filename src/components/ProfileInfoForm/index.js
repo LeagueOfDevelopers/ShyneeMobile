@@ -12,7 +12,7 @@ import TagsField from '../Form/TagsField';
 import styles from './styles';
 
 const onSubmit = (result, dispatch, props) => {
-  editShyneeInfo(result, props.token)
+  dispatch(editShyneeInfo(props.shyneeId, props.token, result))
     .catch(() => props.dropdown.alertWithType('error', 'Error', 'Something went wrong'));
 };
 
@@ -84,14 +84,15 @@ class ProfileForm extends PureComponent {
 }
 
 ProfileForm.propTypes = {
+  token: PropTypes.string,
+  shyneeId: PropTypes.string,
   shynee: PropTypes.object,
   initialize: PropTypes.func,
-  dropdown: PropTypes.node,
+  dropdown: PropTypes.any,
 };
 
 export default reduxForm({
   form: 'profileEditFrom',
-  //TODO: Добавить отправку данных
   onSubmit,
   validate
 })(ProfileForm);

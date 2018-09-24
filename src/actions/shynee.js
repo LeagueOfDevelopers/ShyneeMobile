@@ -29,15 +29,15 @@ export const getShyneeInfo = (shyneeId) => (dispatch) => {
 export const EDIT_SHYNEE_INFO_REQUEST = 'EDIT_SHYNEE_INFO_REQUEST';
 export const EDIT_SHYNEE_INFO_SUCCESS = 'EDIT_SHYNEE_INFO_SUCCESS';
 export const EDIT_SHYNEE_INFO_FAILURE = 'EDIT_SHYNEE_INFO_FAILURE';
-export const editShyneeInfo = (shyneeId, token) => (dispatch) => {
+export const editShyneeInfo = (shyneeId, token, info) => (dispatch) => {
   dispatch({
     type: EDIT_SHYNEE_INFO_REQUEST
   });
 
-  return editShyneeInfoRequest(shyneeId, token)
-    .then((shynees) => dispatch({
+  return editShyneeInfoRequest(shyneeId, token, info)
+    .then((info) => dispatch({
       type: EDIT_SHYNEE_INFO_SUCCESS,
-      payload: shynees
+      payload: info
     }));
 };
 
