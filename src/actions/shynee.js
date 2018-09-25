@@ -1,5 +1,6 @@
 import {
   getShyneeInfoRequest,
+  editShyneeInfoRequest,
   getShyneeSettingsRequest,
   getShyneeSettingsPrivacyRequest,
   editShyneeSettingsPrivacyRequest,
@@ -22,6 +23,21 @@ export const getShyneeInfo = (shyneeId) => (dispatch) => {
     .catch(error => dispatch({
       type: SHYNEE_INFO_FAILURE,
       payload: error
+    }));
+};
+
+export const EDIT_SHYNEE_INFO_REQUEST = 'EDIT_SHYNEE_INFO_REQUEST';
+export const EDIT_SHYNEE_INFO_SUCCESS = 'EDIT_SHYNEE_INFO_SUCCESS';
+export const EDIT_SHYNEE_INFO_FAILURE = 'EDIT_SHYNEE_INFO_FAILURE';
+export const editShyneeInfo = (shyneeId, token, info) => (dispatch) => {
+  dispatch({
+    type: EDIT_SHYNEE_INFO_REQUEST
+  });
+
+  return editShyneeInfoRequest(shyneeId, token, info)
+    .then((info) => dispatch({
+      type: EDIT_SHYNEE_INFO_SUCCESS,
+      payload: info
     }));
 };
 

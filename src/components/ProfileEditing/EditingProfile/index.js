@@ -29,7 +29,7 @@ class EditingProfile extends PureComponent {
   }
 
   render() {
-    const {dispatch, token, shyneeId, shynee, shyneeSettingsPrivacy} = this.props;
+    const {dispatch, token, shyneeId, shynee, shyneeSettingsPrivacy, dropdown} = this.props;
     const {activeTab} = this.state;
 
     return <ScrollView contentContainerStyle={styles.wrapper}>
@@ -45,13 +45,19 @@ class EditingProfile extends PureComponent {
           activeTab === INFO_TAB ? styles.infoForm : {}
         ]}>
           {activeTab === INFO_TAB ? 
-            <ProfileInfoForm shynee={shynee.data.profile}/>
+            <ProfileInfoForm
+              token={token}
+              shyneeId={shyneeId}
+              shynee={shynee.data.profile}
+              dropdown={dropdown}
+            />
             :
             <ProfileRrivacySettings
               token={token}
               shyneeId={shyneeId}
               settingsPrivacy={shyneeSettingsPrivacy}
               dispatch={dispatch}
+              dropdown={dropdown}
             />} 
         </View>
       </View>
@@ -65,6 +71,7 @@ EditingProfile.propTypes = {
   shynee: PropTypes.object,
   shyneeSettingsPrivacy: PropTypes.object,
   dispatch: PropTypes.func,
+  dropdown: PropTypes.any,
 };
 
 export default EditingProfile;

@@ -1,6 +1,8 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import { submit } from 'redux-form';
+import DropdownAlert from 'react-native-dropdownalert';
+import {View} from 'react-native';
 
 import Loader from '../Loader';
 import HeaderButton from '../HeaderButton/Text';
@@ -42,16 +44,22 @@ class ProfileEditing extends PureComponent {
   render() {
     const {token, shyneeId, shynee, shyneeSettingsPrivacy, dispatch} = this.props;
     if (shynee.data && shynee.data.profile) {
-      if (this.state.isEditing) 
-        return <EditingProfile
-          token={token}
-          shyneeId={shyneeId}
-          shynee={shynee}
-          shyneeSettingsPrivacy={shyneeSettingsPrivacy}
-          dispatch={dispatch}
-        />;
-
-      return <Profile shynee={shynee} />;
+      return <View>
+        {
+          this.state.isEditing ?
+            <EditingProfile
+              token={token}
+              shyneeId={shyneeId}
+              shynee={shynee}
+              shyneeSettingsPrivacy={shyneeSettingsPrivacy}
+              dispatch={dispatch}
+              dropdown={this.dropdown}
+            />
+            :
+            <Profile shynee={shynee} />
+        }
+        <DropdownAlert ref={ref => this.dropdown = ref} useNativeDriver={true}/>
+      </View>;
     }
 
     if (shynee.error) {

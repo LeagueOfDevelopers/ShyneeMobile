@@ -1,7 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {View, ScrollView} from 'react-native';
-import DropdownAlert from 'react-native-dropdownalert';
 
 import {getShyneeSettingsPrivacy, editShyneeSettingsPrivacy} from '../../actions/shynee';
 import Text from '../Text';
@@ -17,7 +16,7 @@ class ProfileForm extends PureComponent {
   }
 
   onChange = parameter => value => {
-    const {shyneeId, token, dispatch} = this.props;
+    const {shyneeId, token, dispatch, dropdown} = this.props;
 
     const updatedSettings = {
       [parameter]: value
@@ -25,7 +24,7 @@ class ProfileForm extends PureComponent {
 
     dispatch(editShyneeSettingsPrivacy(shyneeId, token, updatedSettings))
       .catch(() => {
-        this.dropdown.alertWithType('error', 'Error', 'Something went wrong');
+        dropdown.alertWithType('error', 'Error', 'Something went wrong');
       });
   }
 
@@ -49,7 +48,6 @@ class ProfileForm extends PureComponent {
               <SwitchField text='About me' value={personalInfo} onValueChange={this.onChange('personalInfo')}/>
             </View>
           </ScrollView>
-          <DropdownAlert ref={ref => this.dropdown = ref} useNativeDriver={true}/>
         </View>
       );
     }
@@ -63,6 +61,7 @@ ProfileForm.propTypes = {
   shyneeId: PropTypes.string,
   settingsPrivacy: PropTypes.object,
   dispatch: PropTypes.func,
+  dropdown: PropTypes.any,
 };
 
 export default ProfileForm;
