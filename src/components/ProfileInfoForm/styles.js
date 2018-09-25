@@ -9,11 +9,6 @@ export default StyleSheet.create({
     marginLeft: 20,
     marginTop: 16
   },
-  avatar: {
-    width: 80,
-    height: 80,
-    borderRadius: 100
-  },
   nickname: {
     flexGrow: 1,
     marginLeft: 20,

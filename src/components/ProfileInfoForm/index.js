@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {View, Image} from 'react-native';
+import {View} from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 
 import { required } from '../../utils/validators';
@@ -8,6 +8,7 @@ import { editShyneeInfo } from '../../actions/shynee';
 import TextField from '../Form/TextField';
 import SegmentedControlField from '../Form/SegmentedControlField';
 import TagsField from '../Form/TagsField';
+import AvatarField from '../Form/AvatarField';
 
 import styles from './styles';
 
@@ -37,7 +38,7 @@ class ProfileForm extends PureComponent {
     return (
       <View>
         <View style={{...styles.card}}>
-          <Image style={styles.avatar} source={{uri: shynee.avatarUri}}/>
+          <Field name='avatarUri' component={AvatarField} />
           <Field title='Nickname*' name='nickname' placeholder='Nickname*' component={TextField} containerStyle={styles.nickname} />
         </View>
         <Field
