@@ -20,9 +20,8 @@ class ProfileEditing extends PureComponent {
   onPressEditButton = () =>
     this.setState({isEditing: !this.state.isEditing}, this.updateEditButton)
 
-  onPressDoneButton = () => {
-    this.props.dispatch(submit('profileEditFrom'));
-  }
+  onPressDoneButton = () =>
+    this.props.dispatch(submit('profileEditFrom'), this.onPressEditButton);
   
   //TODO: Добавить очистку формы
   onPressCancelButton = () => this.onPressEditButton()

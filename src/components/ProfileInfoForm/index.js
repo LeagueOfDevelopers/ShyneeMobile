@@ -14,7 +14,7 @@ import styles from './styles';
 
 const onSubmit = (result, dispatch, props) => {
   dispatch(editShyneeInfo(props.shyneeId, props.token, result))
-    .catch(() => props.dropdown.alertWithType('error', 'Error', 'Something went wrong'));
+    .catch(() => props.dropdown.alertWithType('error', 'Error', 'Something went wrong. The changes are not saved.'));
 };
 
 const validate = (values) => {
