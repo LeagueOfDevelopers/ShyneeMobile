@@ -17,5 +17,15 @@ export default StyleSheet.create({
     flex: 1,
     color: colors.grey,
     fontSize: fonts.size.medium
+  },
+  allPublic: {
+    marginTop: 30
+  },
+  prompt: {
+    fontSize: fonts.size.xsmall,
+    color: colors.grey,
+    marginTop: 12,
+    marginLeft: 16,
+    marginRight: 38
   }
 });

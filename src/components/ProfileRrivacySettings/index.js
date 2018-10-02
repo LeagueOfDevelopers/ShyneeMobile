@@ -46,6 +46,16 @@ class ProfileForm extends PureComponent {
               <SwitchField text='Date of birth' value={dob} onValueChange={this.onChange('dob')}/>
               <SwitchField text='Interests' value={interests} onValueChange={this.onChange('interests')}/>
               <SwitchField text='About me' value={personalInfo} onValueChange={this.onChange('personalInfo')}/>
+              <SwitchField
+                text='All public'
+                value={personalInfo}
+                onValueChange={this.onChange('personalInfo')}
+                containerStyles={styles.allPublic}
+              />
+              <Text style={styles.prompt}>
+                Activate to make all your information visible for other shynees. 
+                Deactivating will return your previous settings.
+              </Text>
             </View>
           </ScrollView>
         </View>
