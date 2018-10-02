@@ -88,12 +88,12 @@ export const editShyneeSettingsPrivacy = (shyneeId, token, settingsPrivacy) => (
     }));
 
 export const SHYNEE_IS_READY = 'SHYNEE_IS_READY';
-export const shyneeIsReady = (id, isReady, onCatch) => (dispatch) => {
+export const shyneeIsReady = (id, token, isReady, onCatch) => (dispatch) => {
   dispatch({
     type: SHYNEE_IS_READY,
     payload: isReady
   });
-  return setShyneeReady(id, isReady)
+  return setShyneeReady(id, token, isReady)
     .catch(err => {
       dispatch({
         type: SHYNEE_IS_READY,
