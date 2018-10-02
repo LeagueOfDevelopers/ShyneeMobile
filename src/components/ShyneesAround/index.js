@@ -88,7 +88,7 @@ class ShyneesAroundScreen extends PureComponent {
       const {shyneeSize} = this.state;
       const shyneeNicknameStyle = shynees.data.length == 1 ? styles.shyneeNickname : {};
       return (
-        <View>
+        <View style={styles.wrapper}>
           <Header animationParams={this.state} isReady={isReady} onIAmReadyButtonPress={this.onIAmReadyButtonPress} />
           <ScrollView style={styles.background} onScroll={this._onScroll} scrollEventThrottle={16}>
             <View style={styles.descriptionContainer}>
