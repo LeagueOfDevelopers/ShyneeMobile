@@ -18,7 +18,8 @@ export default {
       borderWidth: 1,
       borderColor: colors.primary,
       borderRadius: 100,
-      overflow: 'hidden'
+      overflow: 'hidden',
+      flexBasis: 0
     },
     text: {
       marginTop: 5,

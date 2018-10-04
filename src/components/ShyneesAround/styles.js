@@ -3,9 +3,12 @@ import {StyleSheet } from 'react-native';
 import {fonts, colors} from '../../constants/styles';
 
 export default StyleSheet.create({
+  wrapper: {
+    flex: 1
+  },
   background: {
     backgroundColor: colors.white,
-    height: '100%',
+    flexGrow: 1,
     zIndex: -1
   },
   descriptionContainer: {
@@ -20,7 +23,7 @@ export default StyleSheet.create({
   shyneesAroundContainer: {
     flexWrap: 'wrap',
     flexDirection:'row',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     marginLeft: 15,
     marginRight: 15,
     marginTop: 80

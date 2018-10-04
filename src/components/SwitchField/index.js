@@ -10,9 +10,9 @@ import styles from './styles';
 
 class ProfileForm extends PureComponent {
   render() {
-    const {text, value, onValueChange} = this.props;
+    const {text, value, onValueChange, containerStyles} = this.props;
     return (
-      <View style={styles.profileDataContainer}>
+      <View style={[styles.profileDataContainer, containerStyles]}>
         <Text style={styles.profileDataTitle}>{text}</Text>
         <Switch 
           trackColor={{true: colors.primary}}
@@ -28,7 +28,8 @@ class ProfileForm extends PureComponent {
 ProfileForm.propTypes = {
   text: PropTypes.string,
   value: PropTypes.bool,
-  onValueChange: PropTypes.func
+  onValueChange: PropTypes.func,
+  containerStyles: PropTypes.object
 };
 
 export default ProfileForm;

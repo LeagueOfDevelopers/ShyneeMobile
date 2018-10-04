@@ -41,9 +41,12 @@ export const editShyneeSettingsPrivacyRequest = (id, token, settingsPrivacy) =>
     body: JSON.stringify(settingsPrivacy)
   }).then(data => data.json());
 
-export const setShyneeReady = (id, isReady) => {
+export const setShyneeReady = (id, token, isReady) => {
   const params = {
-    method: 'POST'
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
   };
   return request(`/shynees/${id}/ready/${isReady}`, params)
     .then(data => data.json());

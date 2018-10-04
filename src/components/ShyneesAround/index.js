@@ -73,11 +73,12 @@ class ShyneesAroundScreen extends PureComponent {
   }
 
   onIAmReadyButtonPress = () => {
-    const {dispatch, navigation, shyneeIsReady: isReady, shyneeId} = this.props;
+    const {dispatch, navigation, shyneeIsReady: isReady, shyneeId, token} = this.props;
     if (!shyneeId) {
       navigation.navigate(AUTH);
+      return;
     }
-    dispatch(shyneeIsReady(shyneeId, !isReady, () => 
+    dispatch(shyneeIsReady(shyneeId, token, !isReady, () => 
       this.dropdown.alertWithType('error', 'Error', 'Something went wrong')));
   }
 
@@ -87,7 +88,7 @@ class ShyneesAroundScreen extends PureComponent {
       const {shyneeSize} = this.state;
       const shyneeNicknameStyle = shynees.data.length == 1 ? styles.shyneeNickname : {};
       return (
-        <View>
+        <View style={styles.wrapper}>
           <Header animationParams={this.state} isReady={isReady} onIAmReadyButtonPress={this.onIAmReadyButtonPress} />
           <ScrollView style={styles.background} onScroll={this._onScroll} scrollEventThrottle={16}>
             <View style={styles.descriptionContainer}>
@@ -120,6 +121,7 @@ ShyneesAroundScreen.propTypes = {
   shynees: PropTypes.object,
   shyneeIsReady: PropTypes.bool,
   shyneeId: PropTypes.string,
+  token: PropTypes.string,
   dispatch: PropTypes.func,
 };
 
