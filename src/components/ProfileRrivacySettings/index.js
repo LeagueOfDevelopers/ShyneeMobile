@@ -19,6 +19,11 @@ class ProfileForm extends PureComponent {
     dispatch(getShyneeSettingsPrivacy(shyneeId, token));
   }
 
+  componentWillUnmount() {
+    const {token, shyneeId, dispatch} = this.props;
+    dispatch(getShyneeSettingsPrivacy(shyneeId, token));
+  }
+
   onChange = parameter => value => {
     const {dispatch} = this.props;
     const updatedSettings = {
