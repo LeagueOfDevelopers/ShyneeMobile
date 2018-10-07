@@ -21,13 +21,14 @@ class ProfileEditing extends PureComponent {
   onPressEditButton = () =>
     this.setState({isEditing: !this.state.isEditing}, this.updateEditButton)
 
-  onPressDoneButton = () => {
+  onPressDoneButton = async () => {
     const {dispatch, shyneeId, token, shyneeSettingsPrivacy} = this.props;
-    dispatch(editShyneeSettingsPrivacy(shyneeId, token, shyneeSettingsPrivacy.data))
+    await dispatch(editShyneeSettingsPrivacy(shyneeId, token, shyneeSettingsPrivacy.data))
       .catch(() => {
         this.dropdown.alertWithType('error', 'Error', 'Something went wrong! Privacy settings not updated.');
       });
-    dispatch(submit('profileEditFrom'), this.onPressEditButton);
+    await dispatch(submit('profileEditFrom'));
+    this.onPressEditButton();
   }
   
   //TODO: Добавить очистку формы

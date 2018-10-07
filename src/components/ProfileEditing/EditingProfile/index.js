@@ -44,21 +44,23 @@ class EditingProfile extends PureComponent {
           styles.form,
           activeTab === INFO_TAB ? styles.infoForm : {}
         ]}>
-          {activeTab === INFO_TAB ? 
+          <View style={activeTab === INFO_TAB ? {} : {display: 'none'}}>
             <ProfileInfoForm
               token={token}
               shyneeId={shyneeId}
               shynee={shynee.data.profile}
               dropdown={dropdown}
             />
-            :
+          </View>
+          <View style={activeTab === INFO_TAB ? {display: 'none'} : {}}>
             <ProfileRrivacySettings
               token={token}
               shyneeId={shyneeId}
               settingsPrivacy={shyneeSettingsPrivacy}
               dispatch={dispatch}
               dropdown={dropdown}
-            />} 
+            />
+          </View>
         </View>
       </View>
     </ScrollView>;
