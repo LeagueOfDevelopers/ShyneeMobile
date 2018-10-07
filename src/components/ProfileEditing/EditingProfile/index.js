@@ -44,7 +44,7 @@ class EditingProfile extends PureComponent {
           styles.form,
           activeTab === INFO_TAB ? styles.infoForm : {}
         ]}>
-          <View style={activeTab === INFO_TAB ? {} : {display: 'none'}}>
+          <View style={activeTab === INFO_TAB ? {} : styles.hidden}>
             <ProfileInfoForm
               token={token}
               shyneeId={shyneeId}
@@ -52,7 +52,7 @@ class EditingProfile extends PureComponent {
               dropdown={dropdown}
             />
           </View>
-          <View style={activeTab === INFO_TAB ? {display: 'none'} : {}}>
+          <View style={activeTab === INFO_TAB ? styles.hidden : {}}>
             <ProfileRrivacySettings
               token={token}
               shyneeId={shyneeId}

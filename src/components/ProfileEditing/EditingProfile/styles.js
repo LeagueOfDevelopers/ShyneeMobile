@@ -26,5 +26,8 @@ export default StyleSheet.create({
   },
   infoForm: {
     backgroundColor: colors.white,
+  },
+  hidden: {
+    display: 'none'
   }
 });
