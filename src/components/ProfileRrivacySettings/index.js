@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {View, ScrollView} from 'react-native';
 
-import {getShyneeSettingsPrivacy, editShyneeSettingsPrivacy} from '../../actions/shynee';
+import {getShyneeSettingsPrivacy, updateShyneeSettingsPrivacy} from '../../actions/shynee';
 import Text from '../Text';
 import SwitchField from '../SwitchField';
 import Loader from '../Loader';
@@ -10,22 +10,39 @@ import Loader from '../Loader';
 import styles from './styles';
 
 class ProfileForm extends PureComponent {
+  state = {
+    allPublic: false
+  }
+
   componentDidMount() {
     const {token, shyneeId, dispatch} = this.props;
     dispatch(getShyneeSettingsPrivacy(shyneeId, token));
   }
 
-  onChange = parameter => value => {
-    const {shyneeId, token, dispatch, dropdown} = this.props;
+  componentWillUnmount() {
+    const {token, shyneeId, dispatch} = this.props;
+    dispatch(getShyneeSettingsPrivacy(shyneeId, token));
+  }
 
+  onChange = parameter => value => {
+    const {dispatch} = this.props;
     const updatedSettings = {
       [parameter]: value
     };
 
-    dispatch(editShyneeSettingsPrivacy(shyneeId, token, updatedSettings))
-      .catch(() => {
-        dropdown.alertWithType('error', 'Error', 'Something went wrong');
-      });
+    dispatch(updateShyneeSettingsPrivacy(updatedSettings));
+  }
+
+  onChangeAllPublic = () => {
+    const {dispatch, settingsPrivacy} = this.props;
+    let updatedSettings = {};
+
+    for (setting in settingsPrivacy.data) {
+      updatedSettings[setting] = !this.state.allPublic;
+    }
+    
+    this.setState({allPublic: !this.state.allPublic});
+    dispatch(updateShyneeSettingsPrivacy(updatedSettings));
   }
 
   render() {
@@ -48,8 +65,8 @@ class ProfileForm extends PureComponent {
               <SwitchField text='About me' value={personalInfo} onValueChange={this.onChange('personalInfo')}/>
               <SwitchField
                 text='All public'
-                value={personalInfo}
-                onValueChange={this.onChange('personalInfo')}
+                value={this.state.allPublic}
+                onValueChange={this.onChangeAllPublic}
                 containerStyles={styles.allPublic}
               />
               <Text style={styles.prompt}>

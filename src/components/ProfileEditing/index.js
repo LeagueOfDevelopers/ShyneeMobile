@@ -4,6 +4,7 @@ import { submit } from 'redux-form';
 import DropdownAlert from 'react-native-dropdownalert';
 import {View} from 'react-native';
 
+import {editShyneeSettingsPrivacy} from '../../actions/shynee';
 import Loader from '../Loader';
 import HeaderButton from '../HeaderButton/Text';
 import EditingProfile from './EditingProfile';
@@ -20,8 +21,15 @@ class ProfileEditing extends PureComponent {
   onPressEditButton = () =>
     this.setState({isEditing: !this.state.isEditing}, this.updateEditButton)
 
-  onPressDoneButton = () =>
-    this.props.dispatch(submit('profileEditFrom'), this.onPressEditButton);
+  onPressDoneButton = async () => {
+    const {dispatch, shyneeId, token, shyneeSettingsPrivacy} = this.props;
+    await dispatch(editShyneeSettingsPrivacy(shyneeId, token, shyneeSettingsPrivacy.data))
+      .catch(() => {
+        this.dropdown.alertWithType('error', 'Error', 'Something went wrong! Privacy settings not updated.');
+      });
+    await dispatch(submit('profileEditFrom'));
+    this.onPressEditButton();
+  }
   
   //TODO: Добавить очистку формы
   onPressCancelButton = () => this.onPressEditButton()

@@ -87,6 +87,13 @@ export const editShyneeSettingsPrivacy = (shyneeId, token, settingsPrivacy) => (
       payload: settings
     }));
 
+export const UPDATE_SHYNEE_SETTINGS_PRIVACY = 'UPDATE_SHYNEE_SETTINGS_PRIVACY';
+export const updateShyneeSettingsPrivacy = (settingsPrivacy) => (dispatch) => 
+  dispatch({
+    type: UPDATE_SHYNEE_SETTINGS_PRIVACY,
+    payload: settingsPrivacy
+  });
+
 export const SHYNEE_IS_READY = 'SHYNEE_IS_READY';
 export const shyneeIsReady = (id, token, isReady, onCatch) => (dispatch) => {
   dispatch({

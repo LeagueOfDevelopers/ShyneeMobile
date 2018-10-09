@@ -14,6 +14,7 @@ import {
   SHYNEE_SETTINGS_PRIVACY_SUCCESS,
   SHYNEE_SETTINGS_PRIVACY_FAILURE,
   EDIT_SHYNEE_SETTINGS_PRIVACY_SUCCESS,
+  UPDATE_SHYNEE_SETTINGS_PRIVACY,
   SHYNEE_IS_READY
 } from '../actions/shynee';
 
@@ -121,6 +122,14 @@ function settingsPrivacy (state = initialState, {type, payload}) {
     return {
       ...initialState,
       data: payload
+    };
+  case UPDATE_SHYNEE_SETTINGS_PRIVACY :
+    return {
+      ...state,
+      data: {
+        ...state.data,
+        ...payload
+      }
     };
   case SHYNEE_SETTINGS_PRIVACY_FAILURE :
     return {
