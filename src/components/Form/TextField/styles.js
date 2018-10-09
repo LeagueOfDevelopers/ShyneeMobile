@@ -5,27 +5,13 @@ import {fonts, colors} from '../../../constants/styles';
 export default StyleSheet.create({
   inputContainer: {
     flexDirection: 'column',
-    height: 50,
-    borderStyle: 'solid',
-    borderBottomWidth: 1,
-    maxHeight: 50,
-    paddingTop: 8,
-    paddingBottom: 8
-  },
-  activeContainer: {    
-    borderBottomColor: colors.primary,
-  },
-  inactiveContainer: {
-    borderBottomColor: colors.grey,
-  },
-  errorContainer: {
-    borderBottomColor: colors.error,
-    marginBottom: 8
+    justifyContent: 'flex-end',
+    minHeight: 50
   },
   title: {
-    ...fonts.weight.light,    
+    ...fonts.weight.light,
     fontSize: fonts.size.xsmall,
-    maxHeight: 20
+    flexGrow: 1,
   },
   validTitle: {
     color: colors.grey,
@@ -37,10 +23,11 @@ export default StyleSheet.create({
     fontSize: fonts.size.medium,
     lineHeight: fonts.size.medium,
     textAlignVertical: 'center',
-    paddingTop: 0,
+    flexGrow: 1,
+    paddingTop: 4,
     paddingBottom: 0,
     paddingLeft: 0,
-    paddingRight: 0
+    paddingRight: 0,
   },
   validInput: {
     color: colors.primary
@@ -48,11 +35,16 @@ export default StyleSheet.create({
   invalidInput: {
     color: colors.black
   },
-  activeInput: {
-    maxHeight: 30
+  line: {
+    width: '100%',
+    height: 1,
+    backgroundColor: colors.grey,
   },
-  inactiveInput: {
-    maxHeight: 50
+  activeLine: {
+    backgroundColor: colors.primary,
+  },
+  errorLine: {
+    backgroundColor: colors.error,
   },
   error: {
     color: colors.error,

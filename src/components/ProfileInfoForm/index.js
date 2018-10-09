@@ -75,6 +75,7 @@ class ProfileForm extends PureComponent {
         <Field
           title='About me'
           placeholder='About me'
+          multiline={true}
           name='personalInfo'
           component={TextField}
           containerStyle={styles.field}
