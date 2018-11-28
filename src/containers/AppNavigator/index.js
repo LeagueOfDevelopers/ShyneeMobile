@@ -92,10 +92,6 @@ export default createBottomTabNavigator(
       screen: ShyneesAroundStack,
       navigationOptions: getTabNavigationOptions('Around', 'compass')
     },
-    ShyneesWorldwide: {
-      screen: ShyneesWorldwideStack,
-      navigationOptions: getTabNavigationOptions('World', 'globe')
-    },
     Chats: {
       screen: ChatsStack,
       navigationOptions: getTabNavigationOptions('Chat', 'bubble')
@@ -103,6 +99,10 @@ export default createBottomTabNavigator(
     ProfileEditing: {
       screen: AuthProfileSwitch,
       navigationOptions: getTabNavigationOptions('Profile', 'user')
+    },
+    ShyneesWorldwide: {
+      screen: ShyneesWorldwideStack,
+      navigationOptions: getTabNavigationOptions('World', 'globe')
     },
   },
   {

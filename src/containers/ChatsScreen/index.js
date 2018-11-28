@@ -1,11 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import {View} from "react-native";
 
+import Touchable from '../../components/Touchable/index'
 import ChatList from '../../components/ChatList';
 import { chatListSelector } from '../../selectors/chats';
 import { shyneeCredentialsSelector } from '../../selectors/shynee';
 import { getChatList } from '../../actions/chats';
+import { SettingsIcon } from '../../components/HeaderButton/Icon/index'
+import { SETTINGS } from '../../constants/screens' 
+
 
 class ChatsScreen extends React.Component {
   componentDidMount() {
@@ -28,8 +33,20 @@ class ChatsScreen extends React.Component {
   }
 }
 
-ChatsScreen.navigationOptions = {
-  title: 'Chats',
+ChatsScreen.navigationOptions = ({navigation}) => {
+  return{
+    title: 'Chats',
+    headerRight: <View>
+      <Touchable onPress={() => {
+        console.log('Header Settings opened');
+        navigation.navigate(SETTINGS)
+        }}>
+        <View>
+          <SettingsIcon/>
+        </View>
+      </Touchable>
+    </View>
+  }
 };
 
 ChatsScreen.propTypes = {
