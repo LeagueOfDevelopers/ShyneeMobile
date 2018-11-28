@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { TouchableNativeFeedback, TouchableOpacity, Platform } from 'react-native';
 
 const Touchable = ({ children, ...rest }) => {
-  console.log(rest);
   if (Platform.OS === 'android') {
     return (
       <TouchableNativeFeedback {...rest}>

@@ -37,10 +37,7 @@ ChatsScreen.navigationOptions = ({navigation}) => {
   return{
     title: 'Chats',
     headerRight: <View>
-      <Touchable onPress={() => {
-        console.log('Header Settings opened');
-        navigation.navigate(SETTINGS)
-        }}>
+      <Touchable onPress={() => navigation.navigate(SETTINGS)}>
         <View>
           <SettingsIcon/>
         </View>
