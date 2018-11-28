@@ -11,11 +11,5 @@ export default StyleSheet.create({
   list: {
     paddingLeft: 24,
     paddingTop: 8
-  },
-  separator: {
-    flex: 1,
-    height: 0.5,
-    maxHeight: 0.5,
-    backgroundColor: colors.grey
   }
 });

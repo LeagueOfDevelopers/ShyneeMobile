@@ -8,9 +8,6 @@ import Loadable from '../Loadable';
 import styles from './styles';
 
 class ChatList extends PureComponent {
-  renderSeparator() {
-    return (<View style={styles.separator} />);
-  }
 
   prepareData() {
     const { data } = this.props.chatList;
@@ -31,11 +28,11 @@ class ChatList extends PureComponent {
           <FlatList
             data={this.prepareData()}
             renderItem={({ item }) => <ChatListItem {...item} navigation={this.props.navigation} />}
-            ItemSeparatorComponent={this.renderSeparator}
             keyExtractor={(item) => item.id}
             style={styles.list}
           />
         </View>
+        
       </Loadable>
     );
   }
