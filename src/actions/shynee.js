@@ -4,18 +4,57 @@ import {
   getShyneeSettingsRequest,
   getShyneeSettingsPrivacyRequest,
   editShyneeSettingsPrivacyRequest,
-  setShyneeReady
+  setShyneeReady,
+  uploadImageRequest,
+  getImageRequest
 } from '../request/shynees';
+
+export const IMAGE_GET_REQUEST = 'IMAGE_GET_REQUEST';
+export const IMAGE_GET_SUCCESS = 'IMAGE_GET_SUCCESS';
+export const IMAGE_GET_FAILURE = 'IMAGE_GET_FAILURE';
+export const getImage = (name) => (dispatch) => {
+  dispatch({
+    type: IMAGE_GET_REQUEST
+  });
+
+  return getImageRequest(name)
+    .then((image) => dispatch({
+      type: IMAGE_UPLOAD_SUCCESS,
+      payload: image
+    }))
+    .catch(error => dispatch({
+      type: IMAGE_GET_FAILURE,
+      payload: error
+    }));
+}
+
+export const IMAGE_UPLOAD_REQUEST = 'IMAGE_UPLOAD_REQUEST'; 
+export const IMAGE_UPLOAD_SUCCESS = 'IMAGE_UPLOAD_SUCCESS';
+export const IMAGE_UPLOAD_FAILURE = 'IMAGE_UPLOAD_FAILURE';
+export const uploadImage = (token, image) => (dispatch) => {
+  dispatch({
+    type: IMAGE_UPLOAD_REQUEST
+  });
+ 
+  return uploadImageRequest(token, image)
+    .then({
+      type: IMAGE_UPLOAD_SUCCESS
+    })
+    .catch(error => dispatch({
+      type: SHYNEE_INFO_FAILURE,
+      payload: error
+    }));
+} 
 
 export const SHYNEE_INFO_REQUEST = 'SHYNEE_INFO_REQUEST';
 export const SHYNEE_INFO_SUCCESS = 'SHYNEE_INFO_SUCCESS';
 export const SHYNEE_INFO_FAILURE = 'SHYNEE_INFO_FAILURE';
-export const getShyneeInfo = (shyneeId) => (dispatch) => {
+export const getShyneeInfo = (shyneeId, token) => (dispatch) => {
   dispatch({
     type: SHYNEE_INFO_REQUEST
   });
 
-  return getShyneeInfoRequest(shyneeId)
+  return getShyneeInfoRequest(shyneeId, token)
     .then((shynees) => dispatch({
       type: SHYNEE_INFO_SUCCESS,
       payload: shynees
@@ -33,13 +72,20 @@ export const editShyneeInfo = (shyneeId, token, info) => (dispatch) => {
   dispatch({
     type: EDIT_SHYNEE_INFO_REQUEST
   });
-
   return editShyneeInfoRequest(shyneeId, token, info)
-    .then((info) => dispatch({
+    .then((info) => {
+      dispatch({
       type: EDIT_SHYNEE_INFO_SUCCESS,
       payload: info
-    }));
+    })});
 };
+
+export const UPDATE_SHYNEE_INFO = 'UPDATE_SHYNEE_SETTINGS_PRIVACY';
+export const updateShyneeInfo = (profile) => (dispatch) => 
+  dispatch({
+    type: UPDATE_SHYNEE_INFO,
+    payload: profile
+  });
 
 export const SHYNEE_SETTINGS_REQUEST = 'SHYNEE_SETTINGS_REQUEST';
 export const SHYNEE_SETTINGS_SUCCESS = 'SHYNEE_SETTINGS_SUCCESS';
@@ -82,10 +128,11 @@ export const getShyneeSettingsPrivacy = (shyneeId, token) => (dispatch) => {
 export const EDIT_SHYNEE_SETTINGS_PRIVACY_SUCCESS = 'EDIT_SHYNEE_SETTINGS_PRIVACY_SUCCESS';
 export const editShyneeSettingsPrivacy = (shyneeId, token, settingsPrivacy) => (dispatch) =>
   editShyneeSettingsPrivacyRequest(shyneeId, token, settingsPrivacy)
-    .then((settings) => dispatch({
+    .then((settings) => {
+      dispatch({
       type: EDIT_SHYNEE_SETTINGS_PRIVACY_SUCCESS,
       payload: settings
-    }));
+    })});
 
 export const UPDATE_SHYNEE_SETTINGS_PRIVACY = 'UPDATE_SHYNEE_SETTINGS_PRIVACY';
 export const updateShyneeSettingsPrivacy = (settingsPrivacy) => (dispatch) => 

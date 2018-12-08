@@ -1,5 +1,20 @@
 import request from '../index';
 
+export const getImageRequest = (name) => {
+  return request(`img/${name}`)
+    .then(data => data.json());
+}
+
+export const uploadImageRequest = (token, image) => {
+  const params = {
+    method: 'POST',
+    token,
+    body: JSON.stringify(image)
+  }; 
+  return request('/img', params)
+    .then(data => data.json());
+}
+
 export const getShyneesAroundRequest = () => {
   const params = {
     method: 'PUT',
@@ -12,14 +27,17 @@ export const getShyneesAroundRequest = () => {
     .then(data => data.json());
 };
 
-export const getShyneeInfoRequest = (id) => {
-  return request(`/shynees/${id}`)
-    .then(data => data.json());
+export const getShyneeInfoRequest = (id, token) => {
+  return request(`/shynees/${id}/profile`, {
+    token
+  }).then(data => data.json());
 };
 
-export const editShyneeInfoRequest = (id, token) => 
+export const editShyneeInfoRequest = (id, token, info) =>
   request(`/shynees/${id}/profile`, {
-    token
+    token,
+    method: 'PUT',
+    body: JSON.stringify(info)
   }).then(data => data.json());
 
 export const getShyneeSettingsRequest = (id) => {

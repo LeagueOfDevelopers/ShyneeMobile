@@ -7,6 +7,7 @@ import {
   EDIT_SHYNEE_INFO_REQUEST,
   EDIT_SHYNEE_INFO_SUCCESS,
   EDIT_SHYNEE_INFO_FAILURE,
+  UPDATE_SHYNEE_INFO,
   SHYNEE_SETTINGS_REQUEST,
   SHYNEE_SETTINGS_SUCCESS,
   SHYNEE_SETTINGS_FAILURE,
@@ -57,6 +58,14 @@ function info (state = initialState, {type, payload}) {
       ...state,
       fetching: false,
       error: true,
+    };
+  case UPDATE_SHYNEE_INFO:
+    return {
+      ...state,
+      data: {
+        ...state.data,
+        ...payload
+      }
     };
   case SHYNEE_SIGN_IN:
   case SHYNEE_REFRESH_SUCCESS:

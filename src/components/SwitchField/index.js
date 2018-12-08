@@ -16,7 +16,7 @@ class ProfileForm extends PureComponent {
         <Text style={styles.profileDataTitle}>{text}</Text>
         <Switch 
           trackColor={{true: colors.primary}}
-          thumbTintColor={Platform.OS === 'ios' ? null : colors.white}
+          thumbColor={Platform.OS === 'ios' ? null : colors.white}
           onValueChange={onValueChange}
           value={value} 
         />

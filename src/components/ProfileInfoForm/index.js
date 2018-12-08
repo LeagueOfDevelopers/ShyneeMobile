@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {View} from 'react-native';
+import {View, CameraRoll} from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 
 import { required } from '../../utils/validators';
@@ -12,9 +12,11 @@ import AvatarField from '../Form/AvatarField';
 
 import styles from './styles';
 
-const onSubmit = (result, dispatch, props) => 
-  dispatch(editShyneeInfo(props.shyneeId, props.token, result))
+export const onSubmit = (values, dispatch, props) => 
+{
+  dispatch(editShyneeInfo(props.shyneeId, props.token, values))
     .catch(() => props.dropdown.alertWithType('error', 'Error', 'Something went wrong. The changes are not saved.'));
+}
 
 
 const validate = (values) => {
@@ -34,9 +36,9 @@ class ProfileForm extends PureComponent {
   }
 
   render() {
-    const {shynee} = this.props;
+    const {shynee, handleSubmit} = this.props;
     return (
-      <View>
+      <View onSubmit={handleSubmit}>
         <View style={{...styles.card}}>
           <Field name='avatarUri' component={AvatarField} />
           <Field title='Nickname*' name='nickname' placeholder='Nickname*' component={TextField} containerStyle={styles.nickname} />

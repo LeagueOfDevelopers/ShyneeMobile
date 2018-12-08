@@ -11,8 +11,7 @@ import {
 import ProfileEditing from '../../components/ProfileEditing';
 
 class ProfileEditingScreen extends React.PureComponent {
-
-  render() {
+  render() { 
     return (
       <ProfileEditing {...this.props}/>
     );
