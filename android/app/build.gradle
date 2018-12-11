@@ -139,12 +139,10 @@ android {
     }
     signingConfigs {
         release {
-            if (project.hasProperty('shyneekeystore.jks')) {
-                storeFile file('shyneekeystore.jks')
-                storePassword shyneeKeystorePassword
-                keyAlias shyneeKeystoreAlias
-                keyPassword shyneeKeystorePassword
-            }
+            storeFile file("shyneekeystore.jks")
+            storePassword shyneeKeystorePassword
+            keyAlias shyneeKeystoreAlias
+            keyPassword shyneeKeystorePassword
         }
     }
     splits {
