@@ -114,12 +114,12 @@ def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
 def shyneeKeystorePassword = { ->
-    def password = project.hasProperty('keystorePassword') ? keystorePassword : -1
+    def password = project.hasProperty('keystorePassword') ? keystorePassword.toString() : -1
     return password
 }
 
 def shyneeKeystoreAlias = { ->
-    def alias = project.hasProperty('keystoreAlias') ? keystoreAlias : -1
+    def alias = project.hasProperty('keystoreAlias') ? keystoreAlias.toString() : -1
     return alias
 }
 
