@@ -45,28 +45,11 @@ subprojects {
     }
 }
 
-subprojects { subproject ->
-    if (subproject.name.contains('react-native-image-picker')){
-        buildscript {
-            repositories {
-                maven { url "https://dl.bintray.com/android/android-tools/"  }
-            }
-        }
-    }
-}
-
-subprojects { subproject ->
-    if (subproject.name.contains('react-native-image-resizer')){
-        buildscript {
-            repositories {
-                maven { url "https://dl.bintray.com/android/android-tools/"  }
-            }
-        }
-    }
-}
-
-subprojects { subproject ->
-    if (subproject.name.contains('react-native-vector-icons')){
+subprojects { subproject -> 
+    if (subproject.name.contains('react-native-image-picker') || 
+    subproject.name.contains('react-native-image-resizer') ||
+    subproject.name.contains('react-native-vector-icons')
+    ){
         buildscript {
             repositories {
                 maven { url "https://dl.bintray.com/android/android-tools/"  }
