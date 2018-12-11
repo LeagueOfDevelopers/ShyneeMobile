@@ -113,12 +113,14 @@ def enableSeparateBuildPerCPUArchitecture = false
  */
 def enableProguardInReleaseBuilds = false
 
-def keystorePassword = { ->
-    def code = project.hasProperty('keystorePassword') ? return code : -1
+def shyneeKeystorePassword = { ->
+    def password = project.hasProperty('keystorePassword') ? keystorePassword : -1
+    return password
 }
 
-def keystoreAlias = { ->
-    def code = project.hasProperty('keystoreAlias') ? return code : -1
+def shyneeKeystoreAlias = { ->
+    def alias = project.hasProperty('keystoreAlias') ? keystoreAlias : -1
+    return alias
 }
 
 android {
@@ -139,9 +141,9 @@ android {
         release {
             if (project.hasProperty('shyneekeystore.jks')) {
                 storeFile file('shyneekeystore.jks')
-                storePassword keyPassword
-                keyAlias keyAlias
-                keyPassword keyPassword
+                storePassword shyneeKeystorePassword
+                keyAlias shyneeKeystoreAlias
+                keyPassword shyneeKeystorePassword
             }
         }
     }
