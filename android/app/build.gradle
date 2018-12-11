@@ -126,6 +126,7 @@ def shyneeKeystoreAlias = { ->
 def getMyVersionCode = { ->
     def code = project.hasProperty('versionCode') ? versionCode.toInteger() : -1
     return code
+}
 
 android {
     
@@ -142,6 +143,10 @@ android {
         }
     }
     signingConfigs {
+        debug {
+
+        }
+
         release {
             storeFile file("shyneekeystore.jks")
             storePassword shyneeKeystorePassword()
@@ -158,6 +163,10 @@ android {
         }
     }
     buildTypes {
+        debug {
+            minifyEnabled false
+        }
+
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
