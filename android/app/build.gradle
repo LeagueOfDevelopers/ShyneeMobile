@@ -140,9 +140,9 @@ android {
     signingConfigs {
         release {
             storeFile file("shyneekeystore.jks")
-            storePassword shyneeKeystorePassword
-            keyAlias shyneeKeystoreAlias
-            keyPassword shyneeKeystorePassword
+            storePassword shyneeKeystorePassword()
+            keyAlias shyneeKeystoreAlias()
+            keyPassword shyneeKeystorePassword()
         }
     }
     splits {
