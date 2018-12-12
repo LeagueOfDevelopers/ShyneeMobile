@@ -61,3 +61,6 @@ buck-out/
 *.jsbundle
 
 android/app/fabric.properties
+android/app/secret.properties
+android/app/src/main/assets/crashlytics-build.properties
+android/app/src/main/res/values/com_crashlytics_export_strings.xml

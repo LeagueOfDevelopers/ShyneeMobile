@@ -38,8 +38,11 @@ subprojects {
     afterEvaluate {project ->
         if (project.hasProperty("android")) {
             android {
-                compileSdkVersion 26
-                buildToolsVersion '27.0.3'
+                compileSdkVersion = 26
+                defaultConfig {
+                    minSdkVersion 16
+                    targetSdkVersion 26
+                }
             }
         }
     }
@@ -55,13 +58,22 @@ subprojects { subproject ->
                 maven { url "https://dl.bintray.com/android/android-tools/"  }
             }
         }
+        if (subproject.hasProperty("android")) {
+            android {
+                compileSdkVersion = 26
+                defaultConfig {
+                    minSdkVersion 16
+                    targetSdkVersion 26
+                }
+            }
+        }
     }
 }
 
 ext {
     buildToolsVersion = "27.0.3"
     minSdkVersion = 16
-    compileSdkVersion = 27
+    compileSdkVersion = 26
     targetSdkVersion = 26
     supportLibVersion = "27.1.1"
 }
