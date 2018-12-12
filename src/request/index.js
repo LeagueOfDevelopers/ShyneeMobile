@@ -1,4 +1,4 @@
-const host = 'http://10.0.2.2:60381';
+const host = '85.143.104.47:19902';
 
 const request = (path, params = {}) => {
   const requestUrl = host + path;
