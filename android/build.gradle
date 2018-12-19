@@ -2,15 +2,17 @@
 
 buildscript {
     repositories {
+        google()
         jcenter()
+        mavenCentral()
         maven {
             url 'https://maven.google.com/'
             name 'Google'
         }
+        maven { url "https://dl.bintray.com/android/android-tools/"  }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
-
+        classpath 'com.android.tools.build:gradle:3.2.1'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -20,6 +22,7 @@ allprojects {
     repositories {
         mavenLocal()
         jcenter()
+        google()
         maven {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
             url "$rootDir/../node_modules/react-native/android"
@@ -35,17 +38,42 @@ subprojects {
     afterEvaluate {project ->
         if (project.hasProperty("android")) {
             android {
-                compileSdkVersion 26
-                buildToolsVersion '26.0.3'
+                compileSdkVersion = 26
+                defaultConfig {
+                    minSdkVersion 16
+                    targetSdkVersion 26
+                }
+            }
+        }
+    }
+}
+
+subprojects { subproject -> 
+    if (subproject.name.contains('react-native-image-picker') || 
+    subproject.name.contains('react-native-image-resizer') ||
+    subproject.name.contains('react-native-vector-icons')
+    ){
+        buildscript {
+            repositories {
+                maven { url "https://dl.bintray.com/android/android-tools/"  }
+            }
+        }
+        if (subproject.hasProperty("android")) {
+            android {
+                compileSdkVersion = 26
+                defaultConfig {
+                    minSdkVersion 16
+                    targetSdkVersion 26
+                }
             }
         }
     }
 }
 
 ext {
-    buildToolsVersion = "26.0.3"
+    buildToolsVersion = "27.0.3"
     minSdkVersion = 16
     compileSdkVersion = 26
     targetSdkVersion = 26
-    supportLibVersion = "26.1.0"
+    supportLibVersion = "27.1.1"
 }

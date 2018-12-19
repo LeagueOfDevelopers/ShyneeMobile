@@ -7,17 +7,18 @@
     "test": "jest"
   },
   "dependencies": {
+    "fb-watchman": "^2.0.0",
     "prop-types": "^15.6.2",
-    "react": "16.5",
-    "react-native": "^0.57.0",
-    "react-native-dropdownalert": "^3.5.0",
+    "react": "^16.6.0",
+    "react-native": "^0.57.7",
+    "react-native-dropdownalert": "^3.7.1",
     "react-native-photo-upload": "^1.3.0",
     "react-native-segmented-control-tab": "^3.3.1",
     "react-native-tag-input": "0.0.21",
     "react-native-vector-icons": "^5.0.0",
-    "react-navigation": "^2.12.1",
-    "react-redux": "^5.0.7",
-    "redux": "^4.0.0",
+    "react-navigation": "^2.18.3",
+    "react-redux": "^5.1.1",
+    "redux": "^4.0.1",
     "redux-form": "^7.4.2",
     "redux-promise-middleware": "^5.1.1",
     "redux-thunk": "^2.3.0",
@@ -27,12 +28,13 @@
     "babel-eslint": "^8.2.6",
     "babel-jest": "23.4.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "metro-react-native-babel-preset": "^0.45.0",
-    "eslint": "^5.1.0",
-    "eslint-plugin-react": "^7.10.0",
+    "eslint": "^5.10.0",
+    "eslint-plugin-react": "^7.11.1",
     "jest": "23.4.1",
+    "metro-react-native-babel-preset": "^0.45.6",
     "react-test-renderer": "16.4.1",
-    "redux-devtools-extension": "^2.13.5"
+    "redux-devtools-extension": "^2.13.7",
+    "schedule": "^0.4.0"
   },
   "jest": {
     "preset": "react-native"
